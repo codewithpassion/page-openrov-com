@@ -78,8 +78,8 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
       '/srv/jekyll_site'
     ], { stdio: 'inherit' })
     .on('close', () => {
-      browserSync.reload();
       done();
+      browserSync.reload();
     });
 
   // gulp.src('app/*.{html,liquid}')
