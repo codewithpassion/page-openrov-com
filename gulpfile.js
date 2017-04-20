@@ -87,11 +87,15 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
   //   .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('html', ['styles', 'scripts'], () => {
-  return gulp.src('app/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+gulp.task('html', ['jekyll', 'styles', 'scripts'], () => {
+  return gulp.src('.tmp.jekyll/**/*.html')
+  // return gulp.src('app/**/*.html')
+    .pipe($.useref({searchPath: ['.tmp',  'app', '.']}))
     .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
     .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
+    .pipe($.if('*.js', $.rev()))
+    .pipe($.if('*.css', $.rev()))
+    .pipe($.revReplace())
     .pipe($.if(/\.html$/, $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
@@ -142,7 +146,7 @@ gulp.task('serve', () => {
     });
 
     gulp.watch([
-      'app/*.html',
+      'app/**/*.html',
       'app/images/**/*',
       '.tmp/fonts/**/*'
     ]).on('change', reload);
