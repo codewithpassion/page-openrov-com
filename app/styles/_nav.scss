@@ -1,0 +1,32 @@
+@import "variables";
+
+nav {
+    &.navbar {
+        background-color: white!important;
+        min-height: $navbarHeight;
+        transition: all 0.4s ease;
+
+        &.scrolled {
+            min-height: $navbarHeight - 1.6rem;
+        }
+    }
+
+    $horizontalPadding: 3rem;
+    .navbar-container {
+        width: 100%;
+        padding-left: $horizontalPadding;
+        padding-right: $horizontalPadding;
+    }
+
+    .nav-item > .nav-link {
+        font-weight: 600;
+    }
+
+    @include media-breakpoint-up(lg) {
+        .nav-link {
+            $padding: 1.5rem;
+            padding-left: $padding!important;
+            padding-right: $padding!important;
+        }
+    }
+}

@@ -39,23 +39,43 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills float-right">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-        <h3 class="text-muted">page openrov com</h3>
-      </div>
+    <div class="container-fluid">
+      <nav class="navbar navbar-toggleable-md fixed-top navbar-light" role="navigation">
+    
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="jumbotron">
+    <div class="container navbar-container">
+            
+        <a class="navbar-brand" href="/">
+            <img src="/images/openrov.png" width="230" height="29" class="d-inline-block align-top" alt="OpenROV">    
+        </a>
+        
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/products">PRODUCTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/community">COMMUNITY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/industrial">INDUSTRIAL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/support">SUPPORT</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <button class="btn btn-primary px-5 my-2 my-sm-0 font-weight-bold" type="submit">STORE</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+      <div class="jumbotron">
   <h1 class="display-3">'Allo, 'Allo!</h1>
   <p class="lead">Always a pleasure scaffolding your apps.</p>
   <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>

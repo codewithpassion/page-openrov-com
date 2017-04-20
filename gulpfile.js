@@ -79,7 +79,7 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
     ], { stdio: 'inherit' })
     .on('close', () => {
       done();
-      browserSync.reload();
+      setTimeout(reload, 500);
     });
 
   // gulp.src('app/*.{html,liquid}')
