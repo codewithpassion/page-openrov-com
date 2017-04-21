@@ -39,43 +39,33 @@ body {
     font-family: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: .05rem solid #e5e5e5;
-}
-.jumbotron .btn {
-  padding: .75rem 1.5rem;
-  font-size: 1.5rem;
+
+.btn-spot-cta {
+
+    color: $Primary_Blue;
+    background-color: $Primary_Spot_Color;
+    border: solid 1px $Primary_Spot_Color;
+    $hoverColor: desaturate(darken($Primary_Spot_Color, 15%), 8%);
+
+    &:hover {
+        background-color: $hoverColor;
+        border-color: $hoverColor;
+        color: $Primary_Blue;
+    }    
+
+    &:active {
+          background-color: $hoverColor;
+          border-color: $hoverColor;
+    }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 3rem 0;
-}
-.marketing p + h4 {
-  margin-top: 1.5rem;
+.btn:hover {
+  cursor: pointer;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 48em) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 2rem;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
 
 @import "spacers";
+@import "headerHeights";
 @import "nav";
 @import "footer";
+@import "hero";

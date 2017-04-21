@@ -1,0 +1,60 @@
+section .hero {
+    @include header-height();
+
+    background-size: cover;
+    background-position: 50%;
+
+    .hero-container {
+        @extend .container;
+        height: 100%;
+    }
+
+    .title-container {
+
+        @include media-breakpoint-down(md) {
+            vertical-align: top !important;
+            padding-top: 4rem;
+        }
+        @include media-breakpoint-up(md) {
+            vertical-align: middle !important;
+        }
+
+        .title {
+            font-size: 2.4rem;
+
+            @include media-breakpoint-up(md) {
+                font-size: 4rem;
+            }
+
+            font-weight: 300;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.1;
+            color: #fff;
+        }
+
+        .call-to-action {
+            @include media-breakpoint-up(md) {
+                padding-top: 2rem;
+            }
+        }
+
+    }
+
+    &.trident-and-diver {
+        background-image: url(/images/hero/trident-hawaii.jpg);
+        background-position: 68%;
+        @include media-breakpoint-up(md) {
+            background-position: 50%;
+        }
+    }
+}
+
+.or-hero-gradient {
+      background-image: radial-gradient(circle at 47% 42%, rgba(0, 0, 0, 0.26), rgba(78, 173, 215, 0.67));
+      width: 100%!important;
+}
+
+.or-hero-gradient.grey {
+    background-image: radial-gradient(circle at 47% 42%, rgba(0, 0, 0, 0.26), rgba(32, 32, 32, 0.66));    
+}
