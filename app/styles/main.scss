@@ -24,6 +24,11 @@ $slick-font-path: '/fonts/';
 
 .container-fluid {
   padding: 0;
+
+  .row {
+    margin: 0;
+
+  }
 }
 
 
@@ -77,4 +82,4 @@ body {
 @import "hero";
 
 @import "featured-on";
-
+@import "home"

@@ -22,6 +22,15 @@
     <!-- build:js /scripts/vendor/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
+
+    {% if page.page_css %}
+        {% for css in page.page_css %}
+            {% assign cssPath = css | prepend: site.baseurl %}
+            {% if css contains '//' %} {% assign cssPath = css %} {% endif %} 
+    <link rel="stylesheet" href="{{ cssPath }}" media="screen">
+        {% endfor %}
+    {% endif %}
+
   </head>
   <body>
     <!--[if IE]>

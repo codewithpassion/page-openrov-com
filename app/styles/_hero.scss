@@ -82,11 +82,3 @@ section .hero {
     }
 }
 
-.or-hero-gradient {
-      background-image: radial-gradient(circle at 47% 42%, rgba(0, 0, 0, 0.26), rgba(78, 173, 215, 0.67));
-      width: 100%!important;
-}
-
-.or-hero-gradient.grey {
-    background-image: radial-gradient(circle at 47% 42%, rgba(0, 0, 0, 0.26), rgba(32, 32, 32, 0.66));    
-}

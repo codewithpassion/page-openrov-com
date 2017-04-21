@@ -1,0 +1,52 @@
+ section.features {
+     .feature {
+
+        background-size: cover;
+        background-position: 50%;
+
+        min-height: 417px;
+        padding: 0;
+
+        color: white;
+
+        .title {
+            font-weight: bold;
+            font-size: 1.5rem;
+            display:inline-block;
+            position:relative;
+            
+            &::after {
+                content:"";
+                position:absolute;
+                left:0;
+                bottom:0;
+                right:-2rem;
+                margin:auto;
+                background:white;
+                height:2px;
+            }
+        }
+
+        .description {
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding-top: 1rem;
+        }
+
+        
+        &.dark {
+            color: rgba(0,0,0, .7);
+            .title::after {
+                background-color: rgba(0,0,0, .7);
+            }
+        }
+
+        &.camera {
+            background-image: url(/images/content/trident-dive.jpg)
+        }
+  
+        &.comercial {
+            background-image: url(/images/content/trident-launch.jpg)
+        }
+     }
+ }
