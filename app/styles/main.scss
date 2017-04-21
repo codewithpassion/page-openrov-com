@@ -27,14 +27,6 @@ $slick-font-path: '/fonts/';
 }
 
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-// .header,
-// .marketing,
-// .footer {
-//   padding-right: 1rem;
-//   padding-left: 1rem;
-// }
-
 /* Space the navbar */
 body {
     min-height: 75rem;
@@ -77,7 +69,12 @@ body {
 
 
 @import "spacers";
+@import "helpers";
+
 @import "headerHeights";
 @import "nav";
 @import "footer";
 @import "hero";
+
+@import "featured-on";
+

@@ -1,0 +1,12 @@
+.btn-md-lg {
+    @include media-breakpoint-up(md) {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+    }
+}
+
+.h-md-0 {
+    @include media-breakpoint-up(md) {
+        height: inherit !important;
+    }
+}
