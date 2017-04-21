@@ -1,4 +1,4 @@
-baseurl: /page-openrov-com
+base: /page-openrov-com
 
 gems:
   - jekyll-redirect-from
