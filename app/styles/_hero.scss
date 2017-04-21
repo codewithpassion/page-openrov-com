@@ -49,7 +49,7 @@ section .hero {
     }
 
     &.trident-and-diver {
-        background-image: url(/images/hero/trident-hawaii.jpg);
+        background-image: url(../images/hero/trident-hawaii.jpg);
         background-position: 68%;
         @include media-breakpoint-up(md) {
             background-position: 50%;

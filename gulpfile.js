@@ -145,7 +145,8 @@ gulp.task('serve', () => {
       server: {
         baseDir: ['.tmp', '.tmp.jekyll', 'app'],
         routes: {
-          '/bower_components': 'bower_components'
+          '/bower_components': 'bower_components',
+          '/page-openrov-com/images': 'app/images'
         }
       }
     });
@@ -217,6 +218,14 @@ gulp.task('wiredep', () => {
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+});
+
+gulp.task('deploy', ['default'], () => {
+  return gulp.src('dist/**/*')
+    .pipe($.ghPages({
+        branch: 'gh-pages',
+        remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git'
+    }));
 });
 
 gulp.task('default', () => {
