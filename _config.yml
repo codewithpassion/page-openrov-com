@@ -1,0 +1,30 @@
+gems:
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+
+exclude:
+
+array: []
+
+# for SEO
+google_site_verification: 6sqA5KNpZtZaQPB-78QcD8CDqXsbhOiqpZGvm NxYDI4
+title: 'OpenROV | Underwater Exploration Robots'
+description: 'OpenROV is a community of DIY explorers who are working together to create more accessible, affordable, and awesome tools for underwater exploration.'
+url: 'https://www.openrov.com'
+#author:
+#  twitter: openrov
+
+twitter:
+  username: openrov
+
+social:
+  name: OpenROV
+  links:
+    - https://twitter.com/OpenROV
+    - https://www.facebook.com/OpenROV
+    - https://www.instagram.com/openrov_hq
+    - https://www.youtube.com/user/OpenROV
+
+logo: /assets/openrov/images/openrov-dark.png
+
+social:  
