@@ -3,13 +3,20 @@
   "private": true,
   "dependencies": {
     "bootstrap": "~4.0.0-alpha.6",
-    "modernizr": "~2.8.1"
+    "modernizr": "~2.8.1",
+    "font-awesome": "^4.7.0"
   },
   "overrides": {
     "bootstrap": {
       "main": [
         "scss/bootstrap.scss",
         "dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "./scss/font-awesome.scss",
+        "./fonts/*"
       ]
     }
   },

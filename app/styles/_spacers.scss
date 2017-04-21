@@ -1,0 +1,75 @@
+// $baseMarginValue: 24px;
+$baseMarginValue: 9px;
+$smMarginValue: 12px;
+$mdMarginValue: 18px;
+$lgMarginValue: 24px;
+$xlMarginValue: 30px;
+
+@mixin paddingTop($multiplier) {
+    margin-top: $baseMarginValue * $multiplier;
+
+    @include media-breakpoint-up(sm) {
+        margin-top: $smMarginValue * $multiplier; 
+    }    
+    @include media-breakpoint-up(md) {
+        margin-top: $mdMarginValue * $multiplier; 
+    }    
+    @include media-breakpoint-up(lg) {
+        margin-top: $lgMarginValue * $multiplier; 
+    }    
+    @include media-breakpoint-up(xl) {
+        margin-top: $xlMarginValue * $multiplier; 
+    }    
+}
+@mixin paddingBottom($multiplier) {
+    margin-bottom: $baseMarginValue * $multiplier;
+
+    @include media-breakpoint-up(sm) {
+        margin-bottom: $smMarginValue * $multiplier; 
+    }    
+    @include media-breakpoint-up(md) {
+        margin-bottom: $mdMarginValue * $multiplier; 
+    }    
+    @include media-breakpoint-up(lg) {
+        margin-bottom: $lgMarginValue * $multiplier; 
+    }    
+    @include media-breakpoint-up(xl) {
+        margin-bottom: $xlMarginValue * $multiplier; 
+    }    
+}
+
+.element-no-top {
+    margin-top: 0!important;
+}
+.element-no-bottom {
+    margin-bottom: 0!important;
+}
+
+.element-short-top {
+    @include paddingTop(1);
+}
+.element-short-bottom {
+    @include paddingBottom(1);
+}
+
+.element-medium-top {
+    @include paddingTop(2);
+}
+.element-medium-bottom {
+    @include paddingBottom(2);
+}
+
+.element-normal-top {
+    @include paddingTop(3);
+}
+.element-normal-bottom {
+    @include paddingBottom(3);
+}
+
+.element-tall-top {
+    @include paddingTop(4);
+}
+.element-tall-bottom {
+    @include paddingBottom(4);
+}
+

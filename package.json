@@ -47,6 +47,7 @@
     }
   },
   "dependencies": {
+    "gulp-rename": "^1.2.2",
     "mkdirp": "^0.5.1"
   }
 }

@@ -1,0 +1,67 @@
+footer {
+    $itemColor: rgba(0, 0, 0, 0.5);
+    $itemColorHover: rgba(0, 0, 0, 0.7);
+
+    background-color: #e6e6e6;
+
+    .footer-text {
+        @extend .text-uppercase;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $itemColor;
+    }
+
+    a {
+        @extend .footer-text;
+
+        &:hover {
+            color: $itemColorHover;
+        }
+    }
+
+    input[type="submit"] {
+        font-weight: 600;
+    }
+
+
+  $socialIconColor: $itemColor;
+  $socialIconColorHover: $itemColorHover;
+ .link-partners {
+    line-height:  30px;
+    .fa {
+        font-size: 24px;
+    }
+    .social {
+      a { 
+        display: block;
+        float: left;
+        margin-right: 10px; 
+        color: $socialIconColor;
+
+        &:hover .fa{
+          color: $socialIconColorHover
+        }
+      }
+      span { display: inline-block; }
+    }
+    
+  }
+
+  .oe {
+      width: 1em;
+      height: 1em;
+
+      #background {
+        fill: $socialIconColor!important;
+      }
+
+      svg {
+        max-width: 100%;
+        max-height: 100%;
+      }
+  }
+  a:hover .oe #background {
+    fill: $socialIconColorHover!important;
+  }
+
+}

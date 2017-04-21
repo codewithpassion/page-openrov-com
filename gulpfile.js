@@ -13,7 +13,13 @@ const reload = browserSync.reload;
 
 var dev = true;
 
-gulp.task('styles', () => {
+gulp.task('styles-prep', () => {
+    return gulp.src('app/styles/_bootstrap_custom.scss')
+      .pipe($.rename('_custom.scss'))
+      .pipe(gulp.dest('bower_components/bootstrap/scss/'));
+})
+
+gulp.task('styles', ['styles-prep'], () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
@@ -57,7 +63,7 @@ gulp.task('lint:test', () => {
 
 gulp.task('jekyll-prep', () => {
   mkdirp.sync('.tmp.jekyll');
-  return gulp.src(['app/**/*.html', 'app/**/*.yml'])
+  return gulp.src(['app/**/*.html', 'app/**/*.yml', 'app/**/*.svg'])
       .pipe(gulp.dest('.tmp.jekyll.source'));
 })
 
@@ -79,7 +85,6 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
     ], { stdio: 'inherit' })
     .on('close', () => {
       done();
-      setTimeout(reload, 500);
     });
 
   // gulp.src('app/*.{html,liquid}')
@@ -148,8 +153,11 @@ gulp.task('serve', () => {
     gulp.watch([
       'app/**/*.html',
       'app/images/**/*',
-      '.tmp/fonts/**/*'
+      '.tmp/fonts/**/*',
     ]).on('change', reload);
+
+    gulp.watch(['.tmp.jekyll/**/*'])
+      .on('change', () => { setTimeout(reload, 1000)});
 
     gulp.watch(['app/**/*.{html,liquid}'], ['jekyll']);
     gulp.watch('app/styles/**/*.scss', ['styles']);
@@ -200,7 +208,9 @@ gulp.task('wiredep', () => {
   gulp.src('app/**/*.html')
     .pipe(wiredep({
       exclude: ['bootstrap'],
-      ignorePath: /^(\.\.\/)*\.\./
+      ignorePath: /^(\.\.\/)*\.\./,
+      onFileUpdated: (name) => {console.error('#############' + name)},
+      onPathInjected: (obj) => {console.error('@@@' + JSON.stringify(obj))},
     }))
     .pipe(gulp.dest('app'));
 });

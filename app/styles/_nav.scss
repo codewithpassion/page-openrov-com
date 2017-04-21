@@ -20,6 +20,7 @@ nav {
 
     .nav-item > .nav-link {
         font-weight: 600;
+        // color: $brand-primary!important;
     }
 
     @include media-breakpoint-up(lg) {
