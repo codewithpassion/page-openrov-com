@@ -1,9 +1,12 @@
 @import 'https://fonts.googleapis.com/css?family=Lato:300,400,600';
 
+$slick-font-path: '/fonts/';
 
 // bower:scss
 @import "bower_components/bootstrap/scss/bootstrap.scss";
 @import "bower_components/font-awesome/scss/font-awesome.scss";
+@import "bower_components/slick-carousel/slick/slick.scss";
+@import "bower_components/slick-carousel/slick/slick-theme.scss";
 // endbower
 
 @import "variables";
@@ -50,12 +53,21 @@ body {
     &:hover {
         background-color: $hoverColor;
         border-color: $hoverColor;
-        color: $Primary_Blue;
+        // color: $Primary_Blue;
     }    
 
     &:active {
           background-color: $hoverColor;
           border-color: $hoverColor;
+    }
+}
+
+.btn-link-cta {
+    color: white;
+    text-decoration: underline;
+
+    &:hover {
+      background-color: darken(white, 10%);
     }
 }
 

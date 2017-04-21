@@ -4,7 +4,8 @@
   "dependencies": {
     "bootstrap": "~4.0.0-alpha.6",
     "modernizr": "~2.8.1",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "slick-carousel": "^1.6.0"
   },
   "overrides": {
     "bootstrap": {
@@ -17,6 +18,15 @@
       "main": [
         "./scss/font-awesome.scss",
         "./fonts/*"
+      ]
+    },
+    "slick-carousel": {
+      "main": [
+        "./slick/slick.js",
+        "./slick/slick.scss",
+        "./slick/slick-theme.scss",
+        "./slick/ajax-loader.gif",
+        "./slick/fonts/*"
       ]
     }
   },
