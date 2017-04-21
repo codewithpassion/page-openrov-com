@@ -4,6 +4,14 @@ footer {
 
     background-color: #e6e6e6;
 
+    .mailchimp-footer {
+        background-color: #1c4472;
+
+        .footer-text {
+            color: white;
+        }
+    }
+
     .footer-text {
         @extend .text-uppercase;
         font-size: 1rem;
