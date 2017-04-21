@@ -40,15 +40,24 @@
     <![endif]-->
     
     <div class="container-fluid">
-      <nav class="navbar navbar-toggleable-md fixed-top navbar-light" role="navigation">
+      <nav 
+    class="navbar navbar-toggleable-md fixed-top navbar-light"
+    role="navigation"
+>
     
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-        aria-expanded="false" aria-label="Toggle navigation">
+    <button
+        class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="container navbar-container">
-            
+    <div class="container navbar-container">            
         <a class="navbar-brand" href="/">
             <img src="/images/openrov.png" width="230" height="29" class="d-inline-block align-top" alt="OpenROV">    
         </a>
@@ -132,6 +141,7 @@
                         id="mc-embedded-subscribe"
                         class="btn btn-primary px-4"
                     >
+                    <span id="email-error" class="help-block">Please check your email address!</span>
 
                     <div style="display: none"><input type="checkbox" value="512" name="group[17497][512]" id="mce-group[17497]-17497-9" checked></div>
                     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
@@ -208,7 +218,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-6">
+                <div class="col-md-3 col-xs-6 pt-2 pt-md-0">
                     <ul class="list-unstyled">
                         <li><a class="footer-text" href="/about/">About</a></li>
                         <li><a class="footer-text" href="/press/">Press</a></li>
