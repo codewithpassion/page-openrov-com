@@ -48,5 +48,13 @@
         &.comercial {
             background-image: url(../images/content/trident-launch.jpg)
         }
+
+        &.control {
+            background-image: url(../images/content/control-options.png);
+            background-position-y: bottom;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            padding: 10px
+        }
      }
  }
