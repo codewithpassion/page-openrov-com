@@ -7,11 +7,13 @@ const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
 const mkdirp = require('mkdirp');
 const cp = require('child_process');
+const insert = require('gulp-insert');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 var dev = true;
+var configCopied = false;
 
 gulp.task('styles-prep', () => {
     return gulp.src('app/styles/_bootstrap_custom.scss')
@@ -63,7 +65,9 @@ gulp.task('lint:test', () => {
 
 gulp.task('jekyll-prep', () => {
   mkdirp.sync('.tmp.jekyll');
-  return gulp.src(['app/**/*.html', 'app/**/*.yml', 'app/**/*.svg'])
+  var exclude = '';
+  if (configCopied) { exclude = '!app/_config.yml' }
+  return gulp.src(['app/**/*.html', 'app/**/*.yml', 'app/**/*.svg', exclude])
       .pipe(gulp.dest('.tmp.jekyll.source'));
 })
 
@@ -92,7 +96,22 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
   //   .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('html', ['jekyll', 'styles', 'scripts'], () => {
+
+function renamePath(filename) {
+  console.log('# ' + filename);
+  if (configCopied) {
+    return `page-openrov-com/${filename}`;
+  }
+  return filename;
+}
+
+gulp.task('html', () => {
+  return new Promise(resolve => {
+    runSequence(['styles', 'scripts'], 'jekyll', 'html-exec', resolve);
+  });
+})
+
+gulp.task('html-exec', () => {
   return gulp.src('.tmp.jekyll/**/*.html')
   // return gulp.src('app/**/*.html')
     .pipe($.useref({searchPath: ['.tmp',  'app', '.']}))
@@ -100,7 +119,10 @@ gulp.task('html', ['jekyll', 'styles', 'scripts'], () => {
     .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.js', $.rev()))
     .pipe($.if('*.css', $.rev()))
-    .pipe($.revReplace())
+    .pipe($.revReplace({
+      // modifyUnreved: renamePath,
+      modifyReved: renamePath
+    }))
     .pipe($.if(/\.html$/, $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
@@ -210,8 +232,6 @@ gulp.task('wiredep', () => {
     .pipe(wiredep({
       exclude: ['bootstrap'],
       ignorePath: /^(\.\.\/)*\.\./,
-      onFileUpdated: (name) => {console.error('#############' + name)},
-      onPathInjected: (obj) => {console.error('@@@' + JSON.stringify(obj))},
     }))
     .pipe(gulp.dest('app'));
 });
@@ -220,13 +240,37 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('deploy', ['default'], () => {
+gulp.task('prep-dev-deploy', () => {
+    
+    return new Promise(resolve => {
+      runSequence(['clean', 'wiredep'], 'prep-dev-deploy-add-base', 'build', resolve);
+    })
+});
+
+gulp.task('prep-dev-deploy-add-base', () => {
+  configCopied = true;
+  return gulp.src('app/_config.yml')
+    .pipe(insert.append('base: /page-openrov-com'))
+    .pipe(gulp.dest('.tmp.jekyll.source/'))
+});
+
+gulp.task('deploy', () => {
+  
+  return new Promise(resolve => {
+    dev = false;
+    runSequence('prep-dev-deploy', 'exec-deploy', resolve);
+  })
+
+});
+
+gulp.task('exec-deploy', () => {
   return gulp.src('dist/**/*')
     .pipe($.ghPages({
-        branch: 'gh-pages',
-        remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git'
+      branch: 'gh-pages',
+      remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git'
     }));
-});
+
+})
 
 gulp.task('default', () => {
   return new Promise(resolve => {
@@ -234,3 +278,4 @@ gulp.task('default', () => {
     runSequence(['clean', 'wiredep'], 'build', resolve);
   });
 });
+
