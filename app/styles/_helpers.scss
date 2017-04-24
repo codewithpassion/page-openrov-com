@@ -18,3 +18,8 @@
 .or-gradient.grey {
     background-image: radial-gradient(circle at 47% 42%, rgba(0, 0, 0, 0.26), rgba(32, 32, 32, 0.66));    
 }
+
+
+.prevent-flicker {
+    -webkit-transform: translateZ(0) 
+}
