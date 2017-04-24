@@ -7,7 +7,7 @@ $heightNexus6P: 773px;
 
 @mixin header-height() {
         // @media screen and (max-height: #{$heightNexus6P}) { 
-            height: 31rem !important;
+            height: 36rem !important;
         // }
         @media screen and (max-height: #{$heightNexus5x-iPhone6P}) { 
             height: 29rem !important;

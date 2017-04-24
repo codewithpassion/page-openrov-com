@@ -40,7 +40,7 @@ body {
 }
 
 
-.btn-spot-cta {
+.btn-spot-cta.b-version { // for A/B testing
 
     color: $Primary_Blue;
     background-color: $Primary_Spot_Color;
@@ -50,7 +50,7 @@ body {
     &:hover {
         background-color: $hoverColor;
         border-color: $hoverColor;
-        // color: $Primary_Blue;
+        color: $Primary_Blue;
     }    
 
     &:active {
