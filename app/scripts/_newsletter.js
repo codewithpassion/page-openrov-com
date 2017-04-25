@@ -37,9 +37,6 @@ function register($form) {
         error: function (err) { alert("Could not connect to the registration server. Please try again later."); },
         success: function (data) {
             if (data.result != "success") {
-                if (data.msg.indexOf('is already') > 0) {
-                    $form.find('#email-error').text('This email address is already subscribed.');
-                }
                 $form.find('.form-group.email').addClass('has-danger')
             } else {
                 $form.find('.form-group.email').addClass('has-success')
