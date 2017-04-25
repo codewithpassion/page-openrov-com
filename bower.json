@@ -5,7 +5,9 @@
     "bootstrap": "~4.0.0-alpha.6",
     "modernizr": "~2.8.1",
     "font-awesome": "^4.7.0",
-    "slick-carousel": "^1.6.0"
+    "slick-carousel": "^1.6.0",
+    "babel-polyfill": "^0.0.1",
+    "country-list": "^2.0.2"
   },
   "overrides": {
     "bootstrap": {

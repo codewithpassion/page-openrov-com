@@ -31,12 +31,16 @@ $slick-font-path: '../fonts/';
   }
 }
 
+$fontFamily: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 /* Space the navbar */
 body {
     min-height: 75rem;
     padding-top: $navbarHeight;
-    font-family: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body,input,select,textarea {
+  font-family: $fontFamily;
 }
 
 
@@ -75,6 +79,7 @@ body {
 
 @import "spacers";
 @import "helpers";
+@import "preloader";
 
 @import "headerHeights";
 @import "nav";

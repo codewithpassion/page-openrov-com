@@ -24,11 +24,13 @@
     <!-- endbuild -->
 
     {% if page.page_css %}
+        <!-- build:css /styles/{{page.slug}}.css -->
         {% for css in page.page_css %}
-            {% assign cssPath = css | prepend: site.base %}
+            {% assign cssPath = css %}
             {% if css contains '//' %} {% assign cssPath = css %} {% endif %} 
     <link rel="stylesheet" href="{{ cssPath }}" media="screen">
         {% endfor %}
+        <!-- endbuild -->
     {% endif %}
 
   </head>
@@ -41,7 +43,6 @@
       {% include nav.html %}
 
       {{ content }}
-
 
       {% include footer.html %}
 
@@ -63,6 +64,7 @@
     <script src="/bower_components/tether/dist/js/tether.js"></script>
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/bower_components/slick-carousel/slick/slick.js"></script>
+    <script src="/bower_components/babel-polyfill/browser-polyfill.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -83,5 +85,16 @@
     <!-- build:js /scripts/main.js -->
     <script src="/scripts/main.js"></script>
     <!-- endbuild -->
+
+    {% if page.page_script %}
+    <!-- build:js /scripts/{{page.slug}}.js -->
+        {% for script in page.page_script %}
+            {% assign scriptPath = script %}
+            {% if script contains '//' %} {% assign scriptPath = script %} {% endif %} 
+    <script src="{{ scriptPath }}"></script>
+        {% endfor %}
+    <!-- endbuild -->
+    {% endif %}
+    
   </body>
 </html>

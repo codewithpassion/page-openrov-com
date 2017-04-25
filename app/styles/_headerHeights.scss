@@ -6,9 +6,8 @@ $heightNexus6P: 773px;
 
 
 @mixin header-height() {
-        // @media screen and (max-height: #{$heightNexus6P}) { 
-            height: 36rem !important;
-        // }
+        height: 36rem !important;
+
         @media screen and (max-height: #{$heightNexus5x-iPhone6P}) { 
             height: 29rem !important;
         }
@@ -20,3 +19,34 @@ $heightNexus6P: 773px;
             height: 22rem !important;
         }            
 }
+
+@mixin header-height-small() {
+        height: 26rem !important;
+
+        @media screen and (max-height: #{$heightNexus5x-iPhone6P}) { 
+            height: 19rem !important;
+        }
+        @media screen and (max-height: #{$heightiPhone6}) { 
+            height: 15rem !important;
+        }
+
+        @media screen and (max-height: #{$heightNexus5}) { // and iPhone5
+            height: 12rem !important;
+        }            
+}
+
+@mixin header-height-xsmall() {
+        height: 20rem !important;
+
+        @media screen and (max-height: #{$heightNexus5x-iPhone6P}) { 
+            height: 19rem !important;
+        }
+        @media screen and (max-height: #{$heightiPhone6}) { 
+            height: 15rem !important;
+        }
+
+        @media screen and (max-height: #{$heightNexus5}) { // and iPhone5
+            height: 12rem !important;
+        }            
+}
+

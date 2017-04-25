@@ -1,6 +1,19 @@
 section .hero {
     @include header-height();
 
+    &.small {
+        @include header-height-small();
+    }
+    &.x-small {
+        @include header-height-xsmall();
+
+        .title-container {
+            @include media-breakpoint-down(md) {
+                padding-top: 1rem;
+            }
+        }
+    }
+
     background-size: cover;
     background-position: 50%;
 
@@ -51,6 +64,14 @@ section .hero {
     &.trident-and-diver {
         background-image: url(../images/hero/trident-hawaii.jpg);
         background-position: 68%;
+        @include media-breakpoint-up(md) {
+            background-position: 50%;
+        }
+    }
+
+    &.trident-reef {
+        background-image: url(../images/hero/trident-reef-wide.jpg);
+        background-position: 40%;
         @include media-breakpoint-up(md) {
             background-position: 50%;
         }

@@ -63,11 +63,16 @@ gulp.task('lint:test', () => {
     .pipe(gulp.dest('test/spec'));
 });
 
-gulp.task('jekyll-prep', () => {
+gulp.task('jekyll-prep-country-codes', () => {
+  return gulp.src(['bower_components/country-list/data/en/country.csv'])
+    .pipe(gulp.dest('.tmp.jekyll.source/_data'));
+})
+
+gulp.task('jekyll-prep', ['jekyll-prep-country-codes'], () => {
   mkdirp.sync('.tmp.jekyll');
   var exclude = '';
   if (configCopied) { exclude = '!app/_config.yml' }
-  return gulp.src(['app/**/*.html', 'app/**/*.yml', 'app/**/*.svg', exclude])
+  return gulp.src(['app/**/*.html', 'app/**/*.yml', 'app/**/*.csv', 'app/**/*.svg', exclude])
       .pipe(gulp.dest('.tmp.jekyll.source'));
 })
 
@@ -113,14 +118,13 @@ gulp.task('html', () => {
 
 gulp.task('html-exec', () => {
   return gulp.src('.tmp.jekyll/**/*.html')
-  // return gulp.src('app/**/*.html')
     .pipe($.useref({searchPath: ['.tmp',  'app', '.']}))
-    .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
+    .pipe($.if(/\.js$/, $.minify()))
+    .pipe($.if(/\.js$/, $.uglify({ mangle: false})))
     .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.js', $.rev()))
     .pipe($.if('*.css', $.rev()))
     .pipe($.revReplace({
-      // modifyUnreved: renamePath,
       modifyReved: renamePath
     }))
     .pipe($.if(/\.html$/, $.htmlmin({

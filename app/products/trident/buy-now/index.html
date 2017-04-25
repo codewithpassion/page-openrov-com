@@ -1,0 +1,161 @@
+--- 
+title: Buy Trident | Underwater Exploration Robots
+layout: default
+slug: buy-trident
+page_css: /styles/buy-trident.css
+page_script: /scripts/buy-trident.js
+---
+
+<div class="buy-trident">
+  <section class="section m-0">
+    <div class="hero x-small trident-reef">
+      <table class="hero-container">
+        <tbody>
+          <tr>
+            <td class="title-container">
+              <div class="container d-inline-block h-md-0 h-100">
+                <div class="row h-100">
+                  <div class="col-sm-8 offset-sm-4 h-100">
+                    <div class="title text-right">
+                      See Underwater Like Never Before.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="order-information container py-5">
+    <div class="row">
+        <div class="col align-self-center">
+            <h1 class="text-center text-md-left pb-2" >OpenROV Trident</h1>
+        </div>
+    </div>
+    <div class="preloader" id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+
+    <div id="orderFormContainer" class="invisible">
+      <div class="row">
+          <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Description</strong>
+                </div>
+                <div class="card-block">
+                    <p class="card-text" id="description">Loading</p>
+                </div>
+            </div>              
+          </div>
+      </div>
+      <div class="row pt-4">
+          <div class="col-12">
+              <form id="orderForm">
+                <div class="form-group row">
+                    <label for="quantity" class="col-2 col-form-label">Quantity:</label>
+                    <select class="form-control col-1" id="quantity">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+                <div id="options">
+                </div>
+
+                <legend class="col-form-legend col-4 pt-2"><strong>Shipping information:</strong></legend>
+
+                <div class="form-group row">
+                    <label for="email" class="col-2 col-form-label">Email:</label>
+                    <input type="email" class="form-control col-sm-6" id="email" placeholder="you@example.com">
+                </div>
+
+                <div class="form-group row">
+                    <label for="firstName" class="col-2 col-form-label">Name:</label>
+                    <input type="text" class="form-control col-10 col-md-3" id="firstName" placeholder="First Name">
+                    <input type="text" class="form-control col-10 col-md-3" id="lastName" placeholder="Last Name">
+                </div>
+
+                <div class="form-group row">
+                    <label for="country" class="col-2 col-form-label">Country:</label>
+                    <select class="form-control col-6" id="country">
+                        {% for item in site.data.country %}
+                        <option value="{{item.id}}">{{item.value}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group row">
+                    <label for="street" class="col-2 col-form-label">Street address:</label>
+                    <input type="text" class="form-control col-sm-6" id="street" placeholder="Street Address">
+                </div>
+
+                <div class="form-group row">
+                    <label for="address2" class="col-2 col-form-label">Apt, Suite, Bldg:</label>
+                    <input type="text" class="form-control col-sm-6" id="address2" placeholder="Apt, Suite, Bldg (optional)">
+                </div>
+
+                <div class="form-group row">
+                    <label for="city" class="col-2 col-form-label">City:</label>
+                    <input type="text" class="form-control col-sm-6" id="city" placeholder="City">
+                </div>
+
+                <div class="form-group row">
+                    <label for="state" class="col-2 col-form-label">State/Province/ZIP:</label>
+                    <select class="form-control col-3" id="usState">
+                        {% for item in site.data.usStates %}
+                        <option value="{{item.Abbreviation}}">{{item.State}}</option>
+                        {% endfor %}                        
+                    </select>
+                    <input type="text" class="form-control col-sm-3 hidden-xs-up" id="state" placeholder="State/Province">
+                    <input type="text" class="form-control col-sm-3" id="zip" placeholder="ZIP/Postal">
+                </div>
+
+                <div class="form-group row">
+                    <label for="phone" class="col-2 col-form-label">Phone:</label>
+                    <input type="tel" class="form-control col-sm-6" id="phone" placeholder="1-(555)-555-5555">
+                </div>
+
+                <div class="form-group row">
+                    <label for="notes" class="col-2 col-form-label">Notes:</label>
+                    <textarea class="form-control col-sm-6" id="notes" rows="3" placeholder="Notes for the Seller (optional)"></textarea>
+                </div>
+
+                <div class="paymernt-information mt-2 pt-0 pb-3">
+
+                    <legend class="col-form-legend col-4"><strong>Payment information:</strong></legend>
+                    <div class="form-group row">
+                        <label for="cc-number" class="col-2 col-form-label">CC Number:</label>
+                        <input type="number" class="form-control col-sm-6" id="cc-number" placeholder="Credit/Credit Card Number">
+                    </div>
+                    <div class="form-group row">
+                        <label for="date" class="col-2 col-form-label">Details:</label>
+                        <input type="text" class="form-control col-sm-2" id="date" placeholder="MM/YY">
+                        <input type="text" class="form-control col-sm-2" id="date" placeholder="CVC">
+                        <input type="number" class="form-control col-sm-2" id="date" placeholder="Billing ZIP">
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary px-4 mt-4 font-weight-bold">Place your order!</button>
+
+              </form>
+          </div>
+      </div>
+    </div>
+  </section>
+
+</div>
