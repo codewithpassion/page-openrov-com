@@ -23,6 +23,7 @@ section .hero {
     }
 
     .title-container {
+        color: #fff;
 
         @include media-breakpoint-down(md) {
             vertical-align: top !important;
@@ -44,7 +45,15 @@ section .hero {
             font-style: normal;
             font-stretch: normal;
             line-height: 1.1;
-            color: #fff;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            font-weight: 300;
+
+            @include media-breakpoint-up(md) {
+                font-size: 1.5rem;
+            }            
         }
 
         .call-to-action {
@@ -58,7 +67,12 @@ section .hero {
                 padding-top: 2rem;
             }
         }
+    }
 
+    &.light {
+        .title-container {
+            color: black;
+        }
     }
 
     &.trident-and-diver {
