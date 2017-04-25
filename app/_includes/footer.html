@@ -14,22 +14,25 @@
                         novalidate
                     >
                     <label class="footer-text pr-2" for="inlineFormInput">Stay informed:</label>
-                    <input
-                        type="email"
-                        value=""
-                        name="EMAIL"
-                        class="required email mb-2 mr-sm-2 mb-sm-0 col-md-4"
-                        id="mce-EMAIL"
-                        placeholder="EMAIL ADDRESS"
-                    >
-                    <input
-                        type="submit"
-                        value="SUBSCRIBE"
-                        name="subscribe"
-                        id="mc-embedded-subscribe"
-                        class="btn btn-primary px-4"
-                    >
-                    <!--<span id="email-error" class="help-block">Please check your email address!</span>-->
+                    <div class="form-group row email">
+                        <input
+                            type="email"
+                            value=""
+                            name="EMAIL"
+                            class="required email form-control form-control-success form-control-danger form-control-warning mb-2 mr-sm-2 mb-sm-0 col-md-4"
+                            id="mce-EMAIL"
+                            placeholder="EMAIL ADDRESS"
+                        >
+                        <input
+                            type="submit"
+                            value="SUBSCRIBE"
+                            name="subscribe"
+                            id="mc-embedded-subscribe"
+                            class="btn btn-primary px-4"
+                        >
+                        <span class="pl-3 form-control-feedback">Please check your email address!</span>
+                        <span class="pl-3 form-control-feedback-error">This email address is already subscribed!</span>
+                    </div>
 
                     <div style="display: none"><input type="checkbox" value="512" name="group[17497][512]" id="mce-group[17497]-17497-9" checked></div>
                     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->

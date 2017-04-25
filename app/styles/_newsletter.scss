@@ -1,0 +1,35 @@
+section.mailchimp-footer {
+    .form-group {
+        &.email {
+            .form-control-feedback, .form-control-feedback-error { 
+                display: none;
+                font-weight: bold;
+                font-size: larger;
+            }
+        }
+
+        &.has-warning {
+            &.email {
+                .form-control-feedback {
+                    display: inherit;
+                }
+
+                .form-control-feedback-error {
+                    display: none;
+                }
+            }
+        }
+
+        &.has-danger {
+            &.email {
+                .form-control-feedback-error {
+                    display: inherit;
+                }
+            }
+        }
+    }
+
+    .form-control-feedback-error {
+        @extend .form-control-feedback;
+    }
+}
