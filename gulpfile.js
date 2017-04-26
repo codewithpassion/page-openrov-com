@@ -272,7 +272,7 @@ gulp.task('exec-deploy', () => {
     .pipe($.ghPages({
       branch: 'gh-pages',
       remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git',
-      push: false
+      // push: false
     }));
 
 })
