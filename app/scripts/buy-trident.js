@@ -1,9 +1,60 @@
+const PRODUCT = '57e9bd02726ecc1100f4204a'; // testproduct
+// const PRODUCT = '5637ca44df92ea03009633b3'; //trident
+
 function objectifyForm(formArray) {//serialize data function
     var returnArray = {};
     for (var i = 0; i < formArray.length; i++) {
         returnArray[formArray[i]['name']] = formArray[i]['value'];
     }
     return returnArray;
+}
+
+function getData(formData, variants) {
+    const variant = getVariant(formData, variants);
+    const address = {
+        "first_name": formData.firstName,
+        "last_name": formData.lastName,
+        "company": null,
+        "line1": formData.address1,
+        "line2": formData.address2,
+        "city": formData.city,
+        "state": formData.country === 'US' ? formData.usState : formData.state,
+        "zip": formData.zip,
+        "country": formData.country.toLowerCase(),
+        "phone": formData.phone,
+    };
+
+    const data = {
+        "user_id": '5637c8d966e9ec03008989ef',
+        "buyer": {
+            "email": formData.email,
+            "first_name": formData.firstName,
+            "last_name": formData.lastName,
+            "phone": formData.phone,
+            "notes": formData.notes,
+        },
+        "shipping_address": address,
+        "billing_address": Object.assign({} , address, { zip: formData.billingZip }),
+        "line_items": [
+            {
+                // "product_id": "5637ca44df92ea03009633b3",
+                "product_id": PRODUCT,
+                "variant_id": variant,
+                "quantity": parseInt(formData.quantity)
+            }
+        ],
+        "payment_source": {
+            "card": {
+                "name": `${formData.firstName} ${formData.lastName}`,
+                "number": formData.ccNumber,
+                "exp_month": formData.expDate.split('/')[0],
+                "exp_year": formData.expDate.split('/')[1],
+                "cvc": formData.cvc
+            }
+        },
+        "discount_codes": []
+    }
+    return data;
 }
 
 function getVariant(formData, variants) {
@@ -28,49 +79,7 @@ function getVariant(formData, variants) {
 async function calculateShipping(form, variants) {    
     const formData = objectifyForm(form.serializeArray())
 
-    const variant = getVariant(formData, variants);
-
-    const address = {
-        "first_name": formData.firstName,
-        "last_name": formData.lastName,
-        "company": null,
-        "line1": formData.address1,
-        "line2": formData.address2,
-        "city": formData.city,
-        "state": formData.country === 'US' ? formData.usState : formData.state,
-        "zip": formData.zip,
-        "country": formData.country.toLowerCase(),
-        "phone": formData.phone,
-    };
-
-    const data = {
-        "user_id": '5637c8d966e9ec03008989ef',
-        "buyer": {
-            "email": formData.email,
-            "first_name": formData.firstName,
-            "last_name": formData.lastName,
-            // "phone": formData.phone,
-        },
-        "shipping_address": address,
-        // "billing_address": address,
-        "line_items": [
-            {
-                "product_id": "5637ca44df92ea03009633b3",
-                "variant_id": variant,
-                "quantity": parseInt(formData.quantity)
-            }
-        ],
-        "payment_source": {
-            "card": {
-                "name": `${formData.firstName} ${formData.lastName}`,
-                "number": formData.ccNumber,
-                "exp_month": formData.expDate.split('/')[0],
-                "exp_year": formData.expDate.split('/')[1],
-                "cvc": formData.cvc
-            }
-        },
-        "discount_codes": []
-    }
+    const data = getData(formData, variants);
     form.find('.loading').show();
     const result = await $.ajax({
         "async": true,
@@ -81,17 +90,18 @@ async function calculateShipping(form, variants) {
         "processData": false,
         "data": JSON.stringify(data),
     })
-    form.find('#shipping').val((result.shipping /100).toFixed(2))
-    form.find('#subtotal').val((result.subtotal / 100).toFixed(2))
-    form.find('#tax').val((result.taxes / 100).toFixed(2))
-    form.find('#total').val((result.total / 100).toFixed(2))
+    form.find('#shipping').val('$' + (result.shipping /100).toFixed(2))
+    form.find('#subtotal').val('$' + (result.subtotal / 100).toFixed(2))
+    form.find('#tax').val('$' + (result.taxes / 100).toFixed(2))
+    form.find('#total').val('$' + (result.total / 100).toFixed(2))
     form.find('.loading').hide();
 }
 
 (async () => {
 
     const result = await $.ajax({
-        url: 'https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/celry-access/products/5637ca44df92ea03009633b3'
+        // url: 'https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/celry-access/products/5637ca44df92ea03009633b3'
+        url: 'https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/celry-access/products/' + PRODUCT
     });
     $('#description').html(result.data.description);
 
@@ -99,7 +109,7 @@ async function calculateShipping(form, variants) {
     const optionsHtml = result.data.options.map(o => {
         return '<div class="form-group row">' +
             `<label for="${o.id}" class="col-2 col-form-label">${o.name}:</label>` +
-            `<select class="form-control col-6" id="option_${o.id}" name="option_${o.id}">` +
+            `<select class="form-control form-control-danger col-6" id="option_${o.id}" name="option_${o.id}" required>` +
             `<option selected value="" disabled>Select ${o.name}</option>` +
                 o.values.map(v => {
                     return `<option value="${v.id}">${v.name}</option>`
@@ -132,6 +142,31 @@ async function calculateShipping(form, variants) {
     orderForm.find('#quantity').change(ev => {
         calculateShipping(orderForm, result.data.variants);
     });
+
+    orderForm.find('#ccNumber').keypress((event) => {
+        var char = String.fromCharCode(event.which)
+        if (!char.match(/[0-9- ]/)) event.preventDefault();
+    });
+
+    const variants = result.data.variants;
+    orderForm.on('submit', async (ev) => {
+        ev.preventDefault();
+        orderForm.find('button[type="submit"]').attr('disabled', true);
+        
+        const formData = objectifyForm(orderForm.serializeArray())
+        const data = getData(formData, variants);
+        const result = await $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "url": "https://api.trycelery.com/v2/orders/checkout",
+            "method": "POST",
+            "headers": { "content-type": "application/json" },
+            "processData": false,
+            "data": JSON.stringify(data),
+        })
+        console.log(result);
+        
+    })
 
     $('#orderFormContainer').removeClass('invisible');
     $('#loader-wrapper').addClass('loaded');

@@ -2,8 +2,10 @@
 title: Buy Trident | Underwater Exploration Robots
 layout: default
 slug: buy-trident
-page_css: /styles/buy-trident.css
-page_script: /scripts/buy-trident.js
+page_css:   /styles/buy-trident.css
+page_script:
+    - /scripts/buy-trident.js
+    - https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js
 ---
 
 <div class="buy-trident">
@@ -57,7 +59,7 @@ page_script: /scripts/buy-trident.js
       </div>
       <div class="row pt-4">
           <div class="col-12">
-              <form id="orderForm">
+              <form id="orderForm" data-toggle="validator">
                 <div class="form-group row">
                     <label for="quantity" class="col-2 col-form-label">Quantity:</label>
                     <select class="form-control col-1" id="quantity" name="quantity">
@@ -80,18 +82,24 @@ page_script: /scripts/buy-trident.js
 
                 <div class="form-group row">
                     <label for="email" class="col-2 col-form-label">Email:</label>
-                    <input type="email" class="form-control col-sm-6" id="email" name="email" placeholder="you@example.com">
+                    <input
+                        type="email"
+                        class="form-control col-sm-6 form-control-danger"
+                        id="email" name="email"
+                        required  
+                        placeholder="you@example.com"
+                    >
                 </div>
 
                 <div class="form-group row">
                     <label for="firstName" class="col-2 col-form-label">Name:</label>
-                    <input type="text" class="form-control col-10 col-md-3" id="firstName" name="firstName" placeholder="First Name">
-                    <input type="text" class="form-control col-10 col-md-3" id="lastName" name="lastName" placeholder="Last Name">
+                    <input type="text" class="form-control col-10 col-md-3 form-control-danger" id="firstName" name="firstName" placeholder="First Name" required>
+                    <input type="text" class="form-control col-10 col-md-3 form-control-danger" id="lastName" name="lastName" placeholder="Last Name" required>
                 </div>
 
                 <div class="form-group row">
                     <label for="country" class="col-2 col-form-label">Country:</label>
-                    <select class="form-control col-6" id="country" name="country">
+                    <select class="form-control col-6 form-control-danger" id="country" name="country">
                         {% for item in site.data.country %}
                         <option value="{{item.id}}">{{item.value}}</option>
                         {% endfor %}
@@ -100,51 +108,51 @@ page_script: /scripts/buy-trident.js
 
                 <div class="form-group row">
                     <label for="street" class="col-2 col-form-label">Street address:</label>
-                    <input type="text" class="form-control col-sm-6" id="address1" name="address1" placeholder="Street Address">
+                    <input type="text" class="form-control col-sm-6 form-control-danger" id="address1" name="address1" placeholder="Street Address"  required>
                 </div>
 
                 <div class="form-group row">
                     <label for="address2" class="col-2 col-form-label">Apt, Suite, Bldg:</label>
-                    <input type="text" class="form-control col-sm-6" id="address2" name="address2" placeholder="Apt, Suite, Bldg (optional)">
+                    <input type="text" class="form-control col-sm-6 form-control-danger" id="address2" name="address2" placeholder="Apt, Suite, Bldg (optional)">
                 </div>
 
                 <div class="form-group row">
                     <label for="city" class="col-2 col-form-label">City:</label>
-                    <input type="text" class="form-control col-sm-6" id="city" name="city" placeholder="City">
+                    <input type="text" class="form-control col-sm-6 form-control-danger" id="city" name="city" placeholder="City"  required>
                 </div>
 
                 <div class="form-group row">
                     <label for="state" class="col-2 col-form-label">State/Province/ZIP:</label>
-                    <select class="form-control col-3" id="usState" name="usState">
+                    <select class="form-control col-3 form-control-danger" id="usState" name="usState">
                         {% for item in site.data.usStates %}
                         <option value="{{item.Abbreviation}}">{{item.State}}</option>
                         {% endfor %}                        
                     </select>
-                    <input type="text" class="form-control col-sm-3 hidden-xs-up" id="state" name="state" placeholder="State/Province">
-                    <input type="text" class="form-control col-sm-3" id="zip" placeholder="ZIP/Postal">
+                    <input type="text" class="form-control col-sm-3 form-control-danger hidden-xs-up" id="state" name="state" placeholder="State/Province"  required>
+                    <input type="text" class="form-control col-sm-3 form-control-danger" id="zip" placeholder="ZIP/Postal">
                 </div>
 
                 <div class="form-group row">
                     <label for="phone" class="col-2 col-form-label">Phone:</label>
-                    <input type="tel" class="form-control col-sm-6" id="phone" name="phone" placeholder="1-(555)-555-5555">
+                    <input type="tel" class="form-control col-sm-6 form-control-danger" id="phone" name="phone" placeholder="1-(555)-555-5555"  required>
                 </div>
 
                 <div class="form-group row">
                     <label for="notes" class="col-2 col-form-label">Notes:</label>
-                    <textarea class="form-control col-sm-6" id="notes" name="notes" rows="3" placeholder="Notes for the Seller (optional)"></textarea>
+                    <textarea class="form-control col-sm-6 form-control-danger" id="notes" name="notes" rows="3" placeholder="Notes for the Seller (optional)"></textarea>
                 </div>
 
                 <div class="paymernt-information mt-2 pt-0 pb-3">
 
                     <legend class="col-form-legend col-4"><strong>Payment information:</strong></legend>
                     <div class="form-group row">
-                        <label for="cc-number" class="col-2 col-form-label">CC Number:</label>
-                        <input type="number" class="form-control col-sm-6" id="ccNumber" name="ccNumber" placeholder="Credit/Credit Card Number">
+                        <label for="ccnnumber" class="col-2 col-form-label">CC Number:</label>
+                        <input type="tel"  pattern="^[0-9 -]{1,}$" autocomplete="off" class="form-control col-sm-6 form-control-danger" id="ccNumber" name="ccNumber" placeholder="Debit/Credit Card Number" required>
                     </div>
                     <div class="form-group row">
                         <label for="date" class="col-2 col-form-label">Details:</label>
-                        <input type="text" class="form-control col-sm-2" id="expDate" name="expDate" placeholder="MM/YY">
-                        <input type="text" class="form-control col-sm-2" id="cvc" name="cvc" placeholder="CVC">
+                        <input type="text" class="form-control col-sm-2 form-control-danger" id="expDate" name="expDate" placeholder="MM/YY" pattern="^[0-9]{2}/[0-9]{2}$" required>
+                        <input type="number" data-minlength="3" maxlength="4" class="form-control col-sm-2 form-control-danger" id="cvc" name="cvc" placeholder="CVC" required>
                         <input type="number" class="form-control col-sm-2" id="billingZip" name="billingZip" placeholder="Billing ZIP">
                     </div>
 
@@ -152,16 +160,16 @@ page_script: /scripts/buy-trident.js
 
                 <div id="shippingInfo" class="pt-4">
                     <div class="form-group row">
-                        <label for="shipping" class="col-2 col-form-label">Shipping:</label>
-                        <input id="shipping" type="text" disabled class="form-control col-sm-2 text-right">
-                    </div>
-                    <div class="form-group row">
                         <label for="subtotal" class="col-2 col-form-label">Subtotal:</label>
                         <input id="subtotal" type="text" disabled class="form-control col-sm-2 text-right">
                     </div>
                     <div class="form-group row">
-                        <label for="tax" class="col-2 col-form-label">Tax:</label>
+                        <label for="tax" class="col-2 col-form-label">Taxes:</label>
                         <input id="tax" type="text" disabled class="form-control col-sm-2 text-right">
+                    </div>
+                    <div class="form-group row">
+                        <label for="shipping" class="col-2 col-form-label">Shipping:</label>
+                        <input id="shipping" type="text" disabled class="form-control col-sm-2 text-right">
                     </div>
                     <div class="form-group row">
                         <label for="total" class="col-2 col-form-label font-weight-bold">Total:</label>
@@ -180,7 +188,7 @@ page_script: /scripts/buy-trident.js
                     </div>
                 </div>
 
-                <button type="submit" disabled class="btn btn-primary px-4 mt-4 font-weight-bold">Place your order!</button>
+                <button type="submit" class="btn btn-primary px-4 mt-4 font-weight-bold">Place your order!</button>
 
               </form>
           </div>
