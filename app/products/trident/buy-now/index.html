@@ -4,8 +4,8 @@ layout: default
 slug: buy-trident
 page_css:   /styles/buy-trident.css
 page_script:
-    - /scripts/buy-trident.js
     - https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js
+    - /scripts/buy-trident.js
 ---
 
 <div class="buy-trident">
@@ -52,14 +52,14 @@ page_script:
                     <strong>Description</strong>
                 </div>
                 <div class="card-block">
-                    <p class="card-text" id="description">Loading</p>
+                    <p class="card-text" id="description">Calculating...</p>
                 </div>
             </div>              
           </div>
       </div>
       <div class="row pt-4">
           <div class="col-12">
-              <form id="orderForm" data-toggle="validator">
+              <form id="orderForm">
                 <div class="form-group row">
                     <label for="quantity" class="col-2 col-form-label">Quantity:</label>
                     <select class="form-control col-1" id="quantity" name="quantity">
@@ -129,7 +129,7 @@ page_script:
                         {% endfor %}                        
                     </select>
                     <input type="text" class="form-control col-sm-3 form-control-danger hidden-xs-up" id="state" name="state" placeholder="State/Province"  required>
-                    <input type="text" class="form-control col-sm-3 form-control-danger" id="zip" placeholder="ZIP/Postal">
+                    <input type="text" class="form-control col-sm-3 form-control-danger" id="zip" placeholder="ZIP/Postal" required>
                 </div>
 
                 <div class="form-group row">
@@ -153,7 +153,7 @@ page_script:
                         <label for="date" class="col-2 col-form-label">Details:</label>
                         <input type="text" class="form-control col-sm-2 form-control-danger" id="expDate" name="expDate" placeholder="MM/YY" pattern="^[0-9]{2}/[0-9]{2}$" required>
                         <input type="number" data-minlength="3" maxlength="4" class="form-control col-sm-2 form-control-danger" id="cvc" name="cvc" placeholder="CVC" required>
-                        <input type="number" class="form-control col-sm-2" id="billingZip" name="billingZip" placeholder="Billing ZIP">
+                        <input type="number" class="form-control col-sm-2" id="billingZip" name="billingZip" placeholder="Billing ZIP" required>
                     </div>
 
                 </div>
@@ -180,7 +180,7 @@ page_script:
                             <tbody>
                                 <tr>
                                     <td class="allign-middle text-weight-bold">
-                                        Loading...
+                                        Calculating...
                                     </td>
                                 </tr>
                             </tbody>
@@ -188,8 +188,26 @@ page_script:
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary px-4 mt-4 font-weight-bold">Place your order!</button>
+                <div class="pt-4 row">
+                    <div class="alert alert-danger col-12" role="alert" style="display: none">
+                        <strong class="title"></strong><br>
+                        <span class="description"></span>
+                    </div>
+                </div>
 
+                <button type="button" class="submit btn btn-primary px-4 mt-4 font-weight-bold">Place your order!</button>
+
+                <div class="submitting col-12">
+                    <table class="w-100 h-100">
+                        <tbody>
+                            <tr>
+                                <td class="allign-middle text-weight-bold">
+                                    Submitting...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
               </form>
           </div>
       </div>
