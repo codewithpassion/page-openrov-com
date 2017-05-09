@@ -11,8 +11,7 @@ function objectifyForm(formArray) {//serialize data function
 
 class BuyScreen {
 
-    getData(formData, variants) {
-        const variant = this.getVariant(formData, variants);
+    getData(formData, variant) {
         const address = {
             "first_name": formData.firstName,
             "last_name": formData.lastName,
@@ -78,10 +77,13 @@ class BuyScreen {
         return undefined;
     }
 
-    async calculateShipping(form, variants) {    
+    calculateShipping(form, variants) { 
         const formData = objectifyForm(form.serializeArray())
+        const data = this.getData(formData, this.getVariant(form, variants));
+        return this._calculateShipping(data, form);
+    }
 
-        const data = this.getData(formData, variants);
+    async _calculateShipping(data, form) {    
         form.find('.loading').show();
         const result = await $.ajax({
             "async": true,
@@ -117,19 +119,25 @@ class BuyScreen {
                 '</div>';        
         }).join('');
 
+        const formData = objectifyForm(orderForm.serializeArray())
+        formData.country = 'us';
+        const data = this.getData(formData, result.data.variants[result.data.variants.length-1].id);
+        this._calculateShipping(data, orderForm);
+
         orderForm.find('#options').append(optionsHtml);
 
         orderForm.find('#country option[value="US"]').attr('selected', 'true');
         orderForm.find('#country').change(ev => {
             if (ev.currentTarget.options[ev.target.selectedIndex].value === 'US') {
-                orderForm.find('#usState').removeClass('hidden-xs-up');
-                orderForm.find('#state').addClass('hidden-xs-up');
+                orderForm.find('#usState').removeClass('hidden-xs-up').attr('required', false);
+                orderForm.find('#state').addClass('hidden-xs-up').attr('required', true);
+                
             }
             else {
-                orderForm.find('#state').removeClass('hidden-xs-up');
-                orderForm.find('#usState').addClass('hidden-xs-up');
+                orderForm.find('#state').removeClass('hidden-xs-up').attr('required', false);
+                orderForm.find('#usState').addClass('hidden-xs-up').attr('required', false);
             }
-
+            orderForm.validator('update');
             this.calculateShipping(orderForm, result.data.variants);
         })
 
@@ -144,6 +152,11 @@ class BuyScreen {
         orderForm.find('#ccNumber').keypress((event) => {
             var char = String.fromCharCode(event.which)
             if (!char.match(/[0-9- ]/)) event.preventDefault();
+        });
+        
+        orderForm.find('#expDate').keypress((event) => {
+            var char = String.fromCharCode(event.which)
+            if (!char.match(/[0-9/]/)) event.preventDefault();
         });
 
         orderForm
@@ -177,7 +190,7 @@ class BuyScreen {
         orderForm.find('.submitting').show();
 
         const formData = objectifyForm(orderForm.serializeArray())
-        const data = this.getData(formData, variants);
+        const data = this.getData(formData, this.getVariant(formData, this.getVariant(form, variants)));
         try {
             const result = await $.ajax({
                 "async": true,
@@ -189,14 +202,14 @@ class BuyScreen {
                 "data": JSON.stringify(data),
             })
 
-            order = result.data;
+            var order = result.data;
             var total = order.total / 100;
             var currency = order.currency;
             var line_items = order.line_items.map(function (item) { return item.celery_sku; }).join(',');
-            const path = "?number = " + order.number +
-                         " & amount=" + total + 
-                         " & currency=" + currency + 
-                         " & line_items=" + line_items;
+            const path = "?number=" + order.number +
+                         "&amount=" + total + 
+                         "&currency=" + currency + 
+                         "&line_items=" + line_items;
 
             window.location.replace(window.location.href + '../confirmation/' + path);
         }
@@ -211,6 +224,7 @@ class BuyScreen {
 
     async runSetupForm() {
         this.variants = await this.setupForm(this.orderForm);
+        this.orderForm.validator('update');
     }
 
     init() {

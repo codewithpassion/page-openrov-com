@@ -35,10 +35,10 @@ section .hero {
         }
 
         .title {
-            font-size: 2.4rem;
+            font-size: 2.7rem;
 
             @include media-breakpoint-up(md) {
-                font-size: 4rem;
+                font-size: 4.3rem;
             }
 
             font-weight: 300;
