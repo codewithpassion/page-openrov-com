@@ -4,6 +4,8 @@ $slick-font-path: '../fonts/';
 
 html { font-size: 87.5%; }
 
+@import "bootstrap_custom";
+
 // bower:scss
 @import "bower_components/bootstrap/scss/bootstrap.scss";
 @import "bower_components/font-awesome/scss/font-awesome.scss";
@@ -33,7 +35,7 @@ html { font-size: 87.5%; }
   }
 }
 
-$fontFamily: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+//$fontFamily: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 /* Space the navbar */
 body {
@@ -41,9 +43,10 @@ body {
     padding-top: $navbarHeight;
 }
 
-body,input,select,textarea {
-  font-family: $fontFamily;
-}
+
+// body,input,select,textarea {
+//   font-family: $fontFamily;
+// }
 
 
 .btn-spot-cta.b-version { // for A/B testing
@@ -68,9 +71,10 @@ body,input,select,textarea {
 .btn-link-cta {
     color: white;
     text-decoration: underline;
+    margin-left: -1.5rem;
 
     &:hover {
-      background-color: darken(white, 10%);
+      color: darken(white, 50%);
     }
 }
 

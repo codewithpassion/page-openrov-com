@@ -15,10 +15,11 @@ const reload = browserSync.reload;
 var dev = true;
 var configCopied = false;
 
-gulp.task('styles-prep', () => {
-    return gulp.src('app/styles/_bootstrap_custom.scss')
-      .pipe($.rename('_custom.scss'))
-      .pipe(gulp.dest('bower_components/bootstrap/scss/'));
+gulp.task('styles-prep', (done) => {
+    // return gulp.src('app/styles/_bootstrap_custom.scss')
+    //   .pipe($.rename('_custom.scss'))
+    //   .pipe(gulp.dest('bower_components/bootstrap/scss/'));
+    done();
 })
 
 gulp.task('styles', ['styles-prep'], () => {
@@ -268,6 +269,7 @@ gulp.task('prep-dev-deploy-add-base', () => {
     .pipe(gulp.dest('.tmp.jekyll.source/'))
 });
 
+gulp.task('publish', ['deploy'], () => {})
 gulp.task('deploy', () => {
   
   return new Promise(resolve => {

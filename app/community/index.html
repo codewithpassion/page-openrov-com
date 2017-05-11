@@ -1,0 +1,89 @@
+--- 
+title: Community | OpenROV | Underwater Exploration Robots
+layout: default
+slug: community
+page_css: /styles/community.css
+links:
+    - label: Hardware
+      url: https://github.com/OpenROV/openrov-hardware
+    - label: 'Developer Chat'
+      url: https://openrov.github.io/discord-dev-chat-redirect/
+      icon: fa-comments-o
+    - label: 'Software'
+      url: https://github.com/OpenROV/openrov-software
+    - label: 'Community Hacks' 
+      url: http://openrov.dozuki.com/c/Community_Hacks
+      icon: fa-wrench
+    - label: 'Electronics'
+      url: https://github.com/OpenROV/openrov-electronics
+---
+<section class="community" class="pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 pt-3">
+                <article>
+                    <h2>Discussion Forum:</h2>
+
+                    <div class="border-1-grey hover-container hover-img-scale">
+                        <a href="http://forum.openrov.com/" target="_blank" class=" ">
+                            <img src="/images/content/forum.jpg" class="img-fluid" alt="OpenExplorer Expeditions">
+                        </a>
+                        <div class="overlay">
+                            <a href="http://forum.openrov.com/" target="_blank" class="click-area"></a>
+                            <div class="content d-table w-100 h-100 text-white">
+                                <div class="d-table-cell align-middle" style="font-size: 1.5rem">
+                                    Learn more &gt;&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 pt-5">
+                <article>
+                    <h2>OpenExplorer Expeditions:</h2>
+                    <div class="border-1-grey hover-container hover-img-scale">
+                        <a href="https://www.openexplorer.com" target="_blank" class=" ">
+                            <img src="/images/content/openexplorer-map.jpg" class="img-fluid" alt="OpenExplorer Expeditions">
+                        </a>
+                        <div class="overlay">
+                            <a href="https://www.openexplorer.com" target="_blank" class="click-area"></a>
+                            <div class="content d-table w-100 h-100 text-white">
+                                <div class="d-table-cell align-middle" style="font-size: 1.5rem">
+                                    Learn more &gt;&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <article  class="col-12 pt-5 pb-5">
+                <h2>Other ways to engange:</h2>
+
+                <div class="row">
+                    {% for link in page.links %}
+                        {% assign label = link.label %}
+                        {% assign url = link.url %}
+                        {% assign icon = 'fa-github' %}
+                        {% if link.icon != null %}
+                            {% assign icon = link.icon %}
+                        {% endif %}
+                        
+                    <div class="col-6">
+                        <a href="{{url}}" class="community-link"><i class="fa {{icon}}" aria-hidden="true"></i>{{label}}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+        </div>
+
+    </div>
+</section>
