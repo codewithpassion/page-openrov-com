@@ -44,7 +44,7 @@
         right: 0;
         bottom: 0;
         background-color: rgba(0,0,0,0);
-        transition: background 0.3s linear;
+        transition: $standardTransition;
         z-index: 500;
     }
 
@@ -58,7 +58,7 @@
 .hover-img-scale {
     img {
         transform: scale(1);
-        transition: transform 1s;            
+        transition: $standardTransition;            
     }
 
     &:hover {
@@ -93,9 +93,9 @@
 
         transform: scale(1.15);
         transition: 
-            background 0.4s linear,
-            opacity .4s cubic-bezier(.23,1,.32,1),
-            transform 0.4s cubic-bezier(.23,1,.32,1);
+            background $standardTransition,
+            opacity $standardTransition,
+            transform $standardTransition;
 
         text-align: center;
         background-color: rgba(0,0,0,0);
