@@ -23,16 +23,16 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ site.base }}/products">PRODUCTS</a>
+                    <a class="nav-link {% if page.slug == 'products' %}active{% endif %}" href="{{ site.base }}/products">PRODUCTS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if page.slug == 'community' %}active{% endif %}" href="{{ site.base }}/community">COMMUNITY</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ site.base }}/enterprise">ENTERPRISE</a>
+                    <a class="nav-link {% if page.slug == 'commercial' %}active{% endif %}" href="{{ site.base }}/commercial">COMMERCIAL/INDUSTRIAL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ site.base }}/support">SUPPORT</a>
+                    <a class="nav-link {% if page.slug == 'support' %}active{% endif %}" href="{{ site.base }}/support">SUPPORT</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
