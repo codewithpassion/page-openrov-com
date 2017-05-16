@@ -8,28 +8,30 @@ page_css: /styles/products.css
     <div class="container-fluid hero light">
         <table class="w-100 header">
             <tbody>
-                <tr>
+                <tr class="h-100">
                     <td class="text-center">
                         <div class="container-fluid text-left d-inline-block h-md-0 h-100 w-100  title-container">
                             <div class="row align-items-center">
-                                <div class="col-md-5 offset-md-1">
-                                    <div class="title">OpenROV Products</div>
-                                    <div class="description pt-4">
-                                        Setting new standards in <em>Remote Operated Vehicles</em>.
-                                        Flexibile, reliable, low cost, easy and fun to operate.
-                                    </div>
+                                <div class="col-md-4 offset-md-1">
+                                        <img
+                                            src="{{ site.base }}/images/content/tridentuwd-grey.png"
+                                            title="Trident Underwater Drone"
+                                            class="trident logo img-fluid mx-auto d-block"/>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <img
-                                            src="{{ site.base }}/images/content/tridentuwd.png"
-                                            title="Trident Underwater Drone"
-                                            class="trident logo img-fluid mx-auto d-block"/>
-                                        <img
-                                            src="{{ site.base }}/images/content/trident.png"
+                                            src="{{ site.base }}/images/content/trident-side.jpg"
                                             title="Trident Underwater Drone"
                                             class="trident img-fluid mx-auto d-block"/>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center text-center">
+                                <div class="col-12">
+                                    <a href="./products/trident/buy-now" class="btn btn-md-lg btn-primary btn-spot-cta px-4  font-weight-bold">BUY NOW</a><br/>
+                                    <button type="button" class="btn btn-md-lg btn-link font-weight-bold btn-link-cta">Learn more</button>
+
                                 </div>
                             </div>
                         </div>
@@ -40,49 +42,47 @@ page_css: /styles/products.css
         </table>
     </div>
 </section>
-<section class="products content pb-5">
-    <div class="container">
+<section class="products pb-5">
+    <div class="container other-products">
         <div class="row">
-            <div class="col-6">
-                <div class="tile product">
-                    <a href="./trident" class="click-area">
-                        <figure class="media">
-                            <img src="{{ site.base }}/images/products/tiles/trident.png" alt="">
-                        </figure>
-                        <div class="description">
-                            <div class="inner">
-                                <h3 class="heading-sub">Trident</h3>
-                            </div>
-                        </div>                        
-                    </a>
-                    <div class="overlay">
-                        <a href="./trident" class="click-area"></a>
-                        <h3 class="heading-sub">Trident</h3>
-                        <p>Lorem Ipsum</p>
-                        <a href="./trident" class="btn btn-link">More info</a>
-                    </div>
-                </div>
+            <div class="col-12 pb-3">
+                <h2>Other Products:</h2>
             </div>
-            <div class="col-6">
-                <div class="tile product">
-                    <a href="./openrov28" class="click-area">
-                        <figure class="media">
-                            <img src="{{ site.base }}/images/products/tiles/openrov-2-8.png" alt="">
-                        </figure>
-                        <div class="description">
-                            <div class="inner">
-                                <h3 class="heading-sub">OpenROV 2.8 Kit</h3>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="overlay">
-                        <a href="./openrov28" class="click-area"></a>
-                        <h3 class="heading-sub">OpenROV 2.8 Kit</h3>
-                        <p>Lorem Ipsum</p>
-                        <a href="./openrov28" class="btn btn-link">More info</a>
-                    </div>
-
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <img
+                    src="{{site.base}}/images/products/tiles/parts-accessories.jpg"
+                    class="img-fluid"
+                    alt="Parts and Accessories"
+                    >
+            </div>
+            <div class="col-7 d-flex align-items-center title">
+                PARTS &amp; ACCESSORIES
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <img
+                    src="{{site.base}}/images/products/tiles/openrov-2-8.png"
+                    class="img-fluid"
+                    alt="Parts and Accessories"
+                    >
+            </div>
+            <div class="col-7 d-flex align-items-center title">
+                DYI KITS
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <img
+                    src="{{site.base}}/images/products/tiles/commercial.jpg"
+                    class="img-fluid"
+                    alt="Parts and Accessories"
+                    >
+            </div>
+            <div class="col-7 d-flex align-items-center title">
+                COMMERCIAL SOLUTIONS
             </div>
         </div>
     </div>

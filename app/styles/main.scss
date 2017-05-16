@@ -71,7 +71,10 @@ body {
 .btn-link-cta {
     color: white;
     text-decoration: underline;
-    margin-left: -1.5rem;
+    
+    &.move-left {
+      margin-left: -1.5rem;
+    }
 
     &:hover {
       color: darken(white, 50%);

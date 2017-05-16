@@ -7,3 +7,97 @@ sm
 md
 lg
 xl
+
+
+
+Tiles:
+                <div class="tile product">
+                    <a href="./trident" class="click-area">
+                        <figure class="media">
+                            <img src="{{ site.base }}/images/products/tiles/trident.png" alt="">
+                        </figure>
+                        <div class="description">
+                            <div class="inner">
+                                <h3 class="heading-sub">Trident</h3>
+                            </div>
+                        </div>                        
+                    </a>
+                    <div class="overlay">
+                        <a href="./trident" class="click-area"></a>
+                        <h3 class="heading-sub">Trident</h3>
+                        <p>Lorem Ipsum</p>
+                        <a href="./trident" class="btn btn-link">More info</a>
+                    </div>
+                </div>
+
+
+    &.content {
+        .tile {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+
+            &:hover {
+                z-index: 10000;
+                .overlay {
+                    opacity: .8;
+                    -webkit-transform: scale(1);
+                    -ms-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .media img {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .description {
+                text-align: center;
+                padding: 1.6rem 1.6rem 3rem;
+            }
+
+            .overlay {
+                background-color: black;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                opacity: 0;
+                color: #fff;
+                transform: scale(1.15);
+                -webkit-transition: opacity .4s cubic-bezier(.23,1,.32,1),-webkit-transform .4s cubic-bezier(.23,1,.32,1);
+                transition: opacity .4s cubic-bezier(.23,1,.32,1),-webkit-transform .4s cubic-bezier(.23,1,.32,1);
+                transition: opacity .4s cubic-bezier(.23,1,.32,1),transform .4s cubic-bezier(.23,1,.32,1);
+                transition: opacity .4s cubic-bezier(.23,1,.32,1),transform .4s cubic-bezier(.23,1,.32,1),-webkit-transform .4s cubic-bezier(.23,1,.32,1);
+                padding: 4rem;
+                text-align: center;
+                
+
+                .click-area {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                }
+                                
+                .btn {
+                    position: absolute;
+                    bottom: 4rem;
+                    left: 50%;
+
+                    -webkit-transform: translateX(-50%);
+                    -ms-transform: translateX(-50%);
+                    transform: translateX(-50%);
+                    color: #fff;                
+                }            
+            }
+        }
+    }
