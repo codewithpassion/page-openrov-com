@@ -126,14 +126,17 @@ section .hero {
             height: 10px;
             width: 10px;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid transparentize($Primary_White, 0.3);
+            background: transparentize($Primary_Grey, 0.3);
 
             &:before {
                 opacity: 0;    
             }
         }
         li.slick-active button {
-            background: #FFF;
+
+            border: 1px solid transparentize($Primary_Grey, 0.3);
+            background: transparentize($Primary_White, 0.3);
         }
     }
 }
