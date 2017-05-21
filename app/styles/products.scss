@@ -10,6 +10,13 @@ section.products {
         }
     }
 
+    .spike {
+        background-image: url('../images/spike.png');
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-size: contain;
+    }
+
     &.other-products {
         background-color: $backgroundGrey;
         .title {
@@ -40,6 +47,9 @@ section.products {
                 margin-right: auto;
                 width: 100%;
                 height: auto;
+                padding-top: 2rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
             }
 
             .description {
