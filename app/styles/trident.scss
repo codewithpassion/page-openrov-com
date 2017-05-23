@@ -1,0 +1,62 @@
+@import "headerHeights";
+
+@import "bootstrap_custom";
+@import "variables";
+@import "bower_components/bootstrap/scss/variables.scss";
+@import "bower_components/bootstrap/scss/_mixins.scss";
+
+section.trident {
+    .header {
+        @include header-height();
+
+        .title {
+            @include media-breakpoint-down(lg) {
+                font-size: 1.5rem;
+            }
+        }
+
+        .quote {
+            quotes: '”' '”';
+            font-size: 2.5rem;
+            @include media-breakpoint-down(lg) {
+                font-size: 1.5rem;
+            }
+
+            font-weight: 300;
+            font-style: italic;
+
+            .gizmodo {
+                float: right;
+                padding-right: 7rem;
+                span {
+                    padding-right: 1rem;
+                    font-weight: 300;
+                }
+                img {
+                    height: 1.7rem;
+                    @include media-breakpoint-down(lg) {
+                        height: 1rem;
+                    }
+                    
+                    vertical-align: baseline;
+                }
+            }
+        }
+
+        .title-container {
+            @include media-breakpoint-down(lg) {
+                padding-top: 1rem;
+            }
+
+            img.trident {
+                width: 100%;
+                height: 100%;
+
+                &.logo {
+                    width: 80%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}

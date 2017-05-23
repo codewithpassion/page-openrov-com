@@ -8,8 +8,6 @@
 section.products {
     .header {
         @include header-height();
-        .trident.logo {
-        }
 
         .title {
             @include media-breakpoint-down(lg) {
