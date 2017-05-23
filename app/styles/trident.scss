@@ -59,4 +59,55 @@ section.trident {
             }
         }
     }
+
+    .description {
+        font-size: 1.8rem;
+        font-weight: 300;
+        color: $Primary_Grey;
+    }
+
+    .features {
+        .img-fluid {
+            width: 100%;
+        }
+
+        .feature {
+            color: $Primary_Grey;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding-left: 10rem;
+        }
+
+        .spike {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .video {
+        // font-size: 1rem;
+        h2 {
+            color: black;
+            text-decoration: underline;
+        }
+
+    }
+    .video-placeholder {
+        background-color: grey;
+        width: 100%;
+        height: 23rem;
+        display: block;
+    }
+
+    .pre-order {
+        font-size: 2rem;
+    }
+
+    @import "oe-section";
 }

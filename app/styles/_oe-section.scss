@@ -1,0 +1,47 @@
+    .oe-hero {
+        @include header-height(39rem);
+
+        background-image: url('../images/hero/openexplorer-map.jpg');
+
+        .oe-logo {
+            position: absolute;
+
+            left: 13%;
+            bottom: 1rem;
+            height: 3rem;
+            width: 10rem;
+
+            @include media-breakpoint-up(md) {
+                left: 6rem;
+                bottom: 4rem;
+                height: 8rem;
+                width: 42rem;
+            }
+
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+
+        .description {
+            color: white;
+            font-weight: 400;
+            text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+
+            @include media-breakpoint-up(md) {
+                font-size: 1.4rem;
+            }
+
+            h3.title {
+                color: white;
+                font-weight: 400;
+                text-decoration: underline;
+                font-size: 1.5rem;
+            }
+
+            .link {
+                text-shadow: none;
+            }
+        }
+    }
