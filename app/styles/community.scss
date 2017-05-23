@@ -1,12 +1,9 @@
 @import "headerHeights";
-@import "bootstrap_custom";
 
-// bower:scss
-@import "bower_components/bootstrap/scss/bootstrap.scss";
-@import "bower_components/font-awesome/scss/font-awesome.scss";
-@import "bower_components/slick-carousel/slick/slick.scss";
-@import "bower_components/slick-carousel/slick/slick-theme.scss";
-// endbower
+@import "bootstrap_custom";
+@import "variables";
+@import "bower_components/bootstrap/scss/variables.scss";
+@import "bower_components/bootstrap/scss/_mixins.scss";
 
 @import "variables";
 @import "hero";
@@ -23,7 +20,6 @@ section.community {
     }
 
     .community-hero {
-        @extend .hero;
         @include header-height(39rem);
 
         background-image: url('../images/hero/openexplorer-map.jpg');

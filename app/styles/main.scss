@@ -2,16 +2,7 @@
 
 $slick-font-path: '../fonts/';
 
-html { font-size: 87.5%; }
-
-@import "bootstrap_custom";
-
-// bower:scss
-@import "bower_components/bootstrap/scss/bootstrap.scss";
-@import "bower_components/font-awesome/scss/font-awesome.scss";
-@import "bower_components/slick-carousel/slick/slick.scss";
-@import "bower_components/slick-carousel/slick/slick-theme.scss";
-// endbower
+@import "bootstrap_import";
 
 @import "variables";
 
@@ -64,7 +55,10 @@ body {
     text-decoration: underline;
     
     &.move-left {
-      margin-left: -1.5rem;
+      margin-left: -1rem;
+      @include media-breakpoint-up(lg) {
+        margin-left: -1.5rem;
+      }
     }
 
     &:hover {

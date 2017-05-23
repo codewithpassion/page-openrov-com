@@ -1,0 +1,19 @@
+@import "bootstrap_custom";
+
+// bower:scss
+@import "bower_components/bootstrap/scss/bootstrap.scss";
+@import "bower_components/font-awesome/scss/font-awesome.scss";
+@import "bower_components/slick-carousel/slick/slick.scss";
+@import "bower_components/slick-carousel/slick/slick-theme.scss";
+// endbower
+
+.container-fluid {
+  padding: 0;
+
+  .row {
+    margin: 0;
+
+  }
+}
+
+html { font-size: 87.5%; }

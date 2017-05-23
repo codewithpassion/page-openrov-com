@@ -1,12 +1,3 @@
-.container-fluid {
-  padding: 0;
-
-  .row {
-    margin: 0;
-
-  }
-}
-
 section .hero {
     @include header-height();
 
@@ -23,11 +14,12 @@ section .hero {
         }
     }
 
+
     background-size: cover;
     background-position: 50%;
 
     .hero-container {
-        @extend .container;
+        @extend .container !optional;
         height: 100%;
     }
 

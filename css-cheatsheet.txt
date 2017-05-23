@@ -1,6 +1,6 @@
-media-breakpoint-up()
-media-breakpoint-down()
-media-breakpoint-only()
+@include media-breakpoint-up()
+@include media-breakpoint-down()
+@include media-breakpoint-only()
 
 xs
 sm
