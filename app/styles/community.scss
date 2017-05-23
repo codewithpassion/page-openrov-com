@@ -1,4 +1,77 @@
+@import "headerHeights";
+@import "bootstrap_custom";
+
+// bower:scss
+@import "bower_components/bootstrap/scss/bootstrap.scss";
+@import "bower_components/font-awesome/scss/font-awesome.scss";
+@import "bower_components/slick-carousel/slick/slick.scss";
+@import "bower_components/slick-carousel/slick/slick-theme.scss";
+// endbower
+
+@import "variables";
+@import "hero";
+
 section.community {
+
+    .title-row {
+        .title {
+            font-size: 1.5rem;
+            @include media-breakpoint-up(md) {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .community-hero {
+        @extend .hero;
+        @include header-height(39rem);
+
+        background-image: url('../images/hero/openexplorer-map.jpg');
+
+        .oe-logo {
+            position: absolute;
+
+            left: 13%;
+            bottom: 1rem;
+            height: 3rem;
+            width: 10rem;
+
+            @include media-breakpoint-up(md) {
+                left: 6rem;
+                bottom: 4rem;
+                height: 8rem;
+                width: 42rem;
+            }
+
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+
+        .description {
+            color: white;
+            font-weight: 400;
+            text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+
+            @include media-breakpoint-up(md) {
+                font-size: 1.4rem;
+            }
+
+            h3.title {
+                color: white;
+                font-weight: 400;
+                text-decoration: underline;
+                font-size: 1.5rem;
+            }
+
+            .link {
+                text-shadow: none;
+            }
+        }
+    }
+
+
     .community-link {
         font-size: 1.8rem;
         color: black;

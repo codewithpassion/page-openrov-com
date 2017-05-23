@@ -4,19 +4,21 @@ $heightiPhone6: 667px;
 $heightNexus5x-iPhone6P: 736px;
 $heightNexus6P: 773px;
 
+$headerHeightBase: 44rem;
 
-@mixin header-height() {
-        height: 44rem !important;
+
+@mixin header-height($height: $headerHeightBase) {
+        height: $height !important;
 
         @media screen and (max-height: #{$heightNexus5x-iPhone6P}) { 
-            height: 29rem !important;
+            height: $height/1.52 !important;
         }
         @media screen and (max-height: #{$heightiPhone6}) { 
-            height: 25rem !important;
+            height: $height/1.76 !important;
         }
 
         @media screen and (max-height: #{$heightNexus5}) { // and iPhone5
-            height: 22rem !important;
+            height: $height/2 !important;
         }            
 }
 
