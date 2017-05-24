@@ -29,8 +29,16 @@
 }
 
 
+// ---------------------------------------------------------------
 .border-1-grey {
     border: 2px solid #c5c5c5;
+}
+
+.border-top-1 {
+    border-top: 1px solid black;
+}
+.border-bottom-1 {
+    border-bottom: 1px solid black;
 }
 
 // ---------------------------------------------------------------
@@ -150,9 +158,26 @@
 }
 
 // ---------------------------------------------------------------
-.border-top-1 {
-    border-top: 1px solid black;
+// lightbox 
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  /* ideally, transition speed should match zoom duration */
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
-.border-bottom-1 {
-    border-bottom: 1px solid black;
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+    opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+    opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container,
+.mfp-with-zoom.mfp-removing.mfp-bg {
+  opacity: 0;
 }
