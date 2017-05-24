@@ -71,11 +71,36 @@ section.trident {
             width: 100%;
         }
 
+        .img-container {
+            display: table-cell;
+            width: 4.5rem;
+            float: left;
+            text-align: center;
+            margin-right: 2rem;
+
+            svg {
+                display: block;
+                margin: auto;
+                width: 4.5rem;
+                height: 4.5rem;
+                
+                path {
+                    fill: rgba(0,0,0, 0.5) !important;
+                }
+            }
+        }
+
         .feature {
             color: $Primary_Grey;
             font-size: 1.8rem;
             font-weight: 600;
-            padding-left: 10rem;
+            padding-left: 5rem;
+            display: table;
+            
+            span {
+                display: table-cell;
+                vertical-align: middle;
+            }
         }
 
         .spike {
