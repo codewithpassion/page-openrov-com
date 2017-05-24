@@ -23,3 +23,15 @@ if (heroSliders.length > 0) {
         autoplaySpeed: 5000,
     });
 }
+
+$('.magnific-gallery').each(function() {
+    $(this).magnificPopup({
+        delegate: 'a', // child items selector, by clicking on it popup will open
+        type: 'image',
+        gallery: {
+            enabled: true, // set to true to enable gallery
+            preload: [0, 2], // read about this option in next Lazy-loading section
+            navigateByImgClick: true
+        }
+    })
+});

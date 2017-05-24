@@ -110,4 +110,30 @@ section.trident {
     }
 
     @import "oe-section";
+
+    .nav-item {
+        .nav-link {
+            font-size: 1.2rem;
+
+            &.active {
+                font-weight: 600;
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    section.tabs {
+        #photos {
+            img[data-sizes="auto"] { display: block; width: 100%; }
+
+            .blur-up {
+                opacity: 0;
+                transition: opacity 400ms;
+            }
+
+            .blur-up.lazyloaded {
+                opacity: 1;
+            }            
+        }
+    }
 }
