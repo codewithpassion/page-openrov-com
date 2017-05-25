@@ -6,6 +6,10 @@
 @import "bower_components/bootstrap/scss/_mixins.scss";
 
 section.products {
+    .hero {
+        overflow: hidden;
+    }
+
     .header {
         @include header-height();
 
@@ -16,13 +20,16 @@ section.products {
         }
 
         .title-container {
+            padding-bottom: 1rem;
             @include media-breakpoint-down(lg) {
                 padding-top: 1rem;
+                padding-bottom: 0;
             }
 
             img.trident {
-                width: 100%;
-                height: 100%;
+                width: 90%;
+                height: 90%;
+                overflow: hidden;
             }
         }
     }

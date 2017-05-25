@@ -24,7 +24,7 @@ images:
  
                             <div class="row align-items-center text-center">
                                 <div class="col-10 offset-1">
-                                    <blockquote class="quote text-left">
+                                    <blockquote class="quote text-left pb-5">
                                         <q>It feels like an amusement park ride&dash;except it's real. You're really driving
                                         around underwater, exploring.</q>
                                         <div class="gizmodo pt-3">
@@ -69,36 +69,40 @@ images:
     </div>
     <div class="container-fluid features">
         <div class="row no-gutters">
-            <div class="col-4">
+
+            <div class="col-md-4 col-6">
                 <img src="{{ site.base }}/images/content/trident-split-view.jpg" class="img-fluid" alt="Trident diving infront of pier">
             </div>
-            <div class="col-4 d-flex">
-                <div class="d-flex flex-column justify-content-around pb-5">
-                    <div class="feature">
+            <div class="col-md-4 col-6 push-md-4">
+                <img src="{{ site.base }}/images/content/trident_sanddollars.jpg" class="img-fluid" alt="Trident diving with sand dollars">
+            </div>
+            <div class="col-md-4 col-12 pt-5 pt-md-0 d-flex pull-md-4">
+                <div class="d-flex flex-column justify-content-around pb-5 w-100">
+                    <div class="feature pb-4 pb-md-0 ">
                         <div class="img-container">
                             {% include icons/dive.svg %}
                         </div>
                         <span>Dive to 100m</span>
                     </div>
-                    <div class="feature">
+                    <div class="feature pb-4 pb-md-0">
                         <div class="img-container">
                             {% include icons/prop.svg %}
                         </div>
                         <span>Speeds up to 2m/sec</span>
                     </div>
-                    <div class="feature">
+                    <div class="feature pb-4 pb-md-0">
                         <div class="img-container">
                             {% include icons/camera.svg %}
                         </div>
                         <span>1080p Streaming</span>
                     </div>
-                    <div class="feature">
+                    <div class="feature pb-4 pb-md-0">
                         <div class="img-container">
                             {% include icons/carry.svg %}
                         </div>
                         <span>Weighs 3.4 kg</span>
                     </div>
-                    <div class="feature pb-5">
+                    <div class="feature pb-3 pb-md-5">
                         <div class="img-container">
                             {% include icons/battery.svg %}
                         </div>
@@ -106,10 +110,7 @@ images:
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <img src="{{ site.base }}/images/content/trident_sanddollars.jpg" class="img-fluid" alt="Trident diving with sand dollars">
-            </div>
-            <div class="spike">
+            <div class="spike hidden-md-down">
                 <img src="{{site.base}}/images/spike.png" alt="">
             </div>
         </div>

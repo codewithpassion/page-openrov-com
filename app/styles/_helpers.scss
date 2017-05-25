@@ -28,6 +28,16 @@
     visibility: hidden;
 }
 
+.spike {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+
+    img {
+        width: 100%;
+    }
+}
 
 // ---------------------------------------------------------------
 .border-1-grey {
