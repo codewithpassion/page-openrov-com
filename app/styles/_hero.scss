@@ -1,4 +1,5 @@
 section .hero {
+    position: relative;
     @include header-height();
 
     &.small {
@@ -25,6 +26,8 @@ section .hero {
 
     .title-container {
         color: #fff;
+        z-index: 1000;
+        position: relative;
 
         @include media-breakpoint-down(md) {
             vertical-align: top !important;
@@ -111,6 +114,12 @@ section .hero {
         @include media-breakpoint-up(md) {
             background-position: 50%;
         }
+    }
+
+    
+    &.rov2-8-case {
+        background-image: url(../images/hero/2-8-case.jpg);
+        background-position: 40%;
     }
 
 }
