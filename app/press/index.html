@@ -1,6 +1,7 @@
 --- 
 title: Press | OpenROV | Underwater Exploration Robots
 layout: default
+page_css: /styles/press.css
 ---
 <section class="press">
 
@@ -26,20 +27,20 @@ layout: default
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <div class="list-container row element-short-top element-normal-bottom">
+                <div class="list-container row pt-4 pb-4">
 
                     {% for item in site.data.press %}
-                    <div class="col-md-6 element-short-bottom os-animation text-left" data-os-animation="fadeIn"
+                    <div class="col-md-6 pb-5 os-animation text-left" data-os-animation="fadeIn"
                         data-os-animation-delay="0s">
                         <blockquote class="blockquote-list">
                             <div class="image-container">
-                                <div class="image">
-                                    <img class="" src="{{ file.path | prepend: site.baseurl }}/assets/openrov/images/media/{{item.logo}}" alt="{{item.outlet}}"
+                                <div class="image pb-3">
+                                    <img class="" src="{{ file.path | prepend: site.base }}/images/media/{{item.logo}}" alt="{{item.outlet}}"
                                     />
                                 </div>
                             </div>
                             {% if item.title %}
-                            <p class="bold">{{item.title}}</p>{% endif %}
+                            <p class="font-weight-bold pt-2">{{item.title}}</p>{% endif %}
                             <p>
                                 {{item.quote}}
                             </p>
