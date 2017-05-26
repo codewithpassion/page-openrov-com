@@ -114,7 +114,6 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
 
 
 function renamePath(filename) {
-  console.log('# ' + filename);
   if (configCopied) {
     return `page-openrov-com/${filename}`;
   }
