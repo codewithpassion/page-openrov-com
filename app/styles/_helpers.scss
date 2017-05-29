@@ -211,3 +211,7 @@
     background-color: #000000;
     z-index: 10;    
 }
+.or-darken-50 {
+    @extend .or-darken-34;
+    opacity: .5;
+}
