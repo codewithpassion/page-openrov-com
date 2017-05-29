@@ -6,12 +6,30 @@ page_css: /styles/openrov28.css
 redirect_from:
  - 'products/2-7.html'
  - 'products/2-8.html'
+images:
+ - DSC_0243.JPG
+ - IMG_7875.jpg
+ - system-layout.png
+ - 2_8-front.jpg
+ - 2_8-back.jpg
+
 ---
+
 <section class="rov28">
+    
+    <section class="section hero-slider arrows m-0">
+        {% for item in page.images %}
+        <div class="hero">
+            <img src="{{site.base}}/images/products/openrov28/gallery/{{item}}" alt="Image {{item}}" class="img-carousel">
+        </div>
+        {% endfor %}
+    </section>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>OpenROV 2.8 Kit</h1>
+                <h1 class="pt-3">OpenROV 2.8 Kit</h1>
             </div>
         </div>
     </div>

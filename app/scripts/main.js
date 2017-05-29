@@ -18,7 +18,7 @@ if (heroSliders.length > 0) {
         slidesToShow: 1,
         adaptiveHeight: false,
         verticalSwiping: false,
-        arrows: false,
+        arrows: true,
         autoplay: document.location.hostname !== 'localhost',
         autoplaySpeed: 5000,
     });

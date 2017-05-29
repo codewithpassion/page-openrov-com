@@ -1,5 +1,6 @@
 section .hero {
     position: relative;
+    z-index: 1000;
     @include header-height();
 
     &.small {
@@ -148,6 +149,47 @@ section .hero {
             border: 1px solid transparentize($Primary_Grey, 0.3);
             background: transparentize($Primary_White, 0.3);
         }
+    }
+
+    .slick-arrow {
+        &.slick-prev, &.slick-next {
+            display: none!important;
+        }
+    }
+
+    &.arrows {
+        .slick-arrow {
+            &.slick-prev{
+                left: 1rem;
+            }
+            &.slick-next {
+                right: 2rem;
+            }
+            &.slick-prev, &.slick-next {
+                display: block!important;
+                z-index: 10000;
+            }
+
+            &.slick-prev:before, &.slick-next:before {
+                color: rgba(0, 0, 0, 0.8);
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .hero {
+        visibility: hidden;
+    }
+    &.slick-initialized {
+        .hero {
+            visibility: inherit;
+        }
+    }
+
+    img.img-carousel {
+        height: 100%;
+        width: auto;
+        margin: auto;
     }
 }
 
