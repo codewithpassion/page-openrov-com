@@ -25,6 +25,16 @@
             }
         }
 
+        &.video.play {
+            .card-img-overlay {
+                opacity: 0.3;
+            }
+            .card-video-control {
+                .play { display: none; }
+                .pause { display: inherit; }
+            }
+        }
+
         img.card-img {
             width: 100%;
             height: 100%;
@@ -33,7 +43,31 @@
 
         &.gradient {
             .card-img-overlay {
-                background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 10%, rgba(0, 0, 0, 0.7) 130%);
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) -5%, rgba(0, 0, 0, 0.7) 130%);
+            }
+        }
+
+        .card-video-control {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            .play, .pause {
+                font-size: 3rem;
+                z-index: 1001;
+                cursor: pointer;
+            }
+
+            .play { display: inherit; }
+            .pause { 
+                display: none; 
+                opacity: 0;
             }
         }
 
@@ -41,6 +75,7 @@
             padding-left: 2rem;
             padding-top: 2rem;
             z-index: 550;
+            transition: opacity 0.3s;
 
             .card-title {
                 font-weight: 400;
@@ -113,4 +148,30 @@
                 }
             }
         }
+
+        .card-link {
+            &.cover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1000;
+            }
+        }
+
+        video.card-video {
+            height: 101%;
+            width: 101%;
+            position: absolute;
+            top: 50%;
+            bottom: auto;
+            left: 50%;
+            right: auto;
+            transform: translate(-50%,-50%);
+            object-fit: cover;
+            font-family: "object-fit: cover";
+            opacity: .7;
+        }
+
     }
