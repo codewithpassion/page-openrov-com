@@ -62,6 +62,12 @@
                 font-size: 3rem;
                 z-index: 1001;
                 cursor: pointer;
+                visibility: hidden;
+
+                @include media-breakpoint-down(md) {
+                    visibility: visible;
+                }
+
             }
 
             .play { display: inherit; }
