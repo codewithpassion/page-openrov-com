@@ -1,0 +1,25 @@
+@import "bootstrap_custom";
+@import "variables";
+@import "bower_components/bootstrap/scss/variables.scss";
+@import "bower_components/bootstrap/scss/_mixins.scss";
+
+section.rov28 {
+    .container.features {
+        .media {
+            flex-direction: column;
+
+            img {
+                align-self: center;
+                margin-bottom: 1rem;
+            }
+
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+                img {
+                    align-self: flex-start;
+                    margin-bottom: inherit;
+                }
+            }
+        }
+    }
+}
