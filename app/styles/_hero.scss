@@ -5,6 +5,23 @@ section .hero {
 
     &.small {
         @include header-height-small();
+
+        .title-container {
+            @include media-breakpoint-down(md) {
+                padding-top: 1rem;
+            }    
+            
+            .title {
+                @include media-breakpoint-down(md) {
+                    font-size: 2rem;
+                }
+            }
+
+            .call-to-action {
+                bottom: 1rem;
+            }
+        }
+        
     }
     &.x-small {
         @include header-height-xsmall();
@@ -102,6 +119,12 @@ section .hero {
         background-position: 102% bottom;
         background-size: 52rem;
         background-repeat: no-repeat;        
+
+        @include media-breakpoint-down(md) { 
+            .title-container {
+                padding-top: 1rem;
+            }
+        }
 
         @include media-breakpoint-up(md) {
             background-position: 68%;
