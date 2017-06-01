@@ -91,6 +91,7 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
 
   return cp.spawn('docker', [
       'run',
+      '--rm',
       '-v',
       `${__dirname}/.tmp.jekyll.source:/srv/jekyll`,
       '-v',
