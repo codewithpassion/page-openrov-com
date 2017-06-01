@@ -25,13 +25,28 @@
             }
         }
 
-        &.video.play {
-            .card-img-overlay {
-                opacity: 0.3;
+        &.video {
+            &.play {
+                .card-img-overlay {
+                    opacity: 0.3;
+                }
+                .card-video-control {
+                    .play { display: none; }
+                    .pause { display: inherit; }
+                }
             }
-            .card-video-control {
-                .play { display: none; }
-                .pause { display: inherit; }
+            &.no-text.play {
+                .card-img-overlay {
+                    opacity: 0;
+                }
+            }
+            &.md-controls {
+                .card-video-control {
+                    .play{
+                        opacity: inherit;
+                        visibility: visible;
+                    }
+                }
             }
         }
 
