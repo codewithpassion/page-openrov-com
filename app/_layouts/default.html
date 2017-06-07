@@ -5,7 +5,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    {% seo %}
+    <title>{{page.title}}{% unless page.title %}{{site.title}}{% endunless %}</title>
+    {% seo title=false %}
+    
+    {% if page.video %}
+    <meta property="og:video" content="{{page.video}}" />
+    {% endif %}
 
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
