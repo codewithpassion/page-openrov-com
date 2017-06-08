@@ -59,4 +59,17 @@ section.commercial {
         }
         
     }
+
+    @include media-breakpoint-down(md) {
+    
+        form .form-inline { 
+            input[type=text].form-control {
+                width: 80%;
+            }
+            .input-group-addon {
+                margin-bottom: 0.5rem !important;
+                width: 3rem;
+            }
+        }
+    }
 }
