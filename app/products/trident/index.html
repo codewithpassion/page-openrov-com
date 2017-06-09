@@ -323,7 +323,7 @@ images:
                         <a class="nav-link" data-toggle="tab" href="#videos" role="tab">VIDEOS</a>
                     </li>-->
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#specs" role="tab">SPECS</a>
+                        <a class="nav-link" data-toggle="tab" href="#specs" role="tab">TECHNICAL SPECS</a>
                     </li>
                 </ul>
             </div>
@@ -365,34 +365,25 @@ images:
                             <div class="container pt-4">
                                 <div class="row">
 
-                                    <div class="col-md-5 element-medium-top">
-                                        <h2>Trident Puts You in Control</h2>
-                                        <span class="">
-                                            We’ve created an intuitive flying experience that’s easy and fun. Trident works on modern computers with Google Chrome and
-                                            with Android devices through the OpenROV App.
-                                        </span>
-                                    </div>
-
-                                    <!--image column-->
-                                    <div class="col-md-6 col-md-offset-1">
-
-                                        <div id="control-slider" class="carousel slide carousel-fade" data-interval="3000" data-ride="carousel">
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <img class="d-block img-fluid" src="{{ site.baseurl }}/images/products/trident/control/vr-control.png" alt="VR Control">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="d-block img-fluid" src="{{ site.baseurl }}/images/products/trident/control/mobile-control.png" alt="Mobile Control">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="d-block img-fluid" src="{{ site.baseurl }}/images/products/trident/control/tablet-control.png" alt="Tablet Control">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="d-block img-fluid" src="{{ site.baseurl }}/images/products/trident/control/laptop-control.png" alt="Laptop Control">
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                    <div class="col-12">
+                                        <table class="table table-bordered">
+                                        {% for item in site.data.trident-tech-specs %}
+                                             <thead>
+                                                <tr class="bg-primary">
+                                                    <th class="text-white">{{item.title}}</th>
+                                                    <th></th>
+                                                </tr>
+                                             </thead>   
+                                             <tbody>
+                                             {% for content in item.content %}
+                                                <tr>
+                                                    <td class="bg-info">{{ content[0] }}</td>
+                                                    <td>{{ content[1] }}</td>
+                                                </tr>
+                                             {% endfor %}
+                                             </tbody>
+                                        {% endfor %}
+                                        </table>
                                     </div>
 
                                 </div>

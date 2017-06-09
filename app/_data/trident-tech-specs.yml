@@ -1,0 +1,45 @@
+- title: SIZE AND WEIGHT
+  content:
+    'EXTERNAL DIMENSIONS [L X W X H]': '410 mm [16.14 in] X 205 mm [8.07 in] X 86 mm [3.37 in]'
+    'WEIGHT': '3.40 kg [ballasted for freshwater], 3.485 kg [ballasted for seawater]'
+- title: PERFORMANCE
+  content:
+    'DEPTH RATING': '100 m [328]'
+    'MAXIMUM SPEED': '2 m/s [3.89 kts / 7.2 kph / 4.47 mph]'
+- title: BATTERYAND POWER
+  content:
+    'BATTERY ARCHITECTURE': 3S4P Li-NMC 18650 cells with built-in PCM, UN 38.3 approved
+    'CAPACITY': 95 Wh
+    'CHARGE TIME': 1.5 hr from 20% to 80%, 3 hr for 0% to 100%
+    'NOMINAL RUN TIME ': '3 to 4 hrs under normal operation (using thrusters, lights, and actively piloting'
+    'POWER CONSUMPTION': '30 W nominal (10 W min, 180 W max)'
+    'CHARGER POWER REQUIREMENT': '120 VAC or 240 VAC (no ground required)'
+- title: INTERFACE AND COMMUNICATION
+  content:
+    'WiFi INTERFACE': 802.11 b/g/n
+    'SYSTEM REQUIREMENTS': Works on modern computers with Google Chrome, and with Android devices through the OpenROV App.
+    'VEHICLE PAYLOAD DATA INTERFACE': WiFi
+- title: ENVIRONMENTAL
+  content:
+    'OPERATING WATER TEMPERATURE RATING': -2&deg;C to 40&deg;C
+    'STORAGE TEMPERATURE': 0&deg;C to 25&deg;C
+    'CHEMICAL RESISTANCE': Seawater, Diluted Chlorine
+- title: CAMERA SPECIFICATION
+  content:
+    'RESOLUTION': 1080p @ 30 fps, live and recorded
+    'VIDEO LATENCY': Very low latency (100 ms)
+    'VIDEO COMPRESSION': h.264
+    'STILL IMAGE CAPTURE': 4.1 MP instant capture during video live stream
+    'STILL IMAGE MODES': Single image, burst, and interval
+    'FEATURES': Excellent color rendition and high dynamic range, opmized for low light and underwater. High field-of-view. Sapphire window to protect against scratches.
+- title: TETHER SPECIFICATION
+  content:
+    'AVAILABLE LENGTHS': 25 m, 100 m
+    'MAXIMUM OPERATIONAL LENGTH': 150 m
+    'WORKING STRENGTH': 100 kg, Kevlar reinforced
+    'BUOYANCY': Neutrally buoyant in freshwater, slightly positive in seawater
+    'FEATURES': High visibility yellow with wear-resistant polypropylene jacket
+- title: SENSORS
+  content:
+    'NAVIGATION': 3-axis magnetometer, 3-axis gyro, 3-axis accelerometer, cm-resolution depth sensor
+    'OTHER': Internal barometer, battery usage 
