@@ -166,9 +166,11 @@ section.trident {
         
         .carousel-control-prev {
             left: -1rem;
+            z-index: 1002;
         }
         .carousel-control-next {
             right: -1rem;
+            z-index: 1002;
         }
 
         .carousel-control-prev-icon,
