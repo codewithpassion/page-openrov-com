@@ -73,6 +73,12 @@
             justify-content: center;
             flex-direction: column;
 
+            &.show-md {
+                .play, .pause {
+                    visibility: visible;
+                }
+            }
+
             .play, .pause {
                 font-size: 3rem;
                 z-index: 1001;
@@ -82,6 +88,7 @@
                 @include media-breakpoint-down(md) {
                     visibility: visible;
                 }
+
 
             }
 

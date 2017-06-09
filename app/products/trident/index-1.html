@@ -3,6 +3,7 @@ title: Trident Underwater Drone | OpenROV
 description: Trident is the latest high performing underwater drone from OpenROV, makers of powerful tools for marine exploration.
 layout: default
 slug: trident
+page_script: /scripts/trident.js
 page_css: /styles/trident.css
 #video: https://s3.amazonaws.com/openrov-com-assets/videos/trident-maneuverability.mp4
 images:
@@ -125,26 +126,26 @@ images:
         <div class="container d-flex w-100 h-100 justify-content-center align-items-center flex-column">
             <div class="row ">
                 <div class="col-md-12 ">
-                    <div id="feature-list" class="carousel slide" data-ride="" data-interval="5000">
+                    <div id="feature-list" class="carousel slide" data-ride="false" data-interval="9999999">
 
                         <div class="carousel-indicators buttons">
                             <div class="slide-selector active" data-target="#feature-list" data-slide-to="0">
-                                <i class="icon control"></i>
-                                <div class="desc text-nowrap">
-                                    Easy to use
-                                </div>
-                            </div>
-                            <div class="slide-selector" data-target="#feature-list" data-slide-to="1">
                                 <i class="icon speed"></i>
                                 <div class="desc text-nowrap">
                                     Fast &amp; Maneuverable
                                 </div>
                                 
                             </div>
+                            <div class="slide-selector" data-target="#feature-list" data-slide-to="1">
+                                <i class="icon control"></i>
+                                <div class="desc text-nowrap">
+                                    Easy to use
+                                </div>
+                            </div>
                             <div class="slide-selector" data-target="#feature-list" data-slide-to="2">
                                 <i class="icon portable"></i>
-                                <div class="desc">
-                                    Portable
+                                <div class="desc text-nowrap">
+                                     Durable &amp; Ultra Portable
                                 </div>
                             </div>
                             <div class="slide-selector" data-target="#feature-list" data-slide-to="3">
@@ -158,30 +159,117 @@ images:
 
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
-                                <img class="d-block img-fluid" src="{{ site.base }}/images/content/trident-side.jpg" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>Text</p>
+
+                                <div class="col-10 offset-1">
+                                    <div class="row">
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+
+                                            <div class="card card-inverse bottom video gradient no-text ml-1 mr-1 mt-1 mb-1 mt-md-0 mb-md-0">
+                                                <img class="card-img" src="{{site.base}}/images/videos/trident-maneuverability.jpg" alt="Fast and Maneuverable">
+                                                <video class="card-video" loop="loop" preload="auto">
+                                                    <source src="https://s3.amazonaws.com/openrov-com-assets/videos/trident-maneuverability.mp4" type='video/mp4'>
+                                                </video>
+                                                <div class="card-video-control show-md"><i class="fa fa-play-circle-o play" aria-hidden="true"></i><i class="fa fa-pause-circle-o pause"
+                                                        aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+                                            <h3 class="pt-5">
+                                                Fast &amp; Maneuverable
+                                            </h3>
+    
+                                            <p>Trident can quickly scan large areas, but also maneuver precisely in close quarters.</p>
+                                            <p>
+                                                With speeds up to 2m/s, up to 4h run time and a maximum depth of 100m,
+                                                Trident sets new standards for this class of ROVs.
+                                            </p>
+                                        </div>
+
+                                    </div>                              
                                 </div>
 
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block img-fluid" src="{{ site.base }}/images/content/trident-side.jpg" alt="Second slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>Text</p>
+
+                                <div class="col-10 offset-1">
+                                    <div class="row">
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+                                            <h3 class="pt-5">
+                                                 Easy to Use
+                                            </h3>
+
+                                            <p>
+                                                 Use your phone or tablet to control the drone and stream the video.
+                                            </p>
+                                            <p>
+                                                You can stream full HD video straight to your device from deep underwater. Excellent color rendentio, great low-light performance,
+                                                and industry-leading latency make Trident the vehicle of choice for capturing
+                                                quality video.
+
+                                            </p>
+
+                                        </div>
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+
+                                            <div class="card card-inverse bottom video gradient no-text ml-1 mr-1 mt-1 mb-1 mt-md-0 mb-md-0">
+                                                <img class="card-img" src="{{site.base}}/images/videos/control.jpg" alt="Easy to Use">
+                                                <video class="card-video" loop="loop" preload="auto">
+                                                    <source src="https://s3.amazonaws.com/openrov-com-assets/videos/control.mp4" type='video/mp4'>
+                                                    <!--<source src="https://s3.amazonaws.com/openrov-com-assets/videos/trident-maneuverability.webm" type='video/webm'>-->
+                                                </video>
+                                                <div class="card-video-control show-md"><i class="fa fa-play-circle-o play" aria-hidden="true"></i><i class="fa fa-pause-circle-o pause"
+                                                        aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block img-fluid" src="{{ site.base }}/images/content/trident-side.jpg" alt="Third slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>Text</p>
+                                <div class="col-10 offset-1">
+                                    <div class="row">
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+
+                                            <img class="img-fluid" src="{{site.base}}/images/products/trident/portable.png" alt="Durable &amp; Ultra Portable">
+
+                                        </div>
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+                                            <h3 class="pt-5">
+                                                 Durable &amp; Ultra Portable
+                                            </h3>
+
+                                            <p>
+                                                 Trident's is compact enough to be carried in a backpack or tucked under an airplane seat and is tough enough to earn it’s
+                                                keep in any professional setting.
+                                            </p>
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block img-fluid" src="{{ site.base }}/images/content/trident-side.jpg" alt="Third slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>Text</p>
+                                <div class="col-10 offset-1">
+                                    <div class="row">
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+                                            <h3 class="pt-5">
+                                                An Evolutionary Leap in Connectivity
+                                            </h3>
+
+                                            <p>
+                                                Trident uses a wireless radio to communicate with the pilot’s phone, laptop, or tablet, which greatly increases Trident's
+                                                effective range. A Kevlar-reinforced and neutrally-buoyant tether makes handling and retrieving Trident easy.
+                                            </p>
+                                        </div>
+                                        <div class="col-10 offset-1 col-md-6 offset-md-0">
+
+                                            <img class="img-fluid" src="{{site.base}}/images/products/trident/connectivity.png" alt="Durable &amp; Ultra Portable">
+
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
@@ -208,52 +296,6 @@ images:
                 </div>
                 <div class="col-12 text-center">
                     <a href="./buy-now" class="btn btn-md-lg btn-primary btn-spot-cta px-4  font-weight-bold">BUY TRIDENT NOW</a><br/>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="video-2 pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card card-inverse bottom video gradient no-text ml-1 mr-1 mt-1 mb-1 mt-md-0 mb-md-0">
-                        <img class="card-img" src="{{site.base}}/images/videos/trident-maneuverability.jpg" alt="Fast and Maneuverable">
-                        <video class="card-video" loop="loop" preload="auto">
-                            <source src="https://s3.amazonaws.com/openrov-com-assets/videos/trident-maneuverability.mp4" type='video/mp4'>
-                        </video>
-                        <div class="card-video-control"><i class="fa fa-play-circle-o play" aria-hidden="true"></i><i class="fa fa-pause-circle-o pause" aria-hidden="true"></i></div>
-                        <div class="card-img-overlay">
-                            <h4 class="card-title">
-                                 FAST &amp; MANEUVERABLE <i class="fa fa-play-circle-o pl-2" aria-hidden="true"></i>
-                            </h4>
-
-                            <p class="card-text">
-                                 Trident can quickly scan large areas, but also maneuver precisely in close quarters.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card card-inverse bottom video gradient no-text ml-1 mr-1 mt-1 mb-1 mt-md-0 mb-md-0">
-                        <img class="card-img" src="{{site.base}}/images/videos/control.jpg" alt="Easy to Use">
-                        <video class="card-video" loop="loop" preload="auto">
-                            <source src="https://s3.amazonaws.com/openrov-com-assets/videos/control.mp4" type='video/mp4'>
-                            <!--<source src="https://s3.amazonaws.com/openrov-com-assets/videos/trident-maneuverability.webm" type='video/webm'>-->
-                        </video>
-                        <div class="card-video-control"><i class="fa fa-play-circle-o play" aria-hidden="true"></i><i class="fa fa-pause-circle-o pause"
-                                aria-hidden="true"></i></div>
-                        <div class="card-img-overlay">
-                            <h4 class="card-title">
-                                 Easy to Use<i class="fa fa-play-circle-o pl-2" aria-hidden="true"></i>
-                            </h4>
-
-                            <p class="card-text">
-                                 Use your phone or tablet to control the drone and stream the video.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
