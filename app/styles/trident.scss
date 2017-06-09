@@ -170,18 +170,48 @@ section.trident {
         .carousel-control-next {
             right: -1rem;
         }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 35px;
+            height: 35px;
+        }
     }
 
     
+    .feature-hero {
+        $height: 44rem;
+        height: $height !important;
+
+        @media screen and (max-height: #{$heightNexus5x-iPhone6P}) { 
+            height: 44rem!important;
+        }
+        @media screen and (max-height: #{$heightiPhone6}) { 
+            height: 40rem !important;
+        }
+
+        @media screen and (max-height: #{$heightNexus5}) { // and iPhone5
+            height: 37rem!important;
+        }            
+
+    }
 
     #feature-list {
-        margin-top: -15rem;
+        @include media-breakpoint-up(md) {
+            margin-top: -15rem;
+        }
     }
 
     .slide-selector {
         cursor: pointer;
         text-align: center;
-        margin: 0 4rem;
+
+        margin: 0 1.5rem;
+        
+        @include media-breakpoint-up(lg) {
+            margin: 0 4rem;
+        }
+
 
         &.active,
         &:hover {
