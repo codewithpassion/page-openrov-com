@@ -1,0 +1,1 @@
+"use strict";!function(e){e("#feature-list").on("slid.bs.carousel",function(){console.log(this)}),e("#feature-list .slide-selector").on("mouseenter",function(){e("#feature-list").carousel(parseInt(this.dataset.slideTo))})}($);
