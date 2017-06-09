@@ -146,4 +146,97 @@ section.trident {
             }            
         }
     }
+
+    .carousel {
+        .carousel-indicators{
+         
+            &.buttons {
+                bottom: -15rem;
+            }
+
+            .active {
+                background-color: initial;
+            }
+        }
+
+        .carousel-caption {
+            bottom: -2rem;
+            color: black;
+        }
+        
+        .carousel-control-prev {
+            left: -10rem;
+        }
+        .carousel-control-next {
+            right: -10rem;
+        }
+    }
+
+    
+
+    #feature-list {
+        margin-top: -15rem;
+    }
+
+    .slide-selector {
+        cursor: pointer;
+        text-align: center;
+        margin: 0 4rem;
+
+        &.active,
+        &:hover {
+            .desc {
+                color: $Primary_Blue;
+            }
+
+            i.icon {
+                &.control {
+                    background-image: url(../images/products/trident/icons/control-blue.svg);
+                }
+                &.speed {
+                    background-image: url(../images/products/trident/icons/prop-blue.svg);
+                }
+                &.portable {
+                    background-image: url(../images/products/trident/icons/carry-blue.svg);
+                }
+                &.connectivity {
+                    background-image: url(../images/products/trident/icons/connectivity-blue.svg);
+                }
+            }
+        }
+
+        i.icon {
+            width: 65px;
+            height: 65px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            &.control {
+                background-image: url(../images/products/trident/icons/control.svg);
+            }
+            &.speed {
+                background-image: url(../images/products/trident/icons/prop.svg);
+            }
+            &.portable {
+                background-image: url(../images/products/trident/icons/carry.svg);
+            }
+            &.connectivity {
+                background-image: url(../images/products/trident/icons/connectivity.svg);
+            }
+        }
+
+        .desc {
+            font-size: larger;
+            font-weight: bold;
+            margin-top: 8px;
+            line-height: 21px;
+            color: black;
+            display: table;
+            height: 42px;
+            width: 100%;
+            text-align: center;
+
+        }
+    }
 }
