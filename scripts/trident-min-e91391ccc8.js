@@ -1,1 +1,0 @@
-"use strict";!function(e){e(".carousel").bcSwipe({threshold:50}),e("#feature-list .slide-selector").on("mouseenter",function(){e("#feature-list").carousel(parseInt(this.dataset.slideTo))})}($);
