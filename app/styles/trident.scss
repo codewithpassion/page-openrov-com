@@ -164,19 +164,24 @@ section.trident {
             color: black;
         }
         
+        .carousel-control-prev,
+        .carousel-control-next {
+            z-index: 1002;
+            width: 10%;
+        }
+
         .carousel-control-prev {
             left: -1rem;
-            z-index: 1002;
         }
         .carousel-control-next {
             right: -1rem;
-            z-index: 1002;
         }
 
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             width: 35px;
             height: 35px;
+            
         }
     }
 

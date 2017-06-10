@@ -58,19 +58,4 @@ $('.mfp-gallery-zoom').each(function() {
     })
 });
 
-const videos = $('.card.video');
-videos    
-    .on('mouseover', function(ev) {
-        $(this).addClass('play');
-        let video = $(this).find('.card-video');
-        $(this).find('.card-img').css('opacity', 0);
-        video.css('opacity', 1);
-        video[0].play();
-    })
-    .on('mouseout', function(ev) {
-        $(this).removeClass('play');
-        let video = $(this).find('.card-video');
-        video[0].pause();
-    });
-
     
