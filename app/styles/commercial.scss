@@ -59,9 +59,21 @@ section.commercial {
         }
         
     }
+}
+section.contact-cta {
+    position: relative;
+    z-index: 1050;
+
+    .email {
+        font-size: 6rem;
+        @include media-breakpoint-up(md) {
+            font-size: 8rem;
+        }
+    }
 
     @include media-breakpoint-down(md) {
-    
+        
+        z-index: 1000;
         form .form-inline { 
             input[type=text].form-control {
                 width: 80%;
@@ -71,5 +83,15 @@ section.commercial {
                 width: 3rem;
             }
         }
+    }
+
+}
+
+.modal-backdrop.cta {
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.32, 1.1, 0.89, 1.01);
+
+    &.show {
+        opacity: 0.5;
     }
 }

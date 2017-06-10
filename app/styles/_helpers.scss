@@ -15,6 +15,12 @@
       width: 100%!important;
 }
 
+.w-100-md-down {
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }    
+}
+
 .or-gradient.grey {
     background-image: radial-gradient(circle at 47% 42%, rgba(0, 0, 0, 0.26), rgba(32, 32, 32, 0.66));    
 }
@@ -247,60 +253,11 @@
                 }
             }
         }
-
-        // .active.carousel-item-left,
-        // .active.carousel-item-right {
-        //     left: 0;
-        //     // opacity: 0;
-        //     z-index: 1000;
-        // }
-        
-        // .carousel-item-next,
-        // .carousel-item-prev {
-        //     // opacity: 0;
-        //     z-index: 1001;
-        // }
     }
         
     .carousel-control {
         z-index: 1002;
     }
 }
-
-
-// .carousel-fade {
-// 	.carousel-item {
-// 		// display: block;
-// 		// position: absolute;
-// 		left: 0;
-//         right: 0;
-//         opacity: 0;
-// 		transition: opacity .75s ease;
-
-//         z-index: 1000;
-// 		&.active {
-// 			opacity: 1;
-
-//             &.carousel-item-left {
-//                 opacity: 0;
-//             }       
-// 		}
-
-// 	}
-    
-//     //.carousel-item-prev,
-//     .carousel-item-next {
-//         opacity: 1;
-//     }
-     
-//     .carousel-item-next,
-//     .carousel-item-prev,
-//     .active.carousel-item-left,
-//     .active.carousel-item-right {
-//         transform: none!important;
-//         // opacity: 0;
-//         z-index: 1001;
-//     }
-// }
 // ------------------------------
 

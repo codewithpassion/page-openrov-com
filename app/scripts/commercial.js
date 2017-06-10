@@ -4,6 +4,23 @@
         $('#email').animate({left:0,duration:'slow',complete:() => $('#email').focus()});
     })
 
+    var contactBottomCtaWaypoint = new Waypoint({
+        element: $('.contact-cta').get(0),
+        handler: function (direction) {
+            
+            if (direction == 'down') {
+                $('body').append('<div class="modal-backdrop cta hidden-sm-down"></div>');
+                setTimeout(() => $('.modal-backdrop.cta').addClass('show'), 1);
+            }
+            else {
+                const backdrop = $('.modal-backdrop.cta');
+                backdrop.removeClass('show');
+                setTimeout(() => backdrop.remove(), 500);
+            }
+        },
+        offset: 'bottom-in-view'
+    })
+
     const form = $('#form');
     form.find('#send').on('click', function (ev) {
         ev.preventDefault();

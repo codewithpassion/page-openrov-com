@@ -78,6 +78,10 @@ section.cta-blue {
   background-color: $Primary_Blue;
 }
 
+section.secondary-blue {
+  background-color: $Secondary_Blue;
+  color: white;
+}
 
 @import "spacers";
 @import "helpers";
