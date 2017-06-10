@@ -4,18 +4,25 @@
         $('#email').animate({left:0,duration:'slow',complete:() => $('#email').focus()});
     })
 
+    function closeBackdrop(backdrop) {
+        backdrop.removeClass('show');
+        setTimeout(() => backdrop.remove(), 500);
+    }
+
     var contactBottomCtaWaypoint = new Waypoint({
         element: $('.contact-cta').get(0),
         handler: function (direction) {
             
             if (direction == 'down') {
                 $('body').append('<div class="modal-backdrop cta hidden-sm-down"></div>');
-                setTimeout(() => $('.modal-backdrop.cta').addClass('show'), 1);
+                setTimeout(() => {
+                    $('.modal-backdrop.cta')
+                        .addClass('show')
+                        .click(function() { closeBackdrop($(this)) });                    
+                }, 1);
             }
             else {
-                const backdrop = $('.modal-backdrop.cta');
-                backdrop.removeClass('show');
-                setTimeout(() => backdrop.remove(), 500);
+                closeBackdrop($('.modal-backdrop.cta'));
             }
         },
         offset: 'bottom-in-view'
