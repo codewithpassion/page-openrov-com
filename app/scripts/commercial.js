@@ -33,6 +33,7 @@
         ev.preventDefault();
 
         form.find('#email').parent().toggleClass('has-danger', false)
+        form.find('#phone').parent().toggleClass('has-danger', false)
         form.find('#name').parent().toggleClass('has-danger', false)
         form.find('#company').parent().toggleClass('has-danger', false)
         form.find('#industry').parent().toggleClass('has-danger', false)
@@ -47,13 +48,14 @@
             var name = form.find('#name').val();
             if (name.trim().length == 0) { form.find('#name').parent().toggleClass('has-danger', true); error = true; }
 
+            var phone = form.find('#phone').val();
             var company = form.find('#company').val();
             var industry = form.find('#industry').val();
             var description = form.find('#description').val();
 
             if (error) return;
 
-            send(email, name, company, industry, description)
+            send(email, name, phone, company, industry, description)
                 .done(function (res) {
                     alert("Thank you for your contact request. You will hear from us shortly.");
                     form.find('#send').prop('disabled', false);
@@ -73,13 +75,14 @@
 
     });
 
-    function send(email, name, company, industry, description) {
+    function send(email, name, phone, company, industry, description) {
 
         const body = ''
             + 'Commercial contact form \n' 
             + '----------------------------------\n'
             + `Name: ${name}\n`
             + `EMail: ${email}\n`
+            + `Phone: ${phone}\n`
             + `Company: ${company}\n`
             + `Industry: ${industry}\n`
             + `Description:\n${description}\n\n`;
