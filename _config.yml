@@ -8,7 +8,8 @@ exclude:
 array: []
 
 # for SEO
-google_site_verification: 6sqA5KNpZtZaQPB-78QcD8CDqXsbhOiqpZGvm NxYDI4
+webmaster_verifications:
+  google: 6sqA5KNpZtZaQPB-78QcD8CDqXsbhOiqpZGvm NxYDI4
 title: OpenROV Underwater Drones
 description: Trident is the latest high performing underwater drone from OpenROV, makers of powerful tools for marine exploration.
 #url: 'https://www.openrov.com'
