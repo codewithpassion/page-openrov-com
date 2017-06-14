@@ -103,10 +103,8 @@ class BuyScreen {
         if (result == 'None') {
             return '';
         } else if (result.indexOf('Standard') > -1) {
-            // result = 'with ' + result;
             result = result;
         } else {
-            // result = result.replace(/Add A/, 'with');
             result = result.replace(/Add A/, '');
         }
         return '<span class="text-nowrap">' + result + '</span>';
@@ -136,14 +134,6 @@ class BuyScreen {
                         '<div class="hidden-sm-up price-sm pt-3">$' + (v.price / 100).toFixed(2) +'</div>' +
                     '</td>' + 
                     '<td class="text-right product pricing hidden-sm-down">$' + (v.price / 100).toFixed(2) + '</td>' + '</tr>';
-            // return '<tr class="product-row">' + 
-            //         '<td class="product-selector product">' + 
-            //         ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
-            //         '<td class="product-info product hidden-sm-down">Trident Underwater Drone</td>' 
-            //         + v.options.values.map(function (val) {
-            //             return '<td class="product">' + self.getOptionText(val) + '</td>';
-            //         }).join('') + 
-            //         '<td class="text-right product pricing">$' + (v.price / 100).toFixed(2) + '</td>' + '</tr>';
         }).join('');
 
         orderForm.find('#options').prepend(optionsHtml);
@@ -261,7 +251,6 @@ class BuyScreen {
     init() {
         this.orderForm = $('form#orderForm');
         const self = this;
-        // this.orderForm.validator().on('submit', (ev) => {
         this.orderForm.validator().find('button.submit').click((ev) => {
             ev.preventDefault();
 
