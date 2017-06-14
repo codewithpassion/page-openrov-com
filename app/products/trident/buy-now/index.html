@@ -131,17 +131,19 @@ page_script:
                     <div class="row">
                         <div class="col-md-10 col-xs-12">
                             <div class="flex-form-group selects-2">
-                                <div><input type="text" class="form-control  form-control-danger" id="zip" name="zip" placeholder="ZIP/Postal"
+                                <div style="flex: 0.8;"><input type="text" class="form-control  form-control-danger" id="zip" name="zip" placeholder="ZIP/Postal"
                                         required></div>
-                                <select class="form-control  form-control-danger" id="usState" name="usState">
-                                    {% for item in site.data.usStates %}
-                                    <option value="{{item.Abbreviation}}">{{item.State}}</option>
-                                    {% endfor %}                        
-                                </select>
-                                <div class="hidden-xs-up"><input type="text" class="form-control  form-control-danger" style="flex:2" id="state" name="state"
+                                <div style="flex: 1;">
+                                    <select class="form-control  form-control-danger" id="usState" name="usState">
+                                        {% for item in site.data.usStates %}
+                                        <option value="{{item.Abbreviation}}">{{item.State}}</option>
+                                        {% endfor %}                        
+                                    </select>
+                                </div>
+                                <div style="flex: 1;" class="hidden-xs-up"><input type="text" class="form-control  form-control-danger" style="flex:2" id="state" name="state"
                                         placeholder="State/Province" required></div>
 
-                                <select class="form-control col-md-9 form-control-danger" id="country" name="country">
+                                <select style="flex: 1;" class="form-control col-md-9 form-control-danger" id="country" name="country">
                                     {% for item in site.data.country %}
                                     <option value="{{item.id}}">{{item.value}}</option>
                                     {% endfor %}
@@ -192,11 +194,11 @@ page_script:
                     <div class="row">
                         <div class="col-md-10 col-xs-12">
                             <div class="flex-form-group">
-                                <div><input type="text" class="form-control col-sm-2 form-control-danger" id="expDate" name="expDate"
+                                <div><input type="text" class="form-control form-control-danger" id="expDate" name="expDate"
                                         placeholder="MM/YY" pattern="^[0-9]{2}/[0-9]{2}$" required></div>
-                                <div><input type="number" data-minlength="3" maxlength="4" class="form-control col-sm-2 form-control-danger"
+                                <div><input type="number" data-minlength="3" maxlength="4" class="form-control form-control-danger"
                                         id="cvc" name="cvc" placeholder="CVC" required></div>
-                                <div><input type="number" class="form-control col-sm-2" id="billingZip" name="billingZip" placeholder="Billing ZIP"
+                                <div><input type="number" class="form-control " id="billingZip" name="billingZip" placeholder="Billing ZIP"
                                         required></div>
                             </div>
                         </div>

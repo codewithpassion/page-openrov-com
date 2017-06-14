@@ -147,11 +147,11 @@ class BuyScreen {
         orderForm.find('#country option[value="US"]').attr('selected', 'true');
         orderForm.find('#country').change(ev => {
             if (ev.currentTarget.options[ev.target.selectedIndex].value === 'US') {
-                orderForm.find('.select-wrap #usState').parent().removeClass('hidden-xs-up').attr('required', false);
+                orderForm.find('#usState').parent().removeClass('hidden-xs-up').attr('required', false);
                 orderForm.find('#state').attr('required', false).parent().addClass('hidden-xs-up');
             } else {
                 orderForm.find('#state').attr('required', true).parent().removeClass('hidden-xs-up');
-                orderForm.find('.select-wrap #usState').parent().addClass('hidden-xs-up').attr('required', false);
+                orderForm.find('#usState').parent().addClass('hidden-xs-up').attr('required', false);
             }
             orderForm.validator('update');
             this.calculateShipping(orderForm);
