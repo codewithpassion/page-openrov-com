@@ -1,5 +1,5 @@
-const PRODUCT = '57e9bd02726ecc1100f4204a'; // testproduct
-// const PRODUCT = '5637ca44df92ea03009633b3'; //trident
+//const PRODUCT = '57e9bd02726ecc1100f4204a'; // testproduct
+const PRODUCT = '5637ca44df92ea03009633b3'; //trident
 
 function objectifyForm(formArray) {//serialize data function
     var returnArray = {};
@@ -11,50 +11,47 @@ function objectifyForm(formArray) {//serialize data function
 
 class BuyScreen {
 
-    getData(formData, variant) {
-        const address = {
+    getData(formData) {
+        var address = {
             "first_name": formData.firstName,
             "last_name": formData.lastName,
             "company": null,
             "line1": formData.address1,
             "line2": formData.address2,
             "city": formData.city,
-            "state": formData.country === 'US' ? formData.usState : formData.state,
+            "state": formData.country === 'US' ? formData.usState.toLowerCase() : formData.state,
             "zip": formData.zip,
             "country": formData.country.toLowerCase(),
-            "phone": formData.phone,
+            "phone": formData.phone
         };
 
-        const data = {
+        var data = {
             "user_id": '5637c8d966e9ec03008989ef',
             "buyer": {
                 "email": formData.email,
                 "first_name": formData.firstName,
                 "last_name": formData.lastName,
                 "phone": formData.phone,
-                "notes": formData.notes,
+                "notes": formData.notes
             },
             "shipping_address": address,
-            "billing_address": Object.assign({} , address, { zip: formData.billingZip }),
-            "line_items": [
-                {
-                    // "product_id": "5637ca44df92ea03009633b3",
-                    "product_id": PRODUCT,
-                    "variant_id": variant,
-                    "quantity": parseInt(formData.quantity)
-                }
-            ],
+            "billing_address": Object.assign({}, address, { zip: formData.billingZip }),
+            "line_items": [{
+                "product_id": PRODUCT,
+                "variant_id": formData.variant,
+                "quantity": parseInt(formData.quantity)
+            }],
             "payment_source": {
                 "card": {
-                    "name": `${formData.firstName} ${formData.lastName}`,
+                    "name": formData.firstName + ' ' + formData.lastName,
                     "number": formData.ccNumber,
                     "exp_month": formData.expDate.split('/')[0],
                     "exp_year": formData.expDate.split('/')[1],
                     "cvc": formData.cvc
                 }
             },
-            "discount_codes": []
-        }
+            "discount_codes": [formData.couponCode]
+        };
         return data;
     }
 
@@ -79,7 +76,7 @@ class BuyScreen {
 
     calculateShipping(form, variants) { 
         const formData = objectifyForm(form.serializeArray())
-        const data = this.getData(formData, this.getVariant(form, variants));
+        const data = this.getData(formData, this.getVariant(form, this.variants));
         return this._calculateShipping(data, form);
     }
 
@@ -94,94 +91,104 @@ class BuyScreen {
             "processData": false,
             "data": JSON.stringify(data),
         })
-        form.find('#shipping').val('$' + (result.shipping /100).toFixed(2))
-        form.find('#subtotal').val('$' + (result.subtotal / 100).toFixed(2))
-        form.find('#tax').val('$' + (result.taxes / 100).toFixed(2))
-        form.find('#total').val('$' + (result.total / 100).toFixed(2))
+        form.find('#shipping').text('$' + (result.shipping /100).toFixed(2))
+        form.find('#subtotal').text('$' + (result.subtotal / 100).toFixed(2))
+        form.find('#tax').text('$' + (result.taxes / 100).toFixed(2))
+        form.find('#total').text('$' + (result.total / 100).toFixed(2))
         form.find('.loading').hide();
     }
 
+    getOptionText(value) {
+        var result = value.replace(/\([+$0-9].*\)/, '').trim();
+        if (result == 'None') {
+            result = '';
+        } else if (result.indexOf('Standard') > -1) {
+            result = 'with ' + result;
+        } else {
+            result = result.replace(/Add A/, 'with');
+        }
+        return result;
+    };
+
     async setupForm(orderForm) {
+        const self = this;
         const result = await $.ajax({
             url: 'https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/celry-access/products/' + PRODUCT
         });
-        $('#description').html(result.data.description);
 
-        const optionsHtml = result.data.options.map(o => {
-            return '<div class="form-group row">' +
-                `<label for="${o.id}" class="col-2 col-form-label">${o.name}:</label>` +
-                `<select class="form-control form-control-danger col-6" id="option_${o.id}" name="option_${o.id}" required>` +
-                `<option selected value="" disabled>Select ${o.name}</option>` +
-                    o.values.map(v => {
-                        return `<option value="${v.id}">${v.name}</option>`
-                    }).join('') +
-                '</select>' +
-                '</div>';        
+        const optionsHtml = result.data.variants.reverse().map(function (v, idx) {
+            return '<tr class="product-row">' + '<td class="product-selector product">' + ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + '<td class="product-info product hideOnMobile">Trident Underwater Drone</td>' + v.options.values.map(function (val) {
+                return '<td class="product">' + self.getOptionText(val) + '</td>';
+            }).join('') + '<td class="text-right product pricing">$' + (v.price / 100).toFixed(2) + '</td>' + '</tr>';
         }).join('');
+
+        orderForm.find('#options').prepend(optionsHtml);
 
         const formData = objectifyForm(orderForm.serializeArray())
         formData.country = 'us';
-        const data = this.getData(formData, result.data.variants[result.data.variants.length-1].id);
-        this._calculateShipping(data, orderForm);
 
-        orderForm.find('#options').append(optionsHtml);
+        const data = this.getData(formData);
+        this._calculateShipping(data, orderForm);
 
         orderForm.find('#country option[value="US"]').attr('selected', 'true');
         orderForm.find('#country').change(ev => {
             if (ev.currentTarget.options[ev.target.selectedIndex].value === 'US') {
-                orderForm.find('#usState').removeClass('hidden-xs-up').attr('required', false);
-                orderForm.find('#state').addClass('hidden-xs-up').attr('required', true);
-                
-            }
-            else {
-                orderForm.find('#state').removeClass('hidden-xs-up').attr('required', false);
-                orderForm.find('#usState').addClass('hidden-xs-up').attr('required', false);
+                orderForm.find('.select-wrap #usState').parent().removeClass('hidden-xs-up').attr('required', false);
+                orderForm.find('#state').attr('required', false).parent().addClass('hidden-xs-up');
+            } else {
+                orderForm.find('#state').attr('required', true).parent().removeClass('hidden-xs-up');
+                orderForm.find('.select-wrap #usState').parent().addClass('hidden-xs-up').attr('required', false);
             }
             orderForm.validator('update');
-            this.calculateShipping(orderForm, result.data.variants);
+            this.calculateShipping(orderForm);
         })
-
-        orderForm.find('#options select').change(ev => {
-            this.calculateShipping(orderForm, result.data.variants);
+        orderForm.find('#zip').change(ev => {
+            this.calculateShipping(orderForm);
+        });
+        orderForm.find('#usState').change(ev => {
+            this.calculateShipping(orderForm);
+        });
+        orderForm.find('#couponCode').change(ev => {
+            this.calculateShipping(orderForm);
         });
 
         orderForm.find('#quantity').change(ev => {
-            this.calculateShipping(orderForm, result.data.variants);
+            $('#quantityOrdered').text(ev.target.value);
+            var itemsOrdered = parseInt(ev.target.value);
+            var valueLabel = itemsOrdered === 1 ? 'item' : 'items';
+            $('#itemsLabel').text(valueLabel);
+            this.calculateShipping(orderForm);
         });
 
-        orderForm.find('#ccNumber').keypress((event) => {
-            var char = String.fromCharCode(event.which)
+
+        orderForm.find('#ccNumber').keypress(event => {
+            var char = String.fromCharCode(event.which);
             if (!char.match(/[0-9- ]/)) event.preventDefault();
         });
-        
-        orderForm.find('#expDate').keypress((event) => {
-            var char = String.fromCharCode(event.which)
+
+        orderForm.find('#expDate').keypress(event => {
+            var char = String.fromCharCode(event.which);
             if (!char.match(/[0-9/]/)) event.preventDefault();
         });
+        
+        orderForm.find('tr.product-row').click(ev => {
+            orderForm.find('input[type=radio][name="variant"][checked]')[0].removeAttribute('checked');
+            $(ev.target).parent().find('input[type=radio][name="variant"]')[0].setAttribute('checked', 'checked');
+            this.calculateShipping(orderForm);
+        });
 
-        orderForm
-            .on('validated.bs.validator', ev => {
-                if (ev.relatedTarget.id === 'expDate' ) {
-                    if (!ev.relatedTarget.checkValidity()) {
-                        $(ev.relatedTarget).parent().addClass('has-danger');
-                        return false;
-                    }
-                    else {
-                        $(ev.relatedTarget).parent().removeClass('has-danger');
-                    }
+        orderForm.on('valid.bs.validator', ev => {
+            if (ev.relatedTarget.checkValidity()) {
+                $(ev.relatedTarget).parent().removeClass('has-danger').removeClass('has-error');
+            }
+        }).on('invalid.bs.validator', ev => {
+            console.log(ev.relatedTarget.id + ' ' + ev.detail);
+            if (!ev.relatedTarget.checkValidity()) {
+                $(ev.relatedTarget).parent().addClass('has-danger').addClass('has-error');
+            }
+        });
 
-                }
-            })
-            .on('invalid.bs.validator', ev => {
-                console.log(ev.relatedTarget.id + ' ' + ev.detail);
-
-                // if (ev.relatedTarget.id === 'expDate' && ev.type === 'invalid') {
-                //     ev.relatedTarget.parent().addClass('has-danger')
-                // }
-            })
-
-        const variants = result.data.variants;
-        return variants;
+        return result.data.variants;
     };
 
     async submit() {
