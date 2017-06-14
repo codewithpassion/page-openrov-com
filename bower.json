@@ -11,7 +11,8 @@
     "lazysizes": "^3.0.0",
     "magnific-popup": "^1.1.0",
     "waypoints": "^4.0.1",
-    "Fullscreen-API-Polyfill": "^1.1.0"
+    "Fullscreen-API-Polyfill": "^1.1.0",
+    "bootstrap-validator": "^0.11.9"
   },
   "overrides": {
     "bootstrap": {
@@ -33,6 +34,11 @@
         "./slick/slick-theme.scss",
         "./slick/ajax-loader.gif",
         "./slick/fonts/*"
+      ]
+    },
+    "bootstrap-validator": {
+      "main": [
+        "dist/validator.js"
       ]
     }
   },
