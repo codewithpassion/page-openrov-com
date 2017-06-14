@@ -145,7 +145,7 @@ class BuyScreen {
                     '<td class="product-selector product">' + 
                     ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
                     '<td class="product-info product text-center text-md-left ">' +  
-                        '<span class="font-weight-bold">Trident Underwater Drone</span> +&nbsp;' + 
+                        '<span class="font-weight-bold">Trident Underwater Drone</span> <br class="hidden-sm-up">+&nbsp;' + 
                         this.getOptions(v.options.values) + 
                         '<div class="hidden-sm-up price-sm pt-3">$' + (v.price / 100).toFixed(2) +'</div>' +
                     '</td>' + 
