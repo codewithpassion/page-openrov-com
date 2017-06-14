@@ -101,25 +101,49 @@ class BuyScreen {
     getOptionText(value) {
         var result = value.replace(/\([+$0-9].*\)/, '').trim();
         if (result == 'None') {
-            result = '';
+            return '';
         } else if (result.indexOf('Standard') > -1) {
-            result = 'with ' + result;
+            // result = 'with ' + result;
+            result = result;
         } else {
-            result = result.replace(/Add A/, 'with');
+            // result = result.replace(/Add A/, 'with');
+            result = result.replace(/Add A/, '');
         }
-        return result;
+        return '<span class="text-nowrap">' + result + '</span>';
     };
 
+    getOptions(values) {
+        return values
+            .map(val => this.getOptionText(val))
+            .filter(val => val.trim().length != 0)
+            .join(' +&nbsp;')
+    }
+
     async setupForm(orderForm) {
-        const self = this;
         const result = await $.ajax({
             url: 'https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/celry-access/products/' + PRODUCT
         });
 
-        const optionsHtml = result.data.variants.reverse().map(function (v, idx) {
-            return '<tr class="product-row">' + '<td class="product-selector product">' + ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + '<td class="product-info product hideOnMobile">Trident Underwater Drone</td>' + v.options.values.map(function (val) {
-                return '<td class="product">' + self.getOptionText(val) + '</td>';
-            }).join('') + '<td class="text-right product pricing">$' + (v.price / 100).toFixed(2) + '</td>' + '</tr>';
+        $('#description').html(result.data.description);
+
+        const optionsHtml = result.data.variants.reverse().map((v, idx) => {
+            return '<tr class="product-row">' + 
+                    '<td class="product-selector product">' + 
+                    ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
+                    '<td class="product-info product text-center text-md-left ">' +  
+                        '<span class="font-weight-bold">Trident Underwater Drone</span> +&nbsp;' + 
+                        this.getOptions(v.options.values) + 
+                        '<div class="hidden-sm-up price-sm pt-3">$' + (v.price / 100).toFixed(2) +'</div>' +
+                    '</td>' + 
+                    '<td class="text-right product pricing hidden-sm-down">$' + (v.price / 100).toFixed(2) + '</td>' + '</tr>';
+            // return '<tr class="product-row">' + 
+            //         '<td class="product-selector product">' + 
+            //         ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
+            //         '<td class="product-info product hidden-sm-down">Trident Underwater Drone</td>' 
+            //         + v.options.values.map(function (val) {
+            //             return '<td class="product">' + self.getOptionText(val) + '</td>';
+            //         }).join('') + 
+            //         '<td class="text-right product pricing">$' + (v.price / 100).toFixed(2) + '</td>' + '</tr>';
         }).join('');
 
         orderForm.find('#options').prepend(optionsHtml);
