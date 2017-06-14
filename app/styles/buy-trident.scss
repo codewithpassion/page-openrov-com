@@ -29,6 +29,11 @@
         @extend .overlay;
         display: none;
     }
+
+    #order:disabled {
+        color: black;
+        background-color: white;
+    }
 }
 
 #options {
@@ -137,10 +142,6 @@
                     
                 }
             }
-        }
-        
-        .total {
-            font-weight: bold;
         }
     }
 

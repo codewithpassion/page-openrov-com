@@ -74,14 +74,14 @@ class BuyScreen {
         return undefined;
     }
 
-    calculateShipping(form, variants) { 
+    calculateShipping(form) { 
         const formData = objectifyForm(form.serializeArray())
-        const data = this.getData(formData, this.getVariant(form, this.variants));
+        const data = this.getData(formData);
         return this._calculateShipping(data, form);
     }
 
     async _calculateShipping(data, form) {    
-        form.find('.loading').show();
+        form.find('tfoot').addClass('calculating');
         const result = await $.ajax({
             "async": true,
             "crossDomain": true,
@@ -92,10 +92,25 @@ class BuyScreen {
             "data": JSON.stringify(data),
         })
         form.find('#shipping').text('$' + (result.shipping /100).toFixed(2))
-        form.find('#subtotal').text('$' + (result.subtotal / 100).toFixed(2))
+        if (result.discount > 0) {
+            $('#discount-container').removeClass('hidden-xs-up');
+            $('#discount').text('$' + (result.discount / 100).toFixed(2))
+        }
+        else {
+            $('#discount-container').addClass('hidden-xs-up');
+        }
+        if (result.discounts && result.discounts.length > 0) {
+            form.find('#couponCode').attr('disabled', true);
+            form.find('#applyDiscount').addClass('btn-success').attr('disabled', true);
+            if (result.discounts.filter(d => d.free_shipping == true).length > 0) {
+                form.find('#freeShipping').removeClass('d-none');
+                form.find('#shippingContainer').addClass('d-none');
+            }
+        }
+
         form.find('#tax').text('$' + (result.taxes / 100).toFixed(2))
         form.find('#total').text('$' + (result.total / 100).toFixed(2))
-        form.find('.loading').hide();
+        form.find('tfoot').removeClass('calculating');
     }
 
     getOptionText(value) {
@@ -207,11 +222,11 @@ class BuyScreen {
 
     async submit() {
         const { orderForm, variants } = this;
-        orderForm.find('button[type="submit"]').attr('disabled', true);
-        orderForm.find('.submitting').show();
+        orderForm.find('#order').attr('disabled', true);
+        orderForm.find('#orderProcessing').show();
 
         const formData = objectifyForm(orderForm.serializeArray())
-        const data = this.getData(formData, this.getVariant(formData, this.getVariant(form, variants)));
+        const data = this.getData(formData);
         try {
             const result = await $.ajax({
                 "async": true,
@@ -235,10 +250,11 @@ class BuyScreen {
             window.location.replace(window.location.href + '../confirmation/' + path);
         }
         catch (err) {
-            this.orderForm.find('.alert .title').text(err.statusText);
-            this.orderForm.find('.alert .description').text(err.responseJSON.data);
-            this.orderForm.find('.alert').show();
-            this.orderForm.find('.submitting').hide();
+            orderForm.find('.alert .title').text(err.statusText);
+            orderForm.find('.alert .description').text(err.responseJSON.data);
+            orderForm.find('.alert').show();
+            orderForm.find('#orderProcessing').hide();
+            orderForm.find('#order').attr('disabled', false);
         }
 
     }
@@ -264,6 +280,10 @@ class BuyScreen {
             else {
                 this.submit();
             }
+        });
+
+        this.orderForm.find('#applyDiscount').click(ev => {
+            this.calculateShipping(this.orderForm);
         });
 
         $('#orderFormContainer').removeClass('invisible');

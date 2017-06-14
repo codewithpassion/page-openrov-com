@@ -82,7 +82,14 @@ page_script:
                             </tbody>
                             <tfoot>
                                 <tr class="shipping">
-                                    <td colspan="5" class="text-right">Shipping: <span id="shipping">$0.00</span></td>
+                                    <td colspan="3"  class="text-right">
+                                        <div id="shippingContainer">
+                                            Shipping: <span id="shipping">$0.00</span>
+                                        </div>
+                                        <div id="freeShipping" class="d-none font-weight-bold">
+                                            Free Shipping!
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="5" class="text-right">Tax: <span id="tax">$0.00</span></td>
@@ -91,13 +98,26 @@ page_script:
                                     <td colspan="5" class="text-right">Discount: <span id="discount">$0.00</span></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="5" class="text-right total">Total (<span id="quantityOrdered">1</span> <span id="itemsLabel">item</span>):
-                                        <span
-                                            id="total">$0.00</span>
+                                    <td colspan="5" class="text-right total font-weight-bold font-size-large">
+                                        Total (<span id="quantityOrdered">1</span> <span id="itemsLabel">item</span>):
+                                        <span id="total">$0.00</span>
                                     </td>
                                 </tr>
                             </tfoot>
                         </table>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-10 pb-5 d-flex flex-row">
+                            <span class="font-weight-bold font-size-large pr-3">
+                                Got a discount code?
+                            </span>
+                            <div class="d-flex form-inline">
+                                <input type="text" autocomplete="off" class="form-control form-control-danger" id="couponCode" name="couponCode" placeholder="Coupon code">
+                                <button type="button" id="applyDiscount" class="btn btn-primary ml-2">Apply</button>
+                            </div>
+
+                        </div>
                     </div>
 
                     <div class="row">
@@ -181,10 +201,7 @@ page_script:
                     <div class="row">
                         <div class="col-md-10 col-xs-12">
                             <div class="flex-form-group">
-                                <div><input type="text" autocomplete="off" class="form-control form-control-danger" id="couponCode"
-                                        name="couponCode" placeholder="Coupon code">
-                                </div>
-                                <div style="flex: 2">
+                                <div style="flex: 1">
                                     <input type="tel" pattern="^[0-9 -]{1,}$" autocomplete="off" class="form-control form-control-danger" id="ccNumber" name="ccNumber"
                                         placeholder="Debit/Credit Card Number" required>
                                 </div>
@@ -216,7 +233,7 @@ page_script:
                     <div class="row">
                         <div class="col-md-10 col-xs-12 element-normal-bottom ">
                             <button type="button" id="order" mame="order" class="submit btn btn-primary font-weight-bold">Place your order!</button>
-                            <label for="order" id="orderProcessing" style="display: none">Processing...</label>
+                            <label for="order" id="orderProcessing" class="pl-4" style="display: none"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing...</label>
                         </div>
                     </div>
 
