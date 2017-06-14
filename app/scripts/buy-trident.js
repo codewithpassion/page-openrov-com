@@ -76,6 +76,7 @@ class BuyScreen {
 
     calculateShipping(form) { 
         const formData = objectifyForm(form.serializeArray())
+        formData.couponCode = form.find('#couponCode').val(); // disabled text fields don't show up in serializeArray
         const data = this.getData(formData);
         return this._calculateShipping(data, form);
     }
@@ -175,9 +176,6 @@ class BuyScreen {
             this.calculateShipping(orderForm);
         });
         orderForm.find('#usState').change(ev => {
-            this.calculateShipping(orderForm);
-        });
-        orderForm.find('#couponCode').change(ev => {
             this.calculateShipping(orderForm);
         });
 
