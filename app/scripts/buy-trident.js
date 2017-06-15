@@ -141,15 +141,16 @@ class BuyScreen {
         $('#description').html(result.data.description);
 
         const optionsHtml = result.data.variants.reverse().map((v, idx) => {
+            const price = (v.price / 100);
             return '<tr class="product-row">' + 
                     '<td class="product-selector product">' + 
                     ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
                     '<td class="product-info product text-center text-md-left ">' +  
                         '<span class="font-weight-bold">Trident Underwater Drone</span> <br class="hidden-sm-up">+&nbsp;' + 
                         this.getOptions(v.options.values) + 
-                        '<div class="hidden-sm-up price-sm pt-3">$' + (v.price / 100).toFixed(2) +'</div>' +
+                '<div class="hidden-sm-up price-sm pt-3"><em><small><s class="pr-2">$' + (price + 300).toFixed(2) + '</s></small></em>&nbsp;$' + price.toFixed(2)  +'</div>' +
                     '</td>' + 
-                    '<td class="text-right product pricing hidden-sm-down">$' + (v.price / 100).toFixed(2) + '</td>' + '</tr>';
+                '<td class="text-right product pricing hidden-sm-down"><em><small><s  class="pr-2">$' + (price + 300).toFixed(2) + '</s></small></em>$' + price.toFixed(2) + '</td>' + '</tr>';
         }).join('');
 
         orderForm.find('#options').prepend(optionsHtml);
@@ -185,6 +186,8 @@ class BuyScreen {
             var valueLabel = itemsOrdered === 1 ? 'item' : 'items';
             $('#itemsLabel').text(valueLabel);
             this.calculateShipping(orderForm);
+
+            orderForm.find('#savings').text((300 * itemsOrdered).toFixed(2));
         });
 
 
