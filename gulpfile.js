@@ -292,9 +292,8 @@ gulp.task('deploy:prod', () => {
   
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'wiredep'], 'build', 'exec-deploy-prod', resolve);
+    runSequence(['clean', 'wiredep'],'prep-deploy-prod', 'build', 'exec-deploy-prod', resolve);
   })
-
 });
 
 gulp.task('exec-deploy', () => {
@@ -306,6 +305,12 @@ gulp.task('exec-deploy', () => {
     }));
 
 })
+
+gulp.task('prep-deploy-prod', () => {
+  return file('CNAME', 'www.openrov.com', { src: true })
+    .pipe(gulp.dest('dist/'));
+})
+
 gulp.task('exec-deploy-prod', () => {
   return gulp.src('dist/**/*')
     .pipe($.ghPages({

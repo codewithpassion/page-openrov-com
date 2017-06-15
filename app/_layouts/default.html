@@ -44,7 +44,7 @@
     <!-- endbuild -->
     
     <!-- build:js /scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="/bower_components/modernizr/modernizr.js" defer></script>
     <!-- endbuild -->
 
     <!--Meta information for search engines -->
@@ -180,6 +180,30 @@
         {% endfor %}
     <!-- endbuild -->
     {% endif %}
-    
+
+    <noscript id="deferred-styles">
+      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,300italic,400italic,600italic'
+        rel='stylesheet' type='text/css'>
+        
+      <!--<link rel="stylesheet" href="/assets/main.css?rev=64c80e76ef4797eb31fa5c7f9c56a216">
+      <link rel="stylesheet" media="screen and (max-width: 437px), screen and (max-height 437px)" href="/assets/mobile.css?rev=f822512b198daddecbbf8c286159d769"
+        media="screen">-->
+    </noscript>
+
+    <script>
+      var loadDeferredStyles = function () {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = '{{site.baseUrl}}' + addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+        webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(function () { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);
+    </script>
+
+
   </body>
 </html>
