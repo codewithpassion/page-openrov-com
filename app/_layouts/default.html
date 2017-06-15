@@ -43,12 +43,6 @@
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
     
-    <!--[if lt IE 9]><!-->
-    <!-- build:js /scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js" async></script>
-    <!-- endbuild -->
-    <!--<![endif]-->
-
     <!--Meta information for search engines -->
     <script type="application/ld+json">
       {
@@ -125,16 +119,6 @@
     {% include contact-support.html %}
     <!--/contact support overlay -->
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
     <!-- build:js /scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -148,9 +132,8 @@
     <script src="/bower_components/Fullscreen-API-Polyfill/fullscreen-api-polyfill.min.js"></script>
     <!-- endbower -->
     <script src="/bower_components/bootstrap-validator/dist/validator.js"></script>
-    <!-- endbuild -->
-    
-    <!-- build:js /scripts/plugins.js -->
+
+
     <script src="/bower_components/bootstrap/js/dist/util.js"></script>
     <script src="/bower_components/bootstrap/js/dist/alert.js"></script>
     <script src="/bower_components/bootstrap/js/dist/button.js"></script>
@@ -162,6 +145,7 @@
     <script src="/bower_components/bootstrap/js/dist/tab.js"></script>
     <script src="/bower_components/bootstrap/js/dist/tooltip.js"></script>
     <script src="/bower_components/bootstrap/js/dist/popover.js"></script>
+
     <!-- endbuild -->
     
     <!-- build:js /scripts/main.js -->
@@ -187,9 +171,6 @@
       <link href='https://fonts.googleapis.com/css?family=Lato:300,400,600'
         rel='stylesheet' type='text/css'>
         
-      <!--<link rel="stylesheet" href="/assets/main.css?rev=64c80e76ef4797eb31fa5c7f9c56a216">
-      <link rel="stylesheet" media="screen and (max-width: 437px), screen and (max-height 437px)" href="/assets/mobile.css?rev=f822512b198daddecbbf8c286159d769"
-        media="screen">-->
     </noscript>
 
     <script>
@@ -206,10 +187,8 @@
       else window.addEventListener('load', loadDeferredStyles);
     </script>
 
-    <!--[if gt IE 8]><!-->
     <!-- build:js /scripts/vendor/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js" async></script>
     <!-- endbuild -->
-    <!--<![endif]-->
   </body>
 </html>
