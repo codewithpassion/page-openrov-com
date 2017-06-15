@@ -307,7 +307,7 @@ gulp.task('exec-deploy', () => {
 })
 
 gulp.task('prep-deploy-prod', () => {
-  return file('CNAME', 'www.openrov.com', { src: true })
+  return $.file('CNAME', 'www.openrov.com', { src: true })
     .pipe(gulp.dest('dist/'));
 })
 
