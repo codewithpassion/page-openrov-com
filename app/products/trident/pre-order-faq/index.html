@@ -1,0 +1,81 @@
+--- 
+title: Trident Drone Pre Order FAQ
+layout: default
+image: /assets/openrov/images/openrov-trident.jpg
+slug: pre-order-faq
+page_css: /styles/pre-order-faq.css
+redirect_from:
+  - '/pre-order-FAQ'
+  - '/pre-order-FAQ/'
+
+---
+<section class="section m-0">
+    <div class="hero x-small trident-reef">
+        <table class="hero-container">
+            <tbody>
+                <tr>
+                    <td class="title-container">
+                        <div class="container d-inline-block h-md-0 h-100">
+                            <div class="row h-100">
+                                <div class="col-sm-8 offset-sm-4 h-100">
+                                    <div class="title text-right">
+                                        Trident Drone <span class="text-nowrap">Pre-Order FAQ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<section id="pre-order-faq" class="section swatch-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 pb-4">
+
+
+                {% for item in site.data.pre-order-faq %}
+
+                <h2 class="pt-5 pb-3">
+                    {{ item.title }}
+                </h2>
+                
+                <div role="tablist" id="accordion" aria-multiselectable="true">
+                    {% for subItem in item.items %}
+                    <div class="card">
+                        <div class="card-header" role="tab" id="heading{{item.code}}{{forloop.index}}">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapse{{item.code}}{{forloop.index}}" aria-expanded="true" aria-controls="collapse{{item.code}}{{forloop.index}}">
+                                    {{subItem.title}} <i class="fa fa-caret-square-o-down down" aria-hidden="true"></i><i class="fa fa-caret-square-o-up up"
+                                        aria-hidden="true"></i>
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapse{{item.code}}{{forloop.index}}" class="collapse" role="tabpanel" aria-labelledby="heading{{item.code}}{{forloop.index}}">
+                            <div class="card-block">
+                                {{ subItem.value }}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {% endfor %}
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="buy-now-cta">
+    <a href="../buy-now">
+        <div class="title">PRE-ORDER TRIDENT</div>
+        <div class="subtitle">THE FUTURE OF UNDERWATER DRONES.</div>
+    </a>
+</section>

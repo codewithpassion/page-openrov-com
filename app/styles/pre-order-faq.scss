@@ -1,0 +1,15 @@
+section#pre-order-faq {
+    .card-header {
+ 
+        a { text-decoration: none; }
+
+        a, .fa { color: #1c4472 !important; }
+
+        a.collapsed {
+            .fa.up { display: none; }
+            .fa.down { display: initial; }
+        }
+        .fa.up { display: initial; }
+        .fa.down { display: none; }
+   }
+}

@@ -224,7 +224,7 @@ class BuyScreen {
 
     async submit() {
         const { orderForm, variants } = this;
-        orderForm.find('#order').attr('disabled', true);
+        orderForm.find('#order').attr('disabled', true).addClass('btn-secondary');
         orderForm.find('#orderProcessing').show();
 
         const formData = objectifyForm(orderForm.serializeArray())
@@ -256,7 +256,7 @@ class BuyScreen {
             orderForm.find('.alert .description').text(err.responseJSON.data);
             orderForm.find('.alert').show();
             orderForm.find('#orderProcessing').hide();
-            orderForm.find('#order').attr('disabled', false);
+            orderForm.find('#order').attr('disabled', false).removeClass('btn-secondary');
         }
 
     }
