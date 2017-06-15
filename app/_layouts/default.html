@@ -43,9 +43,11 @@
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
     
+    <!--[if lt IE 9]><!-->
     <!-- build:js /scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js" defer></script>
+    <script src="/bower_components/modernizr/modernizr.js" async></script>
     <!-- endbuild -->
+    <!--<![endif]-->
 
     <!--Meta information for search engines -->
     <script type="application/ld+json">
@@ -204,6 +206,10 @@
       else window.addEventListener('load', loadDeferredStyles);
     </script>
 
-
+    <!--[if gt IE 8]><!-->
+    <!-- build:js /scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js" async></script>
+    <!-- endbuild -->
+    <!--<![endif]-->
   </body>
 </html>
