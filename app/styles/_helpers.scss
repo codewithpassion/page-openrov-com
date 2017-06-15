@@ -264,3 +264,43 @@
 }
 // ------------------------------
 
+// buy now CTA
+.buy-now-cta {
+    height: 10rem;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: $ctaBlue;
+    font-weight: 100;
+    text-align: center;
+    transition: background-color 0.5s ease,
+                color 0.5s ease;
+
+    a { 
+        color: white;
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: white;
+        a {
+            color: $ctaBlue;
+        }
+    }
+
+    .title {
+        font-size: 2.4rem;
+        line-height: 1.2;
+        cursor: pointer;
+    }
+
+    .subtitle {
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+
+}
