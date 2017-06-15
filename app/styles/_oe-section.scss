@@ -1,4 +1,9 @@
     .oe-hero {
+
+        &.tall {
+            @include header-height();    
+        }
+
         @include header-height(28rem);
 
         background-image: url('../images/hero/openexplorer-map.jpg');

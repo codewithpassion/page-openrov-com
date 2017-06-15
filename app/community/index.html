@@ -48,7 +48,7 @@ links:
                 </tbody>
             </table>
         </div>
-        <div class="hero oe-hero">
+        <div class="hero oe-hero tall">
             <table class="hero-container ">
                 <div class="or-darken-50"></div>
                 <tbody>
@@ -122,8 +122,10 @@ links:
                             {% assign icon = link.icon %}
                         {% endif %}
                         
-                    <div class="col-6">
-                        <a href="{{url}}" class="community-link"><i class="fa {{icon}}" aria-hidden="true"></i>{{label}}</a>
+                    <div class="col-6 text-center text-md-left pb-2 ">
+                        <a href="{{url}}" class="community-link"><i class="fa {{icon}}" aria-hidden="true"></i>
+                            {{label}}
+                        </a>
                     </div>
                     {% endfor %}
                 </div>

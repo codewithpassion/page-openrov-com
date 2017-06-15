@@ -266,7 +266,7 @@
 
 // buy now CTA
 .buy-now-cta {
-    height: 10rem;
+    height: 7rem;
     width: 100%;
     flex: 1;
     display: flex;
@@ -300,14 +300,24 @@
     }
 
     .title {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
         line-height: 1.2;
         cursor: pointer;
     }
 
     .subtitle {
         cursor: pointer;
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+
+    @include media-breakpoint-up(md) {
+        height: 10rem;
+        .title {
+            font-size: 2.4rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+        }
     }
 
 }
