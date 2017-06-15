@@ -288,12 +288,30 @@ gulp.task('deploy', () => {
   })
 
 });
+gulp.task('deploy:prod', () => {
+  
+  return new Promise(resolve => {
+    dev = false;
+    runSequence(['clean', 'wiredep'], 'build', 'exec-deploy-prod', resolve);
+  })
+
+});
 
 gulp.task('exec-deploy', () => {
   return gulp.src('dist/**/*')
     .pipe($.ghPages({
       branch: 'gh-pages',
       remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git',
+      push: false
+    }));
+
+})
+gulp.task('exec-deploy-prod', () => {
+  return gulp.src('dist/**/*')
+    .pipe($.ghPages({
+      cacheDir: '.publish-prod',
+      branch: 'gh-pages',
+      remoteUrl: 'git@github.com:openrov/page-openrov-com.git',
       // push: false
     }));
 
