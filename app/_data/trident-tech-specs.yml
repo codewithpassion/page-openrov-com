@@ -4,7 +4,7 @@
     'WEIGHT': '3.40 kg [ballasted for freshwater], 3.485 kg [ballasted for seawater]'
 - title: PERFORMANCE
   content:
-    'DEPTH RATING': '100 m [328]'
+    'DEPTH RATING': '100 m [328 ft]'
     'MAXIMUM SPEED': '2 m/s [3.89 kts / 7.2 kph / 4.47 mph]'
 - title: BATTERYAND POWER
   content:
@@ -27,7 +27,7 @@
 - title: CAMERA SPECIFICATION
   content:
     'RESOLUTION': 1080p @ 30 fps, live and recorded
-    'VIDEO LATENCY': Very low latency (100 ms)
+    'VIDEO LATENCY': Very low latency (usually <100 ms)
     'VIDEO COMPRESSION': h.264
     'STILL IMAGE CAPTURE': 4.1 MP instant capture during video live stream
     'STILL IMAGE MODES': Single image, burst, and interval
