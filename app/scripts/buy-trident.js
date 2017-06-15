@@ -154,6 +154,7 @@ class BuyScreen {
         }).join('');
 
         orderForm.find('#options').prepend(optionsHtml);
+        orderForm.find('#savingsContainer').removeClass('d-none');
 
         const formData = objectifyForm(orderForm.serializeArray())
         formData.country = 'us';
