@@ -27,7 +27,7 @@
 - title: CAMERA SPECIFICATION
   content:
     'RESOLUTION': 1080p @ 30 fps, live and recorded
-    'VIDEO LATENCY': Very low latency (usually <100 ms)
+    'VIDEO LATENCY': Very low latency (usually &lt;100 ms)
     'VIDEO COMPRESSION': h.264
     'STILL IMAGE CAPTURE': 4.1 MP instant capture during video live stream
     'STILL IMAGE MODES': Single image, burst, and interval
