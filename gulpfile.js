@@ -8,6 +8,9 @@ const runSequence = require('run-sequence');
 const mkdirp = require('mkdirp');
 const cp = require('child_process');
 const insert = require('gulp-insert');
+const imagmin = require('gulp-imagemin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -152,8 +155,13 @@ gulp.task('html-exec', () => {
 });
 
 gulp.task('images', () => {
+  const plugins = [
+    imagmin.optipng({ quality: '65-80' }),
+    imageminMozjpeg({ quality: '90' }),
+  ]
+
   return gulp.src('app/images/**/*')
-    .pipe($.cache($.imagemin()))
+    .pipe($.cache($.imagemin(plugins)))
     .pipe(gulp.dest('dist/images'));
 });
 
@@ -250,6 +258,8 @@ gulp.task('wiredep', () => {
     }))
     .pipe(gulp.dest('app'));
 });
+
+
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
