@@ -6,12 +6,12 @@
   content:
     'DEPTH RATING': '100 m [328 ft]'
     'MAXIMUM SPEED': '2 m/s [3.89 kts / 7.2 kph / 4.47 mph]'
-- title: BATTERYAND POWER
+- title: BATTERY AND POWER
   content:
     'BATTERY ARCHITECTURE': 3S4P Li-NMC 18650 cells with built-in PCM, UN 38.3 approved
     'CAPACITY': 95 Wh
     'CHARGE TIME': 1.5 hr from 20% to 80%, 3 hr for 0% to 100%
-    'NOMINAL RUN TIME ': '3 to 4 hrs under normal operation (using thrusters, lights, and actively piloting'
+    'NOMINAL RUN TIME ': '3 to 4 hrs under normal operation (using thrusters, lights, and actively piloting)'
     'POWER CONSUMPTION': '30 W nominal (10 W min, 180 W max)'
     'CHARGER POWER REQUIREMENT': '120 VAC or 240 VAC (no ground required)'
 - title: INTERFACE AND COMMUNICATION
@@ -38,7 +38,7 @@
     'MAXIMUM OPERATIONAL LENGTH': 150 m
     'WORKING STRENGTH': 100 kg, Kevlar reinforced
     'BUOYANCY': Neutrally buoyant in freshwater, slightly positive in seawater
-    'FEATURES': High visibility yellow with wear-resistant polypropylene jacket
+    'FEATURES': High visibility yellow with wear-resistant polyeurethan jacket
 - title: SENSORS
   content:
     'NAVIGATION': 3-axis magnetometer, 3-axis gyro, 3-axis accelerometer, cm-resolution depth sensor

@@ -16,7 +16,7 @@ section.trident {
         }
 
         .quote {
-            quotes: '”' '”';
+            quotes: '\201C' '\201D';
             font-size: 2.5rem;
             @include media-breakpoint-down(lg) {
                 font-size: 1.5rem;
