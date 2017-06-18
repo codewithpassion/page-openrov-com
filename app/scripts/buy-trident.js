@@ -142,7 +142,7 @@ class BuyScreen {
 
         const optionsHtml = result.data.variants.reverse().map((v, idx) => {
             const price = (v.price / 100);
-            return '<tr class="product-row" data-product-option="' + this.getOptions(v.options.values) +'">' + 
+            return '<tr class="product-row" data-product-option="' + v.options.values.join(' + ') +'">' + 
                     '<td class="product-selector product">' + 
                     ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
                     '<td class="product-info product text-center text-md-left ">' +  
