@@ -70,8 +70,8 @@ images:
                 </span>
             </div>
             <div class="col-12 text-center pt-5 pb-5">
-                <a href="./buy-now" class="btn btn-md-lg btn-primary btn-spot-cta px-4 font-weight-bold mb-3 mr-3">PRE-ORDER TRIDENT NOW</a>
-                <a href="./pre-order-faq" class="btn btn-md-lg btn-secondary mb-3 ">PRE-ORDER FAQ</a>
+                <a href="./buy-now" data-event-track="Click::Products:Trident:Header:BuyNow" class="btn btn-md-lg btn-primary btn-spot-cta px-4 font-weight-bold mb-3 mr-3">PRE-ORDER TRIDENT NOW</a>
+                <a href="./pre-order-faq" class="btn btn-md-lg btn-secondary mb-3 "  data-event-track="Click::Products:Trident:Header:PreOrderFAQ">PRE-ORDER FAQ</a>
             </div>
         </div>
     </div>
@@ -287,14 +287,14 @@ images:
                 <div class="container pb-5">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <a href="#specs" class="btn btn-md-lg btn-primary btn-spot-cta px-4  font-weight-bold">TECHNICAL SPECS</a>
+                            <a href="#specs" class="btn btn-md-lg btn-primary btn-spot-cta px-4  font-weight-bold"  data-event-track="Click::Products:Trident:Goto:TechSpecs">TECHNICAL SPECS</a>
                         </div>
                     </div>
                 </div>
     </section>
 
     <section class="buy-now-cta">
-        <a href="./buy-now">
+        <a href="./buy-now"  data-event-track="Click::Products:Trident:CTA:BuyNow">
             <div class="title"><p class="font-italic">PRE-ORDER NOW TO RESERVE YOUR DELIVERY</p></div>
             <div class="subtitle">THE FUTURE OF UNDERWATER DRONES.</div>
         </a>
@@ -307,10 +307,10 @@ images:
             <div class="row">
                 <ul class="col-10 offset-1 nav nav-fill" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#photos" role="tab">PHOTOS</a>
+                        <a class="nav-link active" data-toggle="tab" href="#photos" role="tab" data-event-track="Click::Products:Trident:Tabs:Photos" >PHOTOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#specs" role="tab">TECHNICAL SPECS</a>
+                        <a class="nav-link" data-toggle="tab" href="#specs" role="tab" data-event-track="Click::Products:Trident:Tabs:TechSpecs">TECHNICAL SPECS</a>
                     </li>
                 </ul>
             </div>
@@ -331,7 +331,7 @@ images:
                                             class="lazyload blur-up"
                                         />
                                         <div class="overlay">
-                                            <a href="{{site.base}}/images/products/trident/photos/{{item}}.jpg" class="click-area"></a>
+                                            <a href="{{site.base}}/images/products/trident/photos/{{item}}.jpg" class="click-area" data-event-track="Click::Products:Trident:Photos:{{item}}.jpg"></a>
                                             <div class="figure-container">
                                                 <span class="figure-icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="none"><path d="M50.941 34.953v30.094M65.988 50h-30.093"></path></g></svg>                
@@ -383,7 +383,7 @@ images:
     </section>
 
     <section class="buy-now-cta">
-        <a href="./buy-now">
+        <a href="./buy-now" data-event-track="Click::Products:Trident:Footer:CTA:BuyNow">
             <div class="title">PRE-ORDER TRIDENT</div>
             <div class="subtitle">THE FUTURE OF UNDERWATER DRONES.</div>
         </a>
