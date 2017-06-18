@@ -142,7 +142,7 @@ class BuyScreen {
 
         const optionsHtml = result.data.variants.reverse().map((v, idx) => {
             const price = (v.price / 100);
-            return '<tr class="product-row">' + 
+            return '<tr class="product-row" data-product-option="' + this.getOptions(v.options.values) +'">' + 
                     '<td class="product-selector product">' + 
                     ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
                     '<td class="product-info product text-center text-md-left ">' +  
@@ -203,8 +203,10 @@ class BuyScreen {
         });
         
         orderForm.find('tr.product-row').click(ev => {
-            orderForm.find('input[type=radio][name="variant"][checked]')[0].removeAttribute('checked');
-            $(ev.target).parent().find('input[type=radio][name="variant"]')[0].setAttribute('checked', 'checked');
+            const checked = orderForm.find('input[type=radio][name="variant"][checked]')[0];
+            if (checked) { checked.removeAttribute('checked'); }
+            const newItem = $(ev.target).parent().find('input[type=radio][name="variant"]')[0];
+            if (newItem) { newItem.setAttribute('checked', 'checked'); }
             this.calculateShipping(orderForm);
         });
 
