@@ -27,7 +27,7 @@
 - title: CAMERA SPECIFICATION
   content:
     'RESOLUTION': 1080p @ 30 fps, live and recorded
-    'VIDEO LATENCY': Very low latency (usually &lt;100 ms)
+    'VIDEO LATENCY': Very low latency (&#126;120 ms)
     'VIDEO COMPRESSION': h.264
     'STILL IMAGE CAPTURE': 4.1 MP instant capture during video live stream
     'STILL IMAGE MODES': Single image, burst, and interval
@@ -36,7 +36,7 @@
   content:
     'AVAILABLE LENGTHS': 25 m, 100 m
     'MAXIMUM OPERATIONAL LENGTH': 150 m
-    'WORKING STRENGTH': 100 kg, Kevlar reinforced
+    'BREAKING STRENGTH': 100 kg, Kevlar reinforced
     'BUOYANCY': Neutrally buoyant in freshwater, slightly positive in seawater
     'FEATURES': High visibility yellow with wear-resistant polyeurethan jacket
 - title: SENSORS
