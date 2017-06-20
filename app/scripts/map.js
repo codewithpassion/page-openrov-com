@@ -9,7 +9,7 @@ window.map = {
     address: '',
     latlng: ['37.864415,-122.300633'], //37.864415, -122.300633
     center_latlng: '',
-    markerURL: 'assets/images/marker.png',
+    markerURL: '../images/content/marker.png',
     auto_center: true,
 };
 'use strict';

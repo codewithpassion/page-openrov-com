@@ -128,10 +128,18 @@
     <!-- build:js /scripts/{{page.slug}}.js -->
         {% for script in page.page_script %}
             {% assign scriptPath = script %}
-            {% if script contains '//' %} {% assign scriptPath = script %} {% endif %} 
+            {% unless script contains '//' %} 
     <script src="{{ scriptPath }}"></script>
+            {% endunless %} 
         {% endfor %}
     <!-- endbuild -->
+        {% for script in page.page_script %}
+            {% assign scriptPath = script %}
+            {% if script contains '//' %} 
+    <script src="{{ scriptPath }}"></script>
+            {% endif %} 
+        {% endfor %}
+
     {% endif %}
 
     <noscript id="deferred-styles">
