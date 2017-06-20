@@ -118,128 +118,139 @@ page_script:
                                 Got a discount code?
                             </span>
                             <div class="d-flex form-inline flex-row ">
-                                <input type="text" autocomplete="off" class="form-control form-control-danger" id="couponCode" name="couponCode" placeholder="Coupon code">
+                                <input type="text" autocomplete="true" data-store class="form-control form-control-danger" id="couponCode" name="couponCode" placeholder="Coupon code">
                                 <button type="button" id="applyDiscount" class="btn btn-primary mt-2 mt-md-0 ml-md-2">Apply</button>
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12 pb-3">
-                            <h2>Shipping information:</h2>
+                    <div id="shippingInformation">
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12 pb-3">
+                                <h2>Shipping information:</h2>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group">
-                                <div>
-                                    <input type="text" class="form-control form-control-danger" id="firstName" name="firstName" placeholder="First Name" required></div>
-                                <div>
-                                    <input type="text" class="form-control form-control-danger" id="lastName" name="lastName" placeholder="Last Name" required>
+    
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group">
+                                    <div>
+                                        <input type="text" data-store class="form-control form-control-danger" id="firstName" name="firstName" placeholder="First Name" required></div>
+                                    <div>
+                                        <input type="text" data-store class="form-control form-control-danger" id="lastName" name="lastName" placeholder="Last Name" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group">
-                                <div><input type="text" class="form-control form-control-danger" id="address1" name="address1"
-                                        placeholder="Street Address" required></div>
-                                <input type="text" class="form-control form-control-danger" id="address2" name="address2" placeholder="Apt, Suite, Bldg (optional)">
-                                <div><input type="text" class="form-control form-control-danger" id="city" name="city" placeholder="City"
-                                        required></div>
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group">
+                                    <div><input type="text"  data-store class="form-control form-control-danger" id="address1" name="address1"
+                                            placeholder="Street Address" required></div>
+                                    <input type="text" data-store class="form-control form-control-danger" id="address2" name="address2" placeholder="Apt, Suite, Bldg (optional)">
+                                    <div><input type="text" data-store class="form-control form-control-danger" id="city" name="city" placeholder="City"
+                                            required></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group selects-2">
-                                <div style="flex: 0.8;"><input type="text" class="form-control  form-control-danger" id="zip" name="zip" placeholder="ZIP/Postal"
-                                        required></div>
-                                <div style="flex: 1;">
-                                    <select class="form-control  form-control-danger" id="usState" name="usState">
-                                        {% for item in site.data.usStates %}
-                                        <option value="{{item.Abbreviation}}">{{item.State}}</option>
-                                        {% endfor %}                        
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group selects-2">
+                                    <div style="flex: 0.8;"><input type="text" data-store class="form-control  form-control-danger" id="zip" name="zip" placeholder="ZIP/Postal"
+                                            required></div>
+                                    <div style="flex: 1;">
+                                        <select data-store class="form-control  form-control-danger" id="usState" name="usState">
+                                            {% for item in site.data.usStates %}
+                                            <option value="{{item.Abbreviation}}">{{item.State}}</option>
+                                            {% endfor %}                        
+                                        </select>
+                                    </div>
+                                    <div style="flex: 1;" class="hidden-xs-up"><input type="text" data-store class="form-control  form-control-danger" style="flex:2" id="state" name="state"
+                                            placeholder="State/Province" required></div>
+    
+                                    <select data-store style="flex: 1;" class="form-control col-md-9 form-control-danger" id="country" name="country">
+                                        {% for item in site.data.country %}
+                                        <option value="{{item.id}}">{{item.value}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
-                                <div style="flex: 1;" class="hidden-xs-up"><input type="text" class="form-control  form-control-danger" style="flex:2" id="state" name="state"
-                                        placeholder="State/Province" required></div>
-
-                                <select style="flex: 1;" class="form-control col-md-9 form-control-danger" id="country" name="country">
-                                    {% for item in site.data.country %}
-                                    <option value="{{item.id}}">{{item.value}}</option>
-                                    {% endfor %}
-                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group">
-                                <div>
-                                    <input type="email" class="form-control form-control-danger" id="email" name="email" required placeholder="you@example.com">
-                                </div>
-                                <div>
-                                    <input type="tel" class="form-control form-control-danger" id="phone" name="phone" placeholder="Phone: 1-(555)-555-5555"
-                                        required>
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group">
+                                    <div>
+                                        <input data-store type="email" class="form-control form-control-danger" id="email" name="email" required placeholder="you@example.com">
+                                    </div>
+                                    <div>
+                                        <input data-store type="tel" class="form-control form-control-danger" id="phone" name="phone" placeholder="Phone: 1-(555)-555-5555"
+                                            required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group">
-                                <textarea class="form-control form-control-danger" id="notes" name="notes" rows="3" placeholder="Notes for the Seller (optional)"></textarea>
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group">
+                                    <textarea class="form-control form-control-danger" id="notes" name="notes" rows="3" placeholder="Notes for the Seller (optional)"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12 pt-3 pb-3 ">
-                            <h2>Billing information:</h2>
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12 pb-4">
+                                <div id="enterBilling" mame="enterBilling" class="btn btn-primary font-weight-bold py-3 px-4">Enter billing information</div>
+                            </div>
                         </div>
+
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group">
-                                <div style="flex: 1">
-                                    <input type="tel" pattern="^[0-9 -]{1,}$" autocomplete="off" class="form-control form-control-danger" id="ccNumber" name="ccNumber"
-                                        placeholder="Debit/Credit Card Number" required>
+                    <div id="billingInformation" style="display: none;">                      
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12 pt-3 pb-3 ">
+                                <h2>Billing information:</h2>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group">
+                                    <div style="flex: 1">
+                                        <input type="tel" pattern="^[0-9 -]{1,}$" autocomplete="off" class="form-control form-control-danger" id="ccNumber" name="ccNumber"
+                                            placeholder="Debit/Credit Card Number" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group">
-                                <div><input type="text" class="form-control form-control-danger" id="expDate" name="expDate"
-                                        placeholder="MM/YY" pattern="^[0-9]{2}/[0-9]{2}$" required></div>
-                                <div><input type="number" data-minlength="3" maxlength="4" class="form-control form-control-danger"
-                                        id="cvc" name="cvc" placeholder="CVC" required></div>
-                                <div><input type="number" class="form-control " id="billingZip" name="billingZip" placeholder="Billing ZIP"
-                                        required></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12">
-                            <div class="flex-form-group">
-                                <div class="alert alert-danger col-md-10" role="alert" style="display: none">
-                                    <strong class="title"></strong><br>
-                                    <span class="description"></span>
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group">
+                                    <div><input type="text" class="form-control form-control-danger" id="expDate" name="expDate"
+                                            placeholder="MM/YY" pattern="^[0-9]{2}/[0-9]{2}$" required></div>
+                                    <div><input type="number" data-minlength="3" maxlength="4" class="form-control form-control-danger"
+                                            id="cvc" name="cvc" placeholder="CVC" required></div>
+                                    <div><input type="number" class="form-control " id="billingZip" name="billingZip" placeholder="Billing ZIP"
+                                            required></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-xs-12 pb-4">
-                            <button type="button" id="order" mame="order" class="submit btn btn-primary font-weight-bold py-3 px-4">Place your pre-order!</button>
-                           
-                            <label for="order" id="orderProcessing" class="pl-4" style="display: none"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing...</label>
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12">
+                                <div class="flex-form-group">
+                                    <div class="alert alert-danger col-md-10" role="alert" style="display: none">
+                                        <strong class="title"></strong><br>
+                                        <span class="description"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 col-xs-12 pb-4">
+                                <button type="button" id="order" mame="order" class="submit btn btn-primary font-weight-bold py-3 px-4">Place your pre-order!</button>
+                               
+                                <label for="order" id="orderProcessing" class="pl-4" style="display: none"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Processing...</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row">

@@ -11,6 +11,13 @@ function objectifyForm(formArray) {//serialize data function
 
 class BuyScreen {
 
+    isEmail(email) {
+        // See http://rosskendall.com/blog/web/javascript-function-to-check-an-email-address-conforms-to-rfc822
+
+        return /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/.test(email);
+    }
+
+
     getData(formData) {
         var address = {
             "first_name": formData.firstName,
@@ -133,6 +140,18 @@ class BuyScreen {
             .join(' +&nbsp;')
     }
 
+    countryChanged(target) {
+        if (target.options[target.selectedIndex].value === 'US') {
+            this.orderForm.find('#usState').parent().removeClass('hidden-xs-up').attr('required', false);
+            this.orderForm.find('#state').attr('required', false).parent().addClass('hidden-xs-up');
+        } else {
+            this.orderForm.find('#state').attr('required', true).parent().removeClass('hidden-xs-up');
+            this.orderForm.find('#usState').parent().addClass('hidden-xs-up').attr('required', false);
+        }
+        this.orderForm.validator('update');
+        this.calculateShipping(this.orderForm);
+    }
+
     async setupForm(orderForm) {
         const result = await $.ajax({
             url: 'https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/celry-access/products/' + PRODUCT
@@ -162,18 +181,16 @@ class BuyScreen {
         const data = this.getData(formData);
         this._calculateShipping(data, orderForm);
 
-        orderForm.find('#country option[value="US"]').attr('selected', 'true');
-        orderForm.find('#country').change(ev => {
-            if (ev.currentTarget.options[ev.target.selectedIndex].value === 'US') {
-                orderForm.find('#usState').parent().removeClass('hidden-xs-up').attr('required', false);
-                orderForm.find('#state').attr('required', false).parent().addClass('hidden-xs-up');
-            } else {
-                orderForm.find('#state').attr('required', true).parent().removeClass('hidden-xs-up');
-                orderForm.find('#usState').parent().addClass('hidden-xs-up').attr('required', false);
-            }
-            orderForm.validator('update');
-            this.calculateShipping(orderForm);
+        const country = orderForm.find('#country');
+        if (!country.attr('data-store-loaded')) {
+            country.val('US');
+        }
+        this.countryChanged(country.get(0));
+
+        country.change(ev => {
+            this.countryChanged(ev.target);
         })
+
         orderForm.find('#zip').change(ev => {
             this.calculateShipping(orderForm);
         });
@@ -268,6 +285,72 @@ class BuyScreen {
         this.orderForm.validator('update');
     }
 
+    setupStorage() {
+        if (!localStorage) return;
+
+        $('[ data-store]')
+            .on('change', (ev) => {
+                const target = ev.currentTarget;
+                if (target.tagName === 'INPUT') {
+                    localStorage.setItem(target.id, $(target).val())
+                }
+                if (target.tagName === 'SELECT') {
+                    localStorage.setItem(target.id, $(target).val())
+                }
+            })
+            .each((i,e) => {
+                if (e.tagName === 'INPUT') {
+                    $(e).val(localStorage.getItem(e.id));
+                }
+                if (e.tagName === 'SELECT') {
+                    const value = localStorage.getItem(e.id);
+                    if (value) {
+                        $(e)
+                            .val(value)
+                            .attr('data-store-loaded', 'true');
+
+                    }
+                }
+
+                if (e.id === "couponCode") {
+                    this.calculateShipping(this.orderForm);
+                }
+            })
+
+    }
+
+    setupAbandonedCart() {
+        const email = this.orderForm.find('#email');
+        email.on('change', async ev => {
+            if (this.isEmail(email.val())) {
+
+                const data = {
+                    email_address: email.val(),
+                    "status": "subscribed",
+                    "merge_fields": {
+                        "FNAME": this.orderForm.find('#firstName').val(),
+                        "LNAME": this.orderForm.find('#lastName').val()
+                    } 
+                };
+
+                try {
+                    const result = await $.ajax({
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/mailchimp/abbandoned-card",
+                        "method": "POST",
+                        "headers": { "content-type": "application/json" },
+                        "processData": false,
+                        "data": JSON.stringify(data),
+                    })
+                }
+                catch (err) {
+                    console.error('Could not add email address');
+                }
+            }
+        });
+    }
+
     init() {
         this.orderForm = $('form#orderForm');
         const self = this;
@@ -290,10 +373,19 @@ class BuyScreen {
             this.calculateShipping(this.orderForm);
         });
 
+        this.orderForm.find('#enterBilling').click(() => {
+            this.orderForm.find('#shippingInformation').fadeOut(() => {
+                this.orderForm.find('#billingInformation').fadeIn();
+            });
+        });
+
         $('#orderFormContainer').removeClass('invisible');
         $('#loader-wrapper').addClass('loaded');
 
+        this.setupStorage();
+        this.setupAbandonedCart();
         this.runSetupForm();        
+ 
     }
 }
 
