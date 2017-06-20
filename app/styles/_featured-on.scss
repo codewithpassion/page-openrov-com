@@ -1,9 +1,11 @@
 section.featured-on {
     .featured-on-list {
         justify-content: space-around;
+        padding-top: 4px;
+        margin-bottom: -4px;
     }
     
-    .featured-on-list a img {
+    .featured-on-list a div {
         display: inline-block;
         max-height: 1.2rem;
         opacity: .5;

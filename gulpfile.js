@@ -11,6 +11,8 @@ const insert = require('gulp-insert');
 const imagmin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
+const sassInlineImage = require('sass-inline-image');
+const args = require('yargs').argv;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -25,19 +27,29 @@ gulp.task('styles-prep', (done) => {
     done();
 })
 
-gulp.task('styles', ['styles-prep'], () => {
-  return gulp.src('app/styles/*.scss')
+function execStyle(src, dest) {
+  return gulp.src(src)
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
-      includePaths: ['.']
+      includePaths: ['.'],
+      functions: sassInlineImage({ /* options */ })
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.if(dev, $.sourcemaps.write()))
-    .pipe(gulp.dest('.tmp/styles'))
-    .pipe(reload({stream: true}));
+    .pipe(gulp.dest(dest))
+    .pipe(reload({ stream: true }));
+}
+
+gulp.task('styles-base', () => execStyle('app/styles/*.scss', '.tmp/styles'))
+gulp.task('styles-includes', () => execStyle('app/_includes/styles/*.scss', '.tmp/_includes/styles'))
+
+gulp.task('styles', ['styles-prep'], () => {
+  return new Promise(resolve => {
+    runSequence(['styles-base', 'styles-includes'], resolve);
+  });
 });
 
 gulp.task('scripts', () => {
@@ -86,7 +98,15 @@ gulp.task('jekyll-prep', ['jekyll-prep-country-codes'], () => {
   mkdirp.sync('.tmp.jekyll');
   var exclude = '';
   if (configCopied) { exclude = '!app/_config.yml' }
-  return gulp.src(['app/**/*.html', 'app/**/*.yml', 'app/**/*.csv', 'app/**/*.svg', exclude])
+  return gulp.src([
+    'app/**/*.html', 
+    'app/**/*.yml', 
+    'app/**/*.csv', 
+    'app/**/*.svg', 
+    '.tmp/**/_includes/**/*.css', 
+    exclude
+    ])
+      .pipe($.if(args.verbose, $.print()))
       .pipe(gulp.dest('.tmp.jekyll.source'));
 })
 

@@ -1,0 +1,8 @@
+// .media-logos { background: inline -image('/app/images/media/media-logos-sprite.png') no-repeat top left; width: 136px; height: 17px;  } 
+.media-logos { background: url('/images/media/media-logos-sprite.png') no-repeat top left; width: 136px; height: 17px;  } 
+.media-logos.sprite--bbc_logo { background-position: 0 0; width: 75px; } 
+.media-logos.sprite--gizmodo_logo { background-position: -85px 0; width: 134px; } 
+.media-logos.sprite--nyt_logo { background-position: -229px 0; } 
+.media-logos.sprite--popsci_logo { background-position: -375px 0; width: 64px; } 
+.media-logos.sprite--tech_crunch_logo { background-position: -449px 0; } 
+.media-logos.sprite--ted_logo { background-position: -595px 0; width: 63px; } 

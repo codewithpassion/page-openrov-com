@@ -64,6 +64,13 @@
     <link rel="prefetch" href="/styles/vendor.css">
     <link rel="prefetch" href="/scripts/vendor.js">
 
+
+    {% if page.include_page_css %}
+      <style>
+      {% include styles/{{page.include_page_css}}.css %}
+      </style>
+    {% endif %}
+
   </head>
   <body>
     <!--[if IE]>
