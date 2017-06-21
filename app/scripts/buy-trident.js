@@ -225,6 +225,9 @@ class BuyScreen {
             const newItem = $(ev.target).parent().find('input[type=radio][name="variant"]')[0];
             if (newItem) { newItem.setAttribute('checked', 'checked'); }
             this.calculateShipping(orderForm);
+
+            const value = orderForm.find('input[type=radio][name="variant"][checked]').val();
+            localStorage.setItem('buyNow.productVariant',value);
         });
 
         orderForm.on('valid.bs.validator', ev => {
@@ -237,6 +240,15 @@ class BuyScreen {
                 $(ev.relatedTarget).parent().addClass('has-danger').addClass('has-error');
             }
         });
+
+        const variant = localStorage.getItem('buyNow.productVariant');
+        if (variant) {
+            const checked = orderForm.find('input[type=radio][name="variant"][checked]')[0];
+            if (checked) { checked.removeAttribute('checked'); }
+            const newItem = orderForm.find(`input[type=radio][name="variant"][value=${variant}]`)[0];
+            if (newItem) { newItem.setAttribute('checked', 'checked'); }
+            this.calculateShipping(orderForm);
+        }
 
         return result.data.variants;
     };
@@ -267,6 +279,7 @@ class BuyScreen {
                          "&amount=" + total + 
                          "&currency=" + currency + 
                          "&line_items=" + line_items;
+            this.clearStorage();
 
             window.location.replace(window.location.href + '../confirmation/' + path);
         }
@@ -285,25 +298,34 @@ class BuyScreen {
         this.orderForm.validator('update');
     }
 
+    clearStorage() {
+        if (!localStorage) return;
+
+        for (let i = 0; i <= localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key) { localStorage.removeItem(key); }
+        }
+    }
+
     setupStorage() {
         if (!localStorage) return;
 
-        $('[ data-store]')
+        $('[data-store]')
             .on('change', (ev) => {
                 const target = ev.currentTarget;
                 if (target.tagName === 'INPUT') {
-                    localStorage.setItem(target.id, $(target).val())
+                    localStorage.setItem('buyNow.' + target.id, $(target).val())
                 }
                 if (target.tagName === 'SELECT') {
-                    localStorage.setItem(target.id, $(target).val())
+                    localStorage.setItem('buyNow.' + target.id, $(target).val())
                 }
             })
             .each((i,e) => {
                 if (e.tagName === 'INPUT') {
-                    $(e).val(localStorage.getItem(e.id));
+                    $(e).val(localStorage.getItem('buyNow.' + e.id));
                 }
                 if (e.tagName === 'SELECT') {
-                    const value = localStorage.getItem(e.id);
+                    const value = localStorage.getItem('buyNow.' + e.id);
                     if (value) {
                         $(e)
                             .val(value)
@@ -378,6 +400,13 @@ class BuyScreen {
                 this.orderForm.find('#billingInformation').fadeIn();
             });
         });
+        
+        this.orderForm.find('#goBack').click(() => {
+            this.orderForm.find('#billingInformation').fadeOut(() => {
+                this.orderForm.find('#shippingInformation').fadeIn();
+            });
+            
+        })
 
         $('#orderFormContainer').removeClass('invisible');
         $('#loader-wrapper').addClass('loaded');
