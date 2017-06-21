@@ -48,18 +48,22 @@ class BuyScreen {
                 "variant_id": formData.variant,
                 "quantity": parseInt(formData.quantity)
             }],
-            "payment_source": {
-                "card": {
-                    "name": formData.firstName + ' ' + formData.lastName,
-                    "number": formData.ccNumber,
-                    "exp_month": formData.expDate.split('/')[0],
-                    "exp_year": formData.expDate.split('/')[1],
-                    "cvc": formData.cvc
-                }
-            },
+            "payment_source": {},
             "discount_codes": [formData.couponCode]
         };
         return data;
+    }
+
+    getPaymentData(formData) {
+        return {
+            "card": {
+                "name": formData.firstName + ' ' + formData.lastName,
+                "number": formData.ccNumber,
+                "exp_month": formData.expDate.split('/')[0],
+                "exp_year": formData.expDate.split('/')[1],
+                "cvc": formData.cvc
+            }
+        };
     }
 
     getVariant(formData, variants) {
@@ -254,12 +258,17 @@ class BuyScreen {
     };
 
     async submit() {
-        const { orderForm, variants } = this;
-        orderForm.find('#order').attr('disabled', true).addClass('btn-secondary');
-        orderForm.find('#orderProcessing').show();
+
+        $(window).off('beforeunload');
+
+        const { orderForm, billingForm, variants } = this;
+        billingForm.find('#order').attr('disabled', true).addClass('btn-secondary');
+        billingForm.find('#orderProcessing').show();
 
         const formData = objectifyForm(orderForm.serializeArray())
         const data = this.getData(formData);
+        const paymentData = objectifyForm(billingForm.serializeArray());
+        data.payment_source = this.getPaymentData(paymentData);
         try {
             const result = await $.ajax({
                 "async": true,
@@ -280,15 +289,16 @@ class BuyScreen {
                          "&currency=" + currency + 
                          "&line_items=" + line_items;
             this.clearStorage();
+            document.__isSubmitted = true;
 
             window.location.replace(window.location.href + '../confirmation/' + path);
         }
         catch (err) {
-            orderForm.find('.alert .title').text(err.statusText);
-            orderForm.find('.alert .description').text(err.responseJSON.data);
-            orderForm.find('.alert').show();
-            orderForm.find('#orderProcessing').hide();
-            orderForm.find('#order').attr('disabled', false).removeClass('btn-secondary');
+            billingForm.find('.alert .title').text(err.statusText);
+            billingForm.find('.alert .description').text(err.responseJSON.data);
+            billingForm.find('.alert').show();
+            billingForm.find('#orderProcessing').hide();
+            billingForm.find('#order').attr('disabled', false).removeClass('btn-secondary');
         }
 
     }
@@ -341,49 +351,66 @@ class BuyScreen {
 
     }
 
+    async sendAbandondedEmail() {
+        const email = this.orderForm.find('#email');
+        if (this.isEmail(email.val())) {
+
+            const data = {
+                email_address: email.val(),
+                "status": "subscribed",
+                "merge_fields": {
+                    "FNAME": this.orderForm.find('#firstName').val(),
+                    "LNAME": this.orderForm.find('#lastName').val()
+                }
+            };
+
+            try {
+                const result = await $.ajax({
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/mailchimp/abbandoned-card",
+                    "method": "POST",
+                    "headers": { "content-type": "application/json" },
+                    "processData": false,
+                    "data": JSON.stringify(data),
+                })
+            }
+            catch (err) {
+                console.error('Could not add email address');
+            }
+        }
+
+    }
+
     setupAbandonedCart() {
         const email = this.orderForm.find('#email');
-        email.on('change', async ev => {
-            if (this.isEmail(email.val())) {
-
-                const data = {
-                    email_address: email.val(),
-                    "status": "subscribed",
-                    "merge_fields": {
-                        "FNAME": this.orderForm.find('#firstName').val(),
-                        "LNAME": this.orderForm.find('#lastName').val()
-                    } 
-                };
-
-                try {
-                    const result = await $.ajax({
-                        "async": true,
-                        "crossDomain": true,
-                        "url": "https://wt-f938a32f745f3589d64a35c208dd4c79-0.run.webtask.io/mailchimp/abbandoned-card",
-                        "method": "POST",
-                        "headers": { "content-type": "application/json" },
-                        "processData": false,
-                        "data": JSON.stringify(data),
-                    })
-                }
-                catch (err) {
-                    console.error('Could not add email address');
-                }
+        $(window).on('beforeunload', ev => {
+            if (!document.__isSubmitted) {
+                this.sendAbandondedEmail();
             }
-        });
+
+            var confirmationMessage = undefined;
+            ev.returnValue = confirmationMessage; 
+            return confirmationMessage;
+         });
     }
 
     init() {
         this.orderForm = $('form#orderForm');
+        this.billingForm = $('form#billingForm');
         const self = this;
-        this.orderForm.validator().find('button.submit').click((ev) => {
+        this.billingForm.validator().find('#order').click((ev) => {
             ev.preventDefault();
 
             if (self.variants === undefined) { return; }
 
-            this.orderForm.validator('validate');
+            this.billingForm.validator('validate');
 
-            if (!self.orderForm[0].checkValidity()) {
+            if (!self.billingForm[0].checkValidity()) {
+                self.billingForm.find('.alert .title').text('Billing information.');
+                self.billingForm.find('.alert .description').text('Please check your billing information.');
+                self.billingForm.find('.alert').show();
+
                 return;
             }
             else {
@@ -395,14 +422,22 @@ class BuyScreen {
             this.calculateShipping(this.orderForm);
         });
 
-        this.orderForm.find('#enterBilling').click(() => {
+        this.orderForm.find('#enterBilling').click(ev => {
+            ev.preventDefault();
+            this.orderForm.validator('validate');
+            if (!this.orderForm[0].checkValidity()) {
+                return;
+            }
+
             this.orderForm.find('#shippingInformation').fadeOut(() => {
-                this.orderForm.find('#billingInformation').fadeIn();
+                this.billingForm.find('#billingInformation').fadeIn();
             });
+            this.setupAbandonedCart();
+
         });
-        
-        this.orderForm.find('#goBack').click(() => {
-            this.orderForm.find('#billingInformation').fadeOut(() => {
+
+        this.billingForm.find('#goBack').click(() => {
+            this.billingForm.find('#billingInformation').fadeOut(() => {
                 this.orderForm.find('#shippingInformation').fadeIn();
             });
             
@@ -412,7 +447,6 @@ class BuyScreen {
         $('#loader-wrapper').addClass('loaded');
 
         this.setupStorage();
-        this.setupAbandonedCart();
         this.runSetupForm();        
  
     }
