@@ -37,6 +37,7 @@
         form.find('#name').parent().toggleClass('has-danger', false)
         form.find('#company').parent().toggleClass('has-danger', false)
         form.find('#industry').parent().toggleClass('has-danger', false)
+        form.find('#website').parent().toggleClass('has-danger', false)
 
         form.find('#send').prop('disabled', true);
 
@@ -52,10 +53,11 @@
             var company = form.find('#company').val();
             var industry = form.find('#industry').val();
             var description = form.find('#description').val();
+            var website = form.find('#website').val();
 
             if (error) return;
 
-            send(email, name, phone, company, industry, description)
+            send(email, name, phone, company, industry, description, website)
                 .done(function (res) {
                     alert("Thank you for your contact request. You will hear from us shortly.");
                     form.find('#send').prop('disabled', false);
@@ -75,7 +77,7 @@
 
     });
 
-    function send(email, name, phone, company, industry, description) {
+    function send(email, name, phone, company, industry, description, website) {
 
         const body = ''
             + 'Commercial contact form \n' 
@@ -85,10 +87,11 @@
             + `Phone: ${phone}\n`
             + `Company: ${company}\n`
             + `Industry: ${industry}\n`
+            + `Website: ${website}\n`
             + `Description:\n${description}\n\n`;
 
         var request = {
-            "subject": `[Commercial Contact] Contact by ${name}`,
+            "subject": `[Commercial Contact] By ${name}`,
             "tags": ["web", "request", "commercial"],
             "via_id": 48,
             "comment": {
