@@ -60,11 +60,19 @@ section.trident {
         }
     }
 
-    .description {
+    .description, 
+    {
         font-size: 1.8rem;
         font-weight: 300;
         color: $Primary_Grey;
+    
+        .description-title {
+            @extend .description;
+            margin-bottom: 0;
+            display: inline-block;
+        }
     }
+    
 
     .features {
         $width: 3.75rem;

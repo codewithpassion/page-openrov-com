@@ -67,6 +67,12 @@ section .hero {
             font-style: normal;
             font-stretch: normal;
             line-height: 1.1;
+
+            .keyword {
+                @extend .title;
+                color: white;
+                display: inline-block;
+            }
         }
 
         .description {
