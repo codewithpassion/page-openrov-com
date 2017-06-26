@@ -84,6 +84,37 @@
     }
     </script>
 
+    {% if  page.breadcrumbs %}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "{{site.url}}",
+            "name": "OpenROV"
+          }
+        }
+        {% assign path = "" %}
+        {% for item in page.breadcrumbs %}
+        {% assign indexFoo = forloop.index %}
+        {% capture path %}{{path}}/{{item.id}}{% endcapture %}
+        ,{
+          "@type": "ListItem",
+          "position": {{ indexFoo | plus: 1 }},
+          "item": {
+            "@id": "{{site.url}}{{path}}",
+            "name": "{{item.name}}"
+          }
+        }
+        {% endfor %}
+        ]
+      }
+    </script>
+    {% endif %}
+
     {% if page.include_page_css %}
       <style>
       {% include styles/{{page.include_page_css}}.css %}
