@@ -1,0 +1,30 @@
+---
+title: OpenROV Forums redirect | OpenROV Underwater Drone
+layout: default
+sitemap: false
+---
+
+ <html xmlns="http://www.w3.org/1999/xhtml">    
+  <head>      
+    <meta id="refresh" http-equiv="refresh" />    
+  </head>    
+  <body> 
+    <p>This page has moved to a <a id="address" ></a>.</p> 
+  </body>  
+</html>  
+
+
+<script>
+  var hash = window.location.hash.substr(1);
+
+  var regEx = /topics\/(.*?)(\?+)/
+  var topic = regEx.exec(hash);
+  var url = 'https://forum.openrov.com/t/' + topic[1];
+
+  document.getElementById('refresh').setAttribute('content', "0;URL='" + url + "'");
+
+  var addressElm = document.getElementById('address');
+  addressElm.setAttribute('href', url);
+  addressElm.innerHTML = url;
+
+</script>
