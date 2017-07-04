@@ -4,7 +4,7 @@ before_script:
 
 build:
   script:
-    - npm install gulp
+    - npm install 
     - bower install --allow-root
     - gulp build
   only:
