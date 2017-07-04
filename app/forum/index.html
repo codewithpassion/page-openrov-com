@@ -19,7 +19,8 @@ sitemap: false
 
   var regEx = /topics\/(.*?)(\?+)/
   var topic = regEx.exec(hash);
-  var url = 'https://forum.openrov.com/t/' + topic[1];
+  var topicPath = topic && topic.length > 0 ? topic[1] : '';
+  var url = 'https://forum.openrov.com/t/' + topicPath;
 
   document.getElementById('refresh').setAttribute('content', "0;URL='" + url + "'");
 
