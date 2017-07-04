@@ -44,6 +44,7 @@
     "imagemin-pngquant": "^5.0.1",
     "main-bower-files": "^2.5.0",
     "run-sequence": "^1.2.2",
+    "sass-inline-image": "0.0.3",
     "wiredep": "^4.0.0",
     "yargs": "^8.0.2"
   },
