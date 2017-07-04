@@ -5,7 +5,7 @@ before_script:
 
 build:
   script:
-    - bower install
+    - bower install --allow-root
     - gulp build
   only:
     - master
