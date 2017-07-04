@@ -1,5 +1,7 @@
 (function ($) {
 
+
+    var sentIds = [];
     $('.contact-us').click(() => {
         $('#email').animate({left:0,duration:'slow',complete:() => $('#email').focus()});
     })
@@ -29,8 +31,18 @@
     })
 
     const form = $('#form');
+    form.find('#uniqueId').val(new Date().valueOf());
     form.find('#send').on('click', function (ev) {
         ev.preventDefault();
+
+        let uniqueIdField = form.find('#uniqueId');
+        let uniqueId = uniqueIdField.val();
+        if (sentIds.indexOf(uniqueId) >= 0) {
+            return;
+        }
+        else {
+            sentIds.push(uniqueId);
+        }
 
         form.find('#email').parent().toggleClass('has-danger', false)
         form.find('#phone').parent().toggleClass('has-danger', false)
@@ -61,13 +73,13 @@
                 .done(function (res) {
                     alert("Thank you for your contact request. You will hear from us shortly.");
                     form.find('#send').prop('disabled', false);
+                    uniqueIdField.val(new Date().valueOf());
                 })
                 .fail(function (err) {
                     alert('Whoops, something went wrong. Please try again later.')
                     form.find('#send').prop('disabled', false);
+                    uniqueIdField.val(new Date().valueOf());
                 });           
-
-        
         }
         catch (err) {
             console.error(err);
