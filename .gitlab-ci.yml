@@ -1,6 +1,6 @@
 image: node:8.1
 before_script:
-  - npm install -yg bower 
+  - npm install -yg bower gulp
 
 build:
   script:
