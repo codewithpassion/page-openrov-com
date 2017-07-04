@@ -1,6 +1,7 @@
 before_script:
   - apt-get update -qq && apt-get install -y -qq nodejs npm
   - npm install -yg bower gulp
+  - alias node=nodejs
 
 build:
   script:
