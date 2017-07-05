@@ -309,10 +309,15 @@ gulp.task('deploy', () => {
 
 });
 gulp.task('deploy:prod', () => {
-  
   return new Promise(resolve => {
     dev = false;
     runSequence(['clean', 'wiredep'],'prep-deploy-prod', 'build', 'exec-deploy-prod', resolve);
+  })
+});
+gulp.task('deploy:prod:test', () => {
+  return new Promise(resolve => {
+    dev = false;
+    runSequence(['clean', 'wiredep'],'prep-deploy-prod', 'build', 'exec-deploy-prod-test', resolve);
   })
 });
 
@@ -336,6 +341,16 @@ gulp.task('exec-deploy-prod', () => {
     .pipe($.ghPages({
       cacheDir: '.publish-prod',
       branch: 'gh-pages',
+      remoteUrl: 'git@github.com:openrov/page-openrov-com.git',
+      // push: false
+    }));
+
+})
+gulp.task('exec-deploy-prod-test', () => {
+  return gulp.src('dist/**/*')
+    .pipe($.ghPages({
+      cacheDir: '.publish-prod',
+      branch: 'gh-pages-test',
       remoteUrl: 'git@github.com:openrov/page-openrov-com.git',
       // push: false
     }));
