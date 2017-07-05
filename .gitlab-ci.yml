@@ -14,10 +14,11 @@ before_script:
 
 build:
   script:
-    - git config user.name "GitLab deploy"
-    - git config user.email dominik@openrov.com
     - npm install 
     - bower install --allow-root
+    - git config user.name "GitLab deploy"
+    - git config user.email dominik@openrov.com
+    - git config -l
     - gulp deploy:prod:test
   only:
     - master
