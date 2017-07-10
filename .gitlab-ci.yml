@@ -16,8 +16,8 @@ build:
   script:
     - npm install 
     - bower install --allow-root
-    - git config user.name "GitLab deploy"
-    - git config user.email dominik@openrov.com
+    - git config --global user.name "GitLab deploy"
+    - git config --global user.email dominik@openrov.com
     - git config -l
     - gulp deploy:prod:test
   only:
