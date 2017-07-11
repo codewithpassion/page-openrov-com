@@ -257,6 +257,14 @@ class BuyScreen {
         return result.data.variants;
     };
 
+
+    setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
     async submit() {
 
         $(window).off('beforeunload');
@@ -265,7 +273,8 @@ class BuyScreen {
         billingForm.find('#order').attr('disabled', true).addClass('btn-secondary');
         billingForm.find('#orderProcessing').show();
 
-        const formData = objectifyForm(orderForm.serializeArray())
+        const formData = objectifyForm(orderForm.serializeArray());
+        formData.couponCode = orderForm.find('#couponCode').val(); // disabled text fields don't show up in serializeArray
         const data = this.getData(formData);
         const paymentData = objectifyForm(billingForm.serializeArray());
         data.payment_source = this.getPaymentData(paymentData);
@@ -290,6 +299,20 @@ class BuyScreen {
                          "&line_items=" + line_items;
             this.clearStorage();
             document.__isSubmitted = true;
+            
+
+            this.setCookie('order', JSON.stringify({
+                number: order.number,
+                total: order.total,
+                taxes: order.taxes,
+                shipping: order.shipping,
+                line_items: order.line_items.map(item => ({ 
+                    celery_sku: item.celery_sku,
+                    variant_name: item.variant_name,
+                    price: item.price,
+                    quantity: item.quantity
+                }))
+            }), 2);
 
             window.location.replace(window.location.href + '../confirmation/' + path);
         }
