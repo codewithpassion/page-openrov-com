@@ -314,6 +314,14 @@ gulp.task('deploy:prod', () => {
     runSequence(['clean', 'wiredep'],'prep-deploy-prod', 'build', 'exec-deploy-prod', resolve);
   })
 });
+
+gulp.task('deploy:staging', () => {
+  return new Promise(resolve => {
+    dev = false;
+    runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build', 'exec-deploy-staging', resolve);
+  })
+});
+
 gulp.task('deploy:prod:test', () => {
   return new Promise(resolve => {
     dev = false;
@@ -331,8 +339,23 @@ gulp.task('exec-deploy', () => {
 
 })
 
+gulp.task('exec-deploy-staging', () => {
+  return gulp.src('dist/**/*')
+    .pipe($.ghPages({
+      branch: 'gh-pages',
+      remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git',
+      push: false
+    }));
+
+})
+
 gulp.task('prep-deploy-prod', () => {
   return $.file('CNAME', 'www.openrov.com', { src: true })
+    .pipe(gulp.dest('dist/'));
+})
+
+gulp.task('prep-deploy-staging', () => {
+  return $.file('CNAME', 'staging.openrov.com', { src: true })
     .pipe(gulp.dest('dist/'));
 })
 

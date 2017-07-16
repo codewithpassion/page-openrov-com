@@ -1,12 +1,16 @@
 image: node:8.1
+stages:
+  - build
+  - deploy
+
 before_script:
   - npm install -yg bower gulp docker
   # install ssh-agent
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  # run ssh-agent
-  - eval $(ssh-agent -s)
-  # add ssh key stored in DEPLOY_KEY variable to the agent store
-  - ssh-add <(echo "$DEPLOY_KEY")
+    # run ssh-agent
+    - eval $(ssh-agent -s)
+    # add ssh key stored in DEPLOY_KEY variable to the agent store
+    - ssh-add <(echo "$DEPLOY_KEY")
   # disable host key checking (NOTE: makes you susceptible to man-in-the-middle attacks)
   # WARNING: use only in docker container, if you use it with shell you will overwrite your user's ssh config
   - mkdir -p ~/.ssh
@@ -19,8 +23,31 @@ build:
     - git config --global user.name "GitLab deploy"
     - git config --global user.email dominik@openrov.com
     - git config -l
-    - gulp deploy:prod
   only:
     - master
+    - staging
   tags:
-    - docker    
+    - docker 
+
+
+deploy_prod:
+  script:
+    - gulp deploy:prod
+  environment:
+    name: PROD
+    url: https://www.openrov.com
+  only:
+    - master
+  tags: 
+    - docker
+
+deploy_staging:
+  script:
+    - gulp deploy:staging
+  environment:
+    name: STAGING
+    url: http://staging.openrov.com
+  only:
+    - staging
+  tags: 
+    - docker
