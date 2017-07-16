@@ -19,7 +19,7 @@ build:
     - git config --global user.name "GitLab deploy"
     - git config --global user.email dominik@openrov.com
     - git config -l
-    - gulp deploy:prod:test
+    - gulp deploy:prod
   only:
     - master
   tags:
