@@ -113,40 +113,39 @@ gulp.task('jekyll-prep', ['jekyll-prep-country-codes'], () => {
 })
 
 gulp.task('jekyll', ['jekyll-prep'], (done) => {
-  /*if (useJekyllDocker) {
-
-  return cp.spawn('docker', [
-      'run',
-      '--rm',
-      '-v',
-      `${__dirname}/.tmp.jekyll.source:/srv/jekyll`,
-      '-v',
-      `${__dirname}/.tmp.jekyll:/srv/jekyll_site`,
-      'jekyll/jekyll:pages',
-      '/usr/local/bin/jekyll',
-      'build',
-      '--incremental',
-      '--trace',
-      '-d',
-      '/srv/jekyll_site'
-    ], { stdio: 'inherit' })
-    .on('close', () => {
-      done();
-    });
+  if (useJekyllDocker) {
+    return cp.spawn('docker', [
+        'run',
+        '--rm',
+        '-v',
+        `${__dirname}/.tmp.jekyll.source:/srv/jekyll`,
+        '-v',
+        `${__dirname}/.tmp.jekyll:/srv/jekyll_site`,
+        'jekyll/jekyll:pages',
+        '/usr/local/bin/jekyll',
+        'build',
+        '--incremental',
+        '--trace',
+        '-d',
+        '/srv/jekyll_site'
+      ], { stdio: 'inherit' })
+      .on('close', () => {
+        done();
+      });
 
    }
    else {
-*/
-  return cp.spawn('jekyll', [
-      'build',
-      '--trace',
-      '-d',
-      `${__dirname}/.tmp.jekyll`
-    ], { stdio: 'inherit', cwd: `${__dirname}/.tmp.jekyll.source` })
-    .on('close', () => {
-      done();
-    });
- //  }
+
+    return cp.spawn('jekyll', [
+        'build',
+        '--trace',
+        '-d',
+        `${__dirname}/.tmp.jekyll`
+      ], { stdio: 'inherit', cwd: `${__dirname}/.tmp.jekyll.source` })
+      .on('close', () => {
+        done();
+      });
+  }
 
   // gulp.src('app/*.{html,liquid}')
   //   .pipe($.liquify({}, { base: 'app/_includes' }))
@@ -336,8 +335,8 @@ gulp.task('deploy:staging', () => {
   return new Promise(resolve => {
     dev = false;
     useJekyllDocker = false;
-    //runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build', 'exec-deploy-staging', resolve);
-    runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build',  resolve);
+    runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build', 'exec-deploy-staging', resolve);
+    //runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build',  resolve);
   })
 });
 
@@ -363,7 +362,7 @@ gulp.task('exec-deploy-staging', () => {
     .pipe($.ghPages({
       branch: 'gh-pages',
       remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git',
-      push: false
+      push: true
     }));
 
 })
