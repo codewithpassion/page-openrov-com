@@ -36,6 +36,7 @@ deploy_staging:
     - bower install --allow-root
     - npm install 
     - gulp deploy:staging
+    - ls -l .publish
   environment:
     name: STAGING
     url: http://staging.openrov.com
