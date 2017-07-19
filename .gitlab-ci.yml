@@ -8,6 +8,11 @@ before_script:
    # install ssh-agent
    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
    # run ssh-agent
+   - echo "#############################"
+   - echo "$TEST_ALL"
+   - echo "#############################"
+   - echo "$TEST_STAG"
+
    - eval $(ssh-agent -s)
     # add ssh key stored in DEPLOY_KEY variable to the agent store
    - ssh-add <(echo "$DEPLOY_KEY")
