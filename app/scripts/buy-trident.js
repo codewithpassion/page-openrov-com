@@ -1,5 +1,5 @@
-const PRODUCT = '57e9bd02726ecc1100f4204a'; // testproduct
-//const PRODUCT = '5637ca44df92ea03009633b3'; //trident
+//const PRODUCT = '57e9bd02726ecc1100f4204a'; // testproduct
+const PRODUCT = '5637ca44df92ea03009633b3'; //trident
 
 function objectifyForm(formArray) {//serialize data function
     var returnArray = {};
