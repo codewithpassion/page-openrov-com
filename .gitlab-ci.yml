@@ -10,7 +10,10 @@ before_script:
   - apt-get update
  # - apt-get install docker-engine -y
   - apt-get -y install ruby-full build-essential 
-  - gem install jekyll github-pages
+  - gem install bundler
+  - echo source \"https://rubygems.org\" > Gemfile
+  - echo "gem 'github-pages', group: :jekyll_plugins" >> Gemfile
+  - bundle install
   - npm install -yg bower gulp 
   # install ssh-agent
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
