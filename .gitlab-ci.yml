@@ -1,7 +1,7 @@
 image: node:8.1
 stages:
    - deploy
-   
+
 before_script:
   #- apt-get update
   #- apt-get -y install apt-transport-https ca-certificates
@@ -11,7 +11,7 @@ before_script:
  # - apt-get install docker-engine -y
   - apt-get -y install ruby-full build-essential 
   - gem install bundler
-  - echo source \"https://rubygems.org\" > Gemfile
+  #- echo source \"https://rubygems.org\" > Gemfile
   - echo "gem 'github-pages', group: :jekyll_plugins" >> Gemfile
   - bundle install
   - npm install -yg bower gulp 
