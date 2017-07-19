@@ -3,6 +3,7 @@ stages:
    - deploy
    
 before_script:
+  - apt-get install -y docker
   - npm install -yg bower gulp docker
   # install ssh-agent
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -37,6 +38,7 @@ deploy_staging:
     - npm install 
     - gulp deploy:staging
     - ls -l .publish
+    - ls -l dist
   environment:
     name: STAGING
     url: http://staging.openrov.com
