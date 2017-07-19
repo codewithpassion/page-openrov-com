@@ -138,7 +138,6 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
    else {
 */
   return cp.spawn('jekyll', [
-      'jekyll',
       'build',
       '--trace',
       '-d',
