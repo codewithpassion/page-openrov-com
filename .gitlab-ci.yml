@@ -19,8 +19,6 @@ before_script:
 build:
   stage: build
   script:
-    - npm install 
-    - bower install --allow-root
     - git config --global user.name "GitLab deploy"
     - git config --global user.email dominik@openrov.com
     - git config -l
@@ -44,6 +42,7 @@ deploy_prod:
 deploy_staging:
   stage: deploy
   script:
+    - bower install --allow-root
     - npm install 
     - gulp deploy:staging
   environment:
