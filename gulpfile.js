@@ -318,7 +318,8 @@ gulp.task('deploy:prod', () => {
 gulp.task('deploy:staging', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build', 'exec-deploy-staging', resolve);
+    //runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build', 'exec-deploy-staging', resolve);
+    runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build',  resolve);
   })
 });
 
@@ -344,7 +345,7 @@ gulp.task('exec-deploy-staging', () => {
     .pipe($.ghPages({
       branch: 'gh-pages',
       remoteUrl: 'git@github.com:codewithpassion/page-openrov-com.git',
-      push: true
+      push: false
     }));
 
 })

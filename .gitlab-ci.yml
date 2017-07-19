@@ -32,7 +32,7 @@ deploy_staging:
   stage: deploy
   script:
     # add ssh key stored in DEPLOY_KEY variable to the agent store
-    - ssh-add <(echo "$DEPLOY_KEY")
+    #- ssh-add <(echo "$DEPLOY_KEY")
     - bower install --allow-root
     - npm install 
     - gulp deploy:staging
