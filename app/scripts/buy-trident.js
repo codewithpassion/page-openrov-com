@@ -39,7 +39,7 @@ class BuyScreen {
                 "first_name": formData.firstName,
                 "last_name": formData.lastName,
                 "phone": formData.phone,
-                "notes": formData.notes + "\n\n--------------------\nHow will you use Trident:\n" + formData.useForTrident
+                "notes": formData.notes + " #### How will you use Trident: " + formData.useForTrident
             },
             "shipping_address": address,
             "billing_address": Object.assign({}, address, { zip: formData.billingZip }),
