@@ -1,8 +1,7 @@
 image: node:8.1
 stages:
    - build
-   - test
-  #  - deploy
+   - deploy
    
 before_script:
    - npm install -yg bower gulp docker
@@ -17,24 +16,16 @@ before_script:
    - mkdir -p ~/.ssh
    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
-preparation:
+build:
   stage: build
   script:
     - git config --global user.name "GitLab deploy"
     - git config --global user.email dominik@openrov.com
     - git config -l
-  only:
-    - master
   tags:
     - docker 
   when: always
 
-test:
-  stage: test
-  script:
-    - echo @@@@@@@@@@@@@@@@@@@@@@@@@@
-  only:
-    - staging
 
 deploy_prod:
   stage: deploy
