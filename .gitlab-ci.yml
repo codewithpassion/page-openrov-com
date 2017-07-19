@@ -20,17 +20,17 @@ before_script:
   - git config --global user.email dominik@openrov.com
   - git config -l
 
-deploy_prod:
-  stage: deploy
-  script:
-    - gulp deploy:prod
-  environment:
-    name: PROD
-    url: https://www.openrov.com
-  only:
-    - master
-  tags: 
-    - docker
+# deploy_prod:
+#   stage: deploy
+#   script:
+#     - gulp deploy:prod
+#   environment:
+#     name: PROD
+#     url: https://www.openrov.com
+#   only:
+#     - master
+#   tags: 
+#     - docker
 
 deploy_staging:
   stage: deploy
