@@ -19,6 +19,8 @@ const reload = browserSync.reload;
 
 var dev = true;
 var configCopied = false;
+ 
+var useJekyllDocker = true;
 
 gulp.task('styles-prep', (done) => {
     // return gulp.src('app/styles/_bootstrap_custom.scss')
@@ -111,6 +113,7 @@ gulp.task('jekyll-prep', ['jekyll-prep-country-codes'], () => {
 })
 
 gulp.task('jekyll', ['jekyll-prep'], (done) => {
+  /*if (useJekyllDocker) {
 
   return cp.spawn('docker', [
       'run',
@@ -130,6 +133,22 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
     .on('close', () => {
       done();
     });
+
+   }
+   else {
+*/
+  return cp.spawn('jekyll', [
+      'jekyll',
+      'build',
+      '--incremental',
+      '--trace',
+      '-d',
+      `${__dirname}/.tmp.jekyll`
+    ], { stdio: 'inherit', cwd: `${__dirname}/.tmp.jekyll.source` })
+    .on('close', () => {
+      done();
+    });
+ //  }
 
   // gulp.src('app/*.{html,liquid}')
   //   .pipe($.liquify({}, { base: 'app/_includes' }))
@@ -318,6 +337,7 @@ gulp.task('deploy:prod', () => {
 gulp.task('deploy:staging', () => {
   return new Promise(resolve => {
     dev = false;
+    useJekyllDocker = false;
     //runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build', 'exec-deploy-staging', resolve);
     runSequence(['clean', 'wiredep'],'prep-deploy-staging', 'build',  resolve);
   })
