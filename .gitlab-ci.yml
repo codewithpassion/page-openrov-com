@@ -26,8 +26,7 @@ build:
     - master
   tags:
     - docker 
-  when:
-    - always
+  when: always
 
 deploy_prod:
   stage: deploy
