@@ -140,7 +140,6 @@ gulp.task('jekyll', ['jekyll-prep'], (done) => {
   return cp.spawn('jekyll', [
       'jekyll',
       'build',
-      '--incremental',
       '--trace',
       '-d',
       `${__dirname}/.tmp.jekyll`
