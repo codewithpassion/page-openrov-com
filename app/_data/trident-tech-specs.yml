@@ -17,7 +17,7 @@
 - title: INTERFACE AND COMMUNICATION
   content:
     'WiFi INTERFACE': 802.11 b/g/n
-    'SYSTEM REQUIREMENTS': Works on modern computers with Google Chrome, and with Android devices through the OpenROV App.
+    'SYSTEM REQUIREMENTS': Works on a modern Android (minimum 5.1) device through the OpenROV App.
     'VEHICLE PAYLOAD DATA INTERFACE': WiFi
 - title: ENVIRONMENTAL
   content:
