@@ -23,7 +23,11 @@ before_script:
 deploy_prod:
   stage: deploy
   script:
-    - gulp deploy:prod
+    # add ssh key stored in DEPLOY_KEY variable to the agent store
+    - ssh-add <(echo "$DEPLOY_KEY")
+    - bower install --allow-root
+    - npm install 
+    - gulp deploy:prod --nodocker
   environment:
     name: PROD
     url: https://www.openrov.com

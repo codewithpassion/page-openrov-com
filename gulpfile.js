@@ -327,6 +327,9 @@ gulp.task('deploy', () => {
 gulp.task('deploy:prod', () => {
   return new Promise(resolve => {
     dev = false;
+    if (args.nodocker) {
+      useJekyllDocker = false;
+    }
     runSequence(['clean', 'wiredep'],'prep-deploy-prod', 'build', 'exec-deploy-prod', resolve);
   })
 });
