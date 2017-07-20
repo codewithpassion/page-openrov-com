@@ -1,0 +1,27 @@
+
+# docker image for gitlab build
+FROM node:8.1
+
+MAINTAINER Dominik Fretz "dominik@openrov.com"
+
+ADD bower.json .
+ADD package.json .
+ADD Gemfile .
+
+RUN \
+    apt-get update && \
+    apt-get -y install ruby-full build-essential && \
+    gem install bundler
+RUN \
+    bundle install && \
+    npm install -yg bower gulp && \
+    npm install
+RUN \
+    which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y ) && \
+    eval $(ssh-agent -s) && \
+    mkdir -p ~/.ssh
+RUN \
+    echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config && \
+    git config --global user.name "GitLab deploy" && \
+    git config --global user.email dominik@openrov.com && \
+    git config -l
