@@ -5,6 +5,12 @@ stages:
 before_script:
     - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y ) 
     - eval $(ssh-agent -s) 
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config && \
+    - git config --global user.name "GitLab deploy" && \
+    - git config --global user.email dominik@openrov.com && \
+    - git config -l
+
 
 deploy_prod:
   stage: deploy

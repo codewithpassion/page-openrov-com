@@ -4,8 +4,7 @@ FROM node:8.1
 
 MAINTAINER Dominik Fretz "dominik@openrov.com"
 
-ADD bower.json .
-ADD package.json .
+ADD package.json /builds/
 ADD Gemfile .
 
 RUN \
@@ -15,7 +14,8 @@ RUN \
 RUN \
     bundle install && \
     npm install -yg bower gulp && \
-    npm install
+    cd /builds && \
+    npm install 
 RUN \
     which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y ) && \
     eval $(ssh-agent -s) && \
