@@ -10,7 +10,7 @@ before_script:
     - git config --global user.name "GitLab deploy" && \
     - git config --global user.email dominik@openrov.com && \
     - git config -l
-    - if [ -d "/builds/node_modules" ]; then; cp /builds/node_modules /builds/openrov/www.openrov.com-build/ -r; fi
+    - if [ -d "/builds/node_modules" ]; then cp /builds/node_modules /builds/openrov/www.openrov.com-build/ -r; fi
 
 
 deploy_prod:
