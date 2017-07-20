@@ -15,7 +15,7 @@ RUN \
     bundle install && \
     npm install -yg bower gulp && \
     cd /builds && \
-    npm install 
+    npm install -yg
 RUN \
     which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y ) && \
     eval $(ssh-agent -s) && \
