@@ -1,24 +1,17 @@
-image: node:8.1
+image: codewithpassion/www.openrov.com-build
 stages:
    - deploy
 
 before_script:
-  - apt-get update
-  - apt-get -y install ruby-full build-essential 
-  - gem install bundler
-  - bundle install
-  - npm install -yg bower gulp 
-  # install ssh-agent
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  # run ssh-agent
-  - eval $(ssh-agent -s)
-  # disable host key checking (NOTE: makes you susceptible to man-in-the-middle attacks)
-  # WARNING: use only in docker container, if you use it with shell you will overwrite your user's ssh config
-  - mkdir -p ~/.ssh
-  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-  - git config --global user.name "GitLab deploy"
-  - git config --global user.email dominik@openrov.com
-  - git config -l
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y ) 
+    - eval $(ssh-agent -s) 
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config && \
+    - git config --global user.name "GitLab deploy" && \
+    - git config --global user.email dominik@openrov.com && \
+    - git config -l
+    - if [ -d "/builds/node_modules" ]; then cp /builds/node_modules /builds/openrov/www.openrov.com-build/ -r; fi
+
 
 deploy_prod:
   stage: deploy

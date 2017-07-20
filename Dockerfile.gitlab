@@ -1,0 +1,20 @@
+
+# docker image for gitlab build
+FROM node:8.1
+
+MAINTAINER Dominik Fretz "dominik@openrov.com"
+
+ADD package.json /builds/
+ADD Gemfile .
+
+RUN \
+    apt-get update && \
+    apt-get -y install ruby-full build-essential && \
+    gem install bundler
+RUN \
+    bundle install && \
+    npm install -yg bower gulp
+
+RUN \
+    cd /builds && \
+    npm install
