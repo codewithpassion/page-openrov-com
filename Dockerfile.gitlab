@@ -13,15 +13,8 @@ RUN \
     gem install bundler
 RUN \
     bundle install && \
-    npm install -yg bower gulp && \
+    npm install -yg bower gulp
+
+RUN \
     cd /builds && \
-    npm install -yg
-RUN \
-    which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y ) && \
-    eval $(ssh-agent -s) && \
-    mkdir -p ~/.ssh
-RUN \
-    echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config && \
-    git config --global user.name "GitLab deploy" && \
-    git config --global user.email dominik@openrov.com && \
-    git config -l
+    npm install
