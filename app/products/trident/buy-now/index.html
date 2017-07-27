@@ -167,8 +167,14 @@ breadcrumbs:
                         <div class="row">
                             <div class="col-md-10 col-xs-12">
                                 <div class="flex-form-group selects-2">
+                                    <select data-store style="flex: 1;" class="form-control col-md-9 form-control-danger" id="country" name="country">
+                                        {% for item in site.data.country %}
+                                        <option value="{{item.id}}">{{item.value}}</option>
+                                        {% endfor %}
+                                    </select>
                                     <div style="flex: 0.8;"><input type="text" data-store class="form-control  form-control-danger" id="zip" name="zip" placeholder="ZIP/Postal"
                                             required></div>
+
                                     <div style="flex: 1;">
                                         <select data-store class="form-control  form-control-danger" id="usState" name="usState">
                                             {% for item in site.data.usStates %}
@@ -179,11 +185,6 @@ breadcrumbs:
                                     <div style="flex: 1;" class="hidden-xs-up"><input type="text" data-store class="form-control  form-control-danger" style="flex:2" id="state" name="state"
                                             placeholder="State/Province" required></div>
     
-                                    <select data-store style="flex: 1;" class="form-control col-md-9 form-control-danger" id="country" name="country">
-                                        {% for item in site.data.country %}
-                                        <option value="{{item.id}}">{{item.value}}</option>
-                                        {% endfor %}
-                                    </select>
                                 </div>
                             </div>
                         </div>
