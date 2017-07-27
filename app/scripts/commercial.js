@@ -94,6 +94,7 @@
         const body = ''
             + 'Commercial contact form \n' 
             + '----------------------------------\n'
+            + `Date/time: ${new Date()}\n`
             + `Name: ${name}\n`
             + `EMail: ${email}\n`
             + `Phone: ${phone}\n`
