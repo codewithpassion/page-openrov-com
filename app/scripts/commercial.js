@@ -55,6 +55,16 @@
 
         var error = false;
         try {
+            const allFields = [
+                form.find('#email'),
+                form.find('#name'),
+                form.find('#phone'),
+                form.find('#company'),
+                form.find('#industry'),
+                form.find('#description'),
+                form.find('#website')
+            ]
+
             var email = form.find('#email').val();
             if (email.trim().length == 0) { form.find('#email').parent().toggleClass('has-danger', true); error = true; }
 
@@ -74,6 +84,9 @@
                     alert("Thank you for your contact request. You will hear from us shortly.");
                     form.find('#send').prop('disabled', false);
                     uniqueIdField.val(new Date().valueOf());
+
+                    allFields.forEach(f => f.val(''));
+
                 })
                 .fail(function (err) {
                     alert('Whoops, something went wrong. Please try again later.')
