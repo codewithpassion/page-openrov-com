@@ -1,3 +1,15 @@
+- outlet: "National Geographic"
+  date: "July 29, 2017"
+  url: http://news.nationalgeographic.com/2017/07/chasing-genius-drones-david-lang-openrov/
+  quote: "Later this year, an army of small swimming robots is set to plumb the mysteries of oceans around the world. Each one will have its own mission, as defined by citizen scientists interested in everything from reefs to 'robomussels' that can self-monitor temperature."
+  logo: natgeo-logo.png
+
+- outlet: "Wired"
+  date: "July 27, 2017"
+  url: https://www.wired.com/story/openrov-trident-underwater-drone
+  quote: "WE’VE JUST GOTTEN used to drones buzzing in the skies over public parks; now they’re set to invade the duck pond. The Trident sits on the crest of this new wave of underwater tech."
+  logo: wired_logo.png
+
 - outlet: "Forbes"
   date: "February 16, 2017"
   url: https://www.forbes.com/video/5319226384001/
