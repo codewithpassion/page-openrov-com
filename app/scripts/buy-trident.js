@@ -59,8 +59,8 @@ class BuyScreen {
             "card": {
                 "name": formData.firstName + ' ' + formData.lastName,
                 "number": formData.ccNumber,
-                "exp_month": formData.expDate.split('/')[0],
-                "exp_year": formData.expDate.split('/')[1],
+                "exp_month": formData.expDateMonth,
+                "exp_year": formData.expDateYear,
                 "cvc": formData.cvc
             }
         };
@@ -147,9 +147,9 @@ class BuyScreen {
     countryChanged(target) {
         if (target.options[target.selectedIndex].value === 'US') {
             this.orderForm.find('#usState').parent().removeClass('hidden-xs-up').attr('required', false);
-            this.orderForm.find('#state').attr('required', false).parent().addClass('hidden-xs-up');
+            this.orderForm.find('#state').parent().addClass('hidden-xs-up');
         } else {
-            this.orderForm.find('#state').attr('required', true).parent().removeClass('hidden-xs-up');
+            this.orderForm.find('#state').parent().removeClass('hidden-xs-up');
             this.orderForm.find('#usState').parent().addClass('hidden-xs-up').attr('required', false);
         }
         this.orderForm.validator('update');
@@ -218,11 +218,6 @@ class BuyScreen {
             if (!char.match(/[0-9- ]/)) event.preventDefault();
         });
 
-        orderForm.find('#expDate').keypress(event => {
-            var char = String.fromCharCode(event.which);
-            if (!char.match(/[0-9/]/)) event.preventDefault();
-        });
-        
         orderForm.find('tr.product-row').click(ev => {
             const checked = orderForm.find('input[type=radio][name="variant"][checked]')[0];
             if (checked) { checked.removeAttribute('checked'); }
@@ -277,6 +272,8 @@ class BuyScreen {
         formData.couponCode = orderForm.find('#couponCode').val(); // disabled text fields don't show up in serializeArray
         const data = this.getData(formData);
         const paymentData = objectifyForm(billingForm.serializeArray());
+        paymentData.firstName = formData.firstName;
+        paymentData.lastName = formData.lastName;
         data.payment_source = this.getPaymentData(paymentData);
         try {
             const result = await $.ajax({

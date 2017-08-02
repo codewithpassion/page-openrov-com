@@ -54,7 +54,7 @@ breadcrumbs:
                     </div>
                 </div>
 
-                <form id="orderForm" class="">
+                <form id="orderForm">
 
                     <div class="row ">
                         <div class="col-md-10">
@@ -183,7 +183,7 @@ breadcrumbs:
                                         </select>
                                     </div>
                                     <div style="flex: 1;" class="hidden-xs-up"><input type="text" data-store class="form-control  form-control-danger" style="flex:2" id="state" name="state"
-                                            placeholder="State/Province" required></div>
+                                            placeholder="State/Province"></div>
     
                                 </div>
                             </div>
@@ -254,14 +254,40 @@ breadcrumbs:
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-10 col-xs-12">
+                            <div class="col-md-5 col-xs-12">
+                                <div class="flex-form-group pb-0">
+                                    <div style="flex: 1; display: flex; align-items: baseline;">
+                                        <label for="expDateMonth" class="ml-md-0 ml-1 mr-1">Exp.&nbsp;Month:</label>
+                                        <select class="form-control" id="expDateMonth" name="expDateMonth" required>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    
+                                    </div>
+                                    <div style="flex: 1; display: flex; align-items: baseline;" class="form-group">
+                                        <label for="expDateYear" class="ml-1 mr-1">Year:</label>
+                                        <input type="number" data-minlength="2" maxlength="2" class="form-control form-control-danger"
+                                            id="expDateYear" name="expDateYear" placeholder="YY" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-xs-12">
                                 <div class="flex-form-group">
-                                    <div><input type="text" class="form-control form-control-danger" id="expDate" name="expDate"
-                                            placeholder="MM/YY" pattern="^[0-9]{2}/[0-9]{2}$" required></div>
-                                    <div><input type="number" data-minlength="3" maxlength="4" class="form-control form-control-danger"
-                                            id="cvc" name="cvc" placeholder="CVC" required></div>
+                                    <div><input type="number" data-minlength="3" maxlength="4" class="form-control form-control-danger" id="cvc" name="cvc" placeholder="CVC"
+                                            required></div>
                                     <div><input type="number" class="form-control " id="billingZip" name="billingZip" placeholder="Billing ZIP"
                                             required></div>
+                                    
                                 </div>
                             </div>
                         </div>
