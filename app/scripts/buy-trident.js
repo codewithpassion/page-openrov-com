@@ -173,7 +173,7 @@ class BuyScreen {
                         this.getOptions(v.options.values) + 
                 '<div class="hidden-sm-up price-sm pt-3"><em><small><s class="pr-2">$' + (price + 300).toFixed(2) + '</s></small></em>&nbsp;$' + price.toFixed(2)  +'</div>' +
                     '</td>' + 
-                '<td class="text-right product pricing hidden-sm-down"><em><small><s  class="pr-2">$' + (price + 300).toFixed(2) + '</s></small></em>$' + price.toFixed(2) + '</td>' + '</tr>';
+                '<td class="text-right product pricing hidden-sm-down"><em><small><s  class="pr-2">$' + (price + 200).toFixed(2) + '</s></small></em>$' + price.toFixed(2) + '</td>' + '</tr>';
         }).join('');
 
         orderForm.find('#options').prepend(optionsHtml);
