@@ -1,3 +1,7 @@
+// the next line fixes sass compilation issues
+// see https://github.com/twbs/bootstrap/issues/23331
+@import 'bower_components/bootstrap/scss/functions', 'bower_components/bootstrap/scss/variables';
+
 // Will override bootstrap variables
 
 $Primary_Blue: #1c4472;
