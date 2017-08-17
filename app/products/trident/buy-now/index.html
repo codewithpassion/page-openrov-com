@@ -17,7 +17,7 @@ breadcrumbs:
     
 ---
 <div class="buy-trident">
-    <section class="section m-0 hidden-md-up">
+    <section class="section m-0 d-md-none">
         <div class="hero x-small trident-reef">
         <table class="hero-container">
             <tbody>
@@ -25,7 +25,7 @@ breadcrumbs:
                 <td class="title-container">
                 <div class="container d-inline-block h-md-0 h-100">
                     <div class="row h-100">
-                    <div class="col-sm-8 offset-sm-4 h-100">
+                    <div class="col-sm-8 ml-xs-auto h-100">
                         <div class="title text-right">
                         See Underwater Like Never<br>Before.
                         </div>
@@ -42,7 +42,7 @@ breadcrumbs:
 
     <section class="order-information2 container-fluid">
         <div class="row">
-            <div class="col-md-4 pt-3 text-center hidden-md-down">
+            <div class="col-md-4 pt-3 text-center d-none d-lg-block">
                 <img src="{{site.base}}/images/products/trident/trident-diving-tall.jpg" alt="OpenROV Trident">
             </div>
 
@@ -83,7 +83,7 @@ breadcrumbs:
                             <thead>
                                 <tr>
                                     <th colspan="2" class="">SELECT PACKAGE</th>
-                                    <th class="text-center hidden-sm-down">PRICE</th>
+                                    <th class="text-center d-none d-md-block">PRICE</th>
                                 </tr>
                             </thead>
                             <tbody id="options">
@@ -102,7 +102,7 @@ breadcrumbs:
                                 <tr>
                                     <td colspan="5" class="text-right">Tax: <span id="tax">$0.00</span></td>
                                 </tr>
-                                <tr id="discount-container" class="hidden-xs-up">
+                                <tr id="discount-container" class="d-none">
                                     <td colspan="5" class="text-right">Discount: <span id="discount">$0.00</span></td>
                                 </tr>
                                 <tr>
@@ -182,7 +182,7 @@ breadcrumbs:
                                             {% endfor %}                        
                                         </select>
                                     </div>
-                                    <div style="flex: 1;" class="hidden-xs-up"><input type="text" data-store class="form-control  form-control-danger" style="flex:2" id="state" name="state"
+                                    <div style="flex: 1;" class="d-none"><input type="text" data-store class="form-control  form-control-danger" style="flex:2" id="state" name="state"
                                             placeholder="State/Province"></div>
     
                                 </div>

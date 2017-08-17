@@ -1,0 +1,51 @@
+$font-family-sans-serif: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$Primary_Blue: #1c4472;
+// $Primary_Spot_Color: #ffb33b;
+$Primary_Spot_Color: #ffc938;
+$Primary_White: #ffffff;
+$Secondary_Blue: #3381ab;
+$Tertiary_Blue: #2d6584;
+$Primary_Grey: #4a4a4a;
+$Secondary_Grey: lighten($Primary_Grey, 20%);
+$Secondary_White: #f5f5f5;
+
+$backgroundGrey: #e0e0e0;
+
+$ctaBlue: #02aaff;
+
+
+
+$theme-colors: (
+    primary: $ctaBlue,
+);
+// $blue:                           $Primary_Blue;
+
+$btn-primary-bg:                 $ctaBlue;
+$btn-primary-border:             $ctaBlue;
+// $btn-primary-bg:                 $Secondary_Blue;
+// $btn-primary-border:             $Secondary_Blue;
+
+// Button radius
+// $btn-border-radius:              0;
+// $btn-border-radius-lg:           0;
+// $btn-border-radius-sm:           0;
+$enable-rounded:            false;
+
+
+
+$headings-font-weight:   300;
+$headings-color:        $Primary_Blue;
+
+
+$navbarHeight: 4.8rem;
+
+$standardTransition: 0.4s cubic-bezier(.23,1,.32,1);
+
+// Will override bootstrap variables
+@import 'bower_components/bootstrap/scss/functions',
+        'bower_components/bootstrap/scss/mixins',
+        'bower_components/bootstrap/scss/variables';
+
+@import "headerHeights";
+

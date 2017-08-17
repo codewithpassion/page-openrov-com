@@ -1,11 +1,9 @@
-// @ import 'https://fonts.googleapis.com/css?family=Lato:300,400,600';
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400,600';
 
 $slick-loader-path: '../images/content/';
 $slick-font-path: '../fonts/';
 
 @import "bootstrap_import";
-
-@import "variables";
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -90,7 +88,6 @@ section.secondary-blue {
 @import "spinner";
 @import "cards";
 
-@import "headerHeights";
 @import "nav";
 @import "footer";
 @import "hero";

@@ -2,7 +2,7 @@
   "name": "page-openrov-com",
   "private": true,
   "dependencies": {
-    "bootstrap": "~4.0.0-alpha.6",
+    "bootstrap": "v4.0.0-beta",
     "modernizr": "~2.8.1",
     "font-awesome": "^4.7.0",
     "slick-carousel": "^1.6.0",
