@@ -5,11 +5,11 @@ $font-family-sans-serif: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Se
         'bower_components/bootstrap/scss/variables';
 
 
-$Primary_Blue: #1c4472;
+$Primary_Blue: #02aaff;
 // $Primary_Spot_Color: #ffb33b;
 $Primary_Spot_Color: #ffc938;
 $Primary_White: #ffffff;
-$Secondary_Blue: #3381ab;
+$Secondary_Blue: #1c4472;
 $Tertiary_Blue: #2d6584;
 $Primary_Grey: #4a4a4a;
 $Secondary_Grey: lighten($Primary_Grey, 20%);
@@ -20,7 +20,7 @@ $backgroundGrey: #e0e0e0;
 $ctaBlue: #02aaff;
 
 $theme-colors: (
-    primary: $ctaBlue,
+    primary: $Primary_Blue,
     secondary: $gray-600,
     success: $green,
     info: $cyan,
@@ -28,12 +28,12 @@ $theme-colors: (
     danger: $red,
     light: $gray-100,
     dark: $gray-800,
-    dark-blue: $Primary_Blue,
+    dark-blue: $Secondary_Blue,
 );
 $blue:                           $Primary_Blue;
 
-$btn-primary-bg:                 $ctaBlue;
-$btn-primary-border:             $ctaBlue;
+$btn-primary-bg:                 $Primary_Blue;
+$btn-primary-border:             $Primary_Blue;
 // $btn-primary-bg:                 $Secondary_Blue;
 // $btn-primary-border:             $Secondary_Blue;
 
