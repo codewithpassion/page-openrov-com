@@ -1,5 +1,10 @@
 $font-family-sans-serif: Lato, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
+@import 'bower_components/bootstrap/scss/functions',
+        'bower_components/bootstrap/scss/mixins',
+        'bower_components/bootstrap/scss/variables';
+
+
 $Primary_Blue: #1c4472;
 // $Primary_Spot_Color: #ffb33b;
 $Primary_Spot_Color: #ffc938;
@@ -14,12 +19,17 @@ $backgroundGrey: #e0e0e0;
 
 $ctaBlue: #02aaff;
 
-
-
 $theme-colors: (
     primary: $ctaBlue,
+    secondary: $gray-600,
+    success: $green,
+    info: $cyan,
+    warning: $yellow,
+    danger: $red,
+    light: $gray-100,
+    dark: $gray-800
 );
-// $blue:                           $Primary_Blue;
+$blue:                           $Primary_Blue;
 
 $btn-primary-bg:                 $ctaBlue;
 $btn-primary-border:             $ctaBlue;
@@ -43,9 +53,6 @@ $navbarHeight: 4.8rem;
 $standardTransition: 0.4s cubic-bezier(.23,1,.32,1);
 
 // Will override bootstrap variables
-@import 'bower_components/bootstrap/scss/functions',
-        'bower_components/bootstrap/scss/mixins',
-        'bower_components/bootstrap/scss/variables';
 
 @import "headerHeights";
 
