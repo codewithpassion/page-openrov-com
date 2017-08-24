@@ -22,10 +22,11 @@ nav {
 
     .nav-item > .nav-link {
         font-weight: 600;
-        color: $Secondary_Grey;
+        color: $Secondary_Grey!important;
 
-        &:hover {
-            color: $Primary_Grey;
+        &:hover,
+        &.hover {
+            color: $Primary_Grey!important;
         }
     }
 
