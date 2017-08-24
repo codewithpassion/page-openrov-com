@@ -50,10 +50,20 @@ body {
   cursor: pointer;
 }
 
+.btn-or {
+  @extend .font-weight-bold;
+  @extend .px-4;
+  text-transform: uppercase;
+}
 
 .btn-or-primary {
+  @extend .btn-or;
   @extend .btn-blue;
-  
+
+  &.hover {
+    @extend .btn-or-primary:hover;
+  }
+
   &.b-version { // for A/B testing
     color: $Primary_Blue;
     background-color: $Primary_Spot_Color;
@@ -66,7 +76,8 @@ body {
         color: $Primary_Blue;
     }    
 
-    &:active {
+    &:active,
+     {
           background-color: $hoverColor;
           border-color: $hoverColor;
     }
@@ -75,7 +86,12 @@ body {
 
 .btn-or-secondary {
   color: black;
+  @extend .btn-or;
   @extend .btn-outline-secondary;
+
+  &.hover {
+    @extend .btn-or-secondary:hover;
+  }
 }
 
 section.grey {

@@ -22,7 +22,11 @@ nav {
 
     .nav-item > .nav-link {
         font-weight: 600;
-        // color: $brand-primary!important;
+        color: $Secondary_Grey;
+
+        &:hover {
+            color: $Primary_Grey;
+        }
     }
 
     @include media-breakpoint-up(lg) {
