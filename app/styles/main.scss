@@ -30,25 +30,6 @@ body {
 // }
 
 
-.btn-spot-cta.b-version { // for A/B testing
-
-    color: $Primary_Blue;
-    background-color: $Primary_Spot_Color;
-    border: solid 1px $Primary_Spot_Color;
-    $hoverColor: desaturate(darken($Primary_Spot_Color, 15%), 8%);
-
-    &:hover {
-        background-color: $hoverColor;
-        border-color: $hoverColor;
-        color: $Primary_Blue;
-    }    
-
-    &:active {
-          background-color: $hoverColor;
-          border-color: $hoverColor;
-    }
-}
-
 .btn-link-cta {
     color: white;
     text-decoration: underline;
@@ -67,6 +48,34 @@ body {
 
 .btn:hover {
   cursor: pointer;
+}
+
+
+.btn-or-primary {
+  @extend .btn-blue;
+  
+  &.b-version { // for A/B testing
+    color: $Primary_Blue;
+    background-color: $Primary_Spot_Color;
+    border: solid 1px $Primary_Spot_Color;
+    $hoverColor: desaturate(darken($Primary_Spot_Color, 15%), 8%);
+
+    &:hover {
+        background-color: $hoverColor;
+        border-color: $hoverColor;
+        color: $Primary_Blue;
+    }    
+
+    &:active {
+          background-color: $hoverColor;
+          border-color: $hoverColor;
+    }
+  }
+}
+
+.btn-or-secondary {
+  color: black;
+  @extend .btn-outline-secondary;
 }
 
 section.grey {
