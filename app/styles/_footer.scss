@@ -1,6 +1,6 @@
 footer#footer {
-    $itemColor: rgba(0, 0, 0, 0.5);
-    $itemColorHover: rgba(0, 0, 0, 0.7);
+    $itemColor:  $Secondary_Grey;
+    $itemColorHover: $Primary_Grey;
 
     background-color: #e6e6e6;
 
@@ -24,6 +24,7 @@ footer#footer {
 
         &:hover {
             color: $itemColorHover;
+            text-decoration: none;
         }
     }
 

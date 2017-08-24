@@ -1,5 +1,3 @@
-@import "variables";
-
 nav {
     &.navbar {
         background-color: white!important;
@@ -24,7 +22,12 @@ nav {
 
     .nav-item > .nav-link {
         font-weight: 600;
-        // color: $brand-primary!important;
+        color: $Secondary_Grey!important;
+
+        &:hover,
+        &.hover {
+            color: $Primary_Grey!important;
+        }
     }
 
     @include media-breakpoint-up(lg) {

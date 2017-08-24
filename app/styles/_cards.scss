@@ -3,7 +3,7 @@
         overflow: hidden;
         border: none;
 
-        &.card-inverse {
+        &.text-white {
             .card-text {
                 color: white;
             }
@@ -131,6 +131,7 @@
             transition: opacity 0.3s;
 
             .card-title {
+                color: $white;
                 font-weight: 400;
                 font-size: 1rem;
                 line-height: 1.3;

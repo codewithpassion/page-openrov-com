@@ -16,7 +16,7 @@
         handler: function (direction) {
             
             if (direction == 'down') {
-                $('body').append('<div class="modal-backdrop cta hidden-sm-down"></div>');
+                $('body').append('<div class="modal-backdrop cta d-none d-md-block"></div>');
                 setTimeout(() => {
                     $('.modal-backdrop.cta')
                         .addClass('show')

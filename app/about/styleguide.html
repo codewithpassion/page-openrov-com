@@ -1,0 +1,318 @@
+--- 
+title: Styleguide 
+layout: default
+slug: styleguide
+sitemap: false
+page_script: /scripts/styleguide.js
+
+backgrounds:
+    - id: bg-black
+      name: Primary Black
+    - id: bg-white
+      name: Primary White
+    - id: bg-primary
+      name: Primary Blue
+    - id: bg-blue
+      name: Seondary Blue
+    - id: bg-secondary-grey
+      name: Secondary Grey
+---
+
+<section id="styleguide" class="pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 py-5">
+                <h1>Styleguide</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>Color Pallet</h2>
+            </div>
+        </div>
+
+        {% for item in page.backgrounds %}
+        <div class="row pb-4">
+            <div class="col-2">
+                <div id="{{item.id}}" class="{{item.id}}" style="width: 8rem; height: 4rem; position: relative" ></div>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    {{item.name}}
+                </h2>
+            </div>
+            <div class="col-4  align-self-center">
+                <div data-for="{{item.id}}" data-value="background-color"></div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="row pt-5">
+            <div class="col-4">
+                <h1>Typography</h1>
+            </div>
+        </div>
+
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <section>
+                    <div class="hero" style="height:auto!important">
+                        <div class="title-container">
+                            <div id="hero-title" class="title bg-black">
+                                Title
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Hero Title dark
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="hero-title" data-value="font-family"></div>
+                <div data-for="hero-title" data-value="font-size"></div>
+                <div data-for="hero-title" data-value="font-weight"></div>
+                <div data-for="hero-title" data-value="color"></div>
+            </div>
+        </div>
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <section>
+                    <div class="hero light" style="height:auto!important">
+                        <div class="title-container">
+                            <div id="hero-title-light" class="title">
+                                Title
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Hero Title light
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="hero-title-light" data-value="font-family"></div>
+                <div data-for="hero-title-light" data-value="font-size"></div>
+                <div data-for="hero-title-light" data-value="font-weight"></div>
+                <div data-for="hero-title-light" data-value="color"></div> (Secondary Grey)
+            </div>
+        </div>
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <section>
+                    <div class="hero" style="height:auto!important">
+                        <div class="title-container">
+                            <div id="hero-sub-title" class="description bg-black">
+                                Subtitle
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Hero Subtitle
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="hero-sub-title" data-value="font-family"></div>
+                <div data-for="hero-sub-title" data-value="font-size"></div>
+                <div data-for="hero-sub-title" data-value="font-weight"></div>
+                <div data-for="hero-sub-title" data-value="color"></div>
+            </div>
+        </div>
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <h1 id="heading">Heading</h1>  
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Heading
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="heading" data-value="font-family"></div>
+                <div data-for="heading" data-value="font-size"></div>
+                <div data-for="heading" data-value="font-weight"></div>
+                <div data-for="heading" data-value="color"></div>
+            </div>
+        </div>
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <h2 id="heading2">Heading #2</h2>  
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Heading #2
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="heading2" data-value="font-family"></div>
+                <div data-for="heading2" data-value="font-size"></div>
+                <div data-for="heading2" data-value="font-weight"></div>
+                <div data-for="heading2" data-value="color"></div>
+            </div>
+        </div>
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <h3 id="heading3">Heading #3</h3>  
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Heading #3
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="heading3" data-value="font-family"></div>
+                <div data-for="heading3" data-value="font-size"></div>
+                <div data-for="heading3" data-value="font-weight"></div>
+                <div data-for="heading3" data-value="color"></div>
+            </div>
+        </div>
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <div id="standard">Lorem ipsum</div>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Standard text
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="standard" data-value="font-family"></div>
+                <div data-for="standard" data-value="font-size"></div>
+                <div data-for="standard" data-value="font-weight"></div>
+            </div>
+        </div>
+        <!-- =================== -->
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <nav>
+                    <div class="nav-item">
+                        <div id="nav-link" class="nav-link text-uppercase">
+                            Nav Link
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Nav/Footer link
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="nav-link" data-value="font-family"></div>
+                <div data-for="nav-link" data-value="font-size"></div>
+                <div data-for="nav-link" data-value="font-weight"></div>
+                <div data-for="nav-link" data-value="color"></div>
+            </div>
+        </div>
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <nav>
+                    <div class="nav-item">
+                        <div id="nav-link-hover" class="nav-link hover text-uppercase">
+                            Nav Link
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Nav/Footer link rollover
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="nav-link-hover" data-value="font-family"></div>
+                <div data-for="nav-link-hover" data-value="font-size"></div>
+                <div data-for="nav-link-hover" data-value="font-weight"></div>
+                <div data-for="nav-link-hover" data-value="color"></div>
+            </div>
+        </div>
+        
+        
+        <!-- =================== -->
+        <!-- =================== -->
+        <div class="row pt-5">
+            <div class="col-4">
+                <h1>Buttons</h1>
+            </div>
+        </div>
+
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <div id="primary-button" class="btn btn-or-primary">Button</div>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Standard button
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="primary-button" data-value="font-size"></div>
+                <div data-for="primary-button" data-value="font-weight"></div>
+                <div data-for="primary-button" data-value="background-color"></div>
+            </div>
+        </div>
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <div id="primary-button-hover" class="btn btn-or-primary hover">Button</div>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Button rollover state
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="primary-button-hover" data-value="background-color"></div>
+            </div>
+        </div>
+        
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <div id="secondary-button" class="btn btn-or-secondary">Button</div>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                    Secondary button
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div data-for="secondary-button" data-value="font-size"></div>
+                <div data-for="secondary-button" data-value="font-weight"></div>
+                <div>Text <span data-for="secondary-button" data-value="color"></span></div>
+                <div>Border <span data-for="secondary-button" data-value="border-color"></span></div>
+            </div>
+        </div>
+        <div class="row pb-4">
+            <div class="col-2 align-self-center">
+                <div id="secondary-button-hover" class="btn btn-or-secondary hover">Button</div>
+            </div>
+            <div class="col-4 align-self-center">
+                <h2 class="text-black">
+                     Secondary Button rollover
+                </h2>
+            </div>
+            <div class="col-6  align-self-center">
+                <div>Text <span data-for="secondary-button" data-value="color"></span></div>
+                <div data-for="secondary-button-hover" data-value="background-color"></div>
+            </div>
+        </div>
+        
+        <div class="row pb-4"></div>
+
+    </div>
+
+</section>
+

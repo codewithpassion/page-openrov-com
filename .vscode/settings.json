@@ -8,5 +8,6 @@
         "**/.tmp*": true,
         "**/tmp": true,
         "**/dist": true
-    }
+    },
+    "git.ignoreLimitWarning": true
 }

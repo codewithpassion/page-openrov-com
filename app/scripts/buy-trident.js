@@ -105,11 +105,11 @@ class BuyScreen {
         })
         form.find('#shipping').text('$' + (result.shipping /100).toFixed(2))
         if (result.discount > 0) {
-            $('#discount-container').removeClass('hidden-xs-up');
+            $('#discount-container').removeClass('d-none');
             $('#discount').text('$' + (result.discount / 100).toFixed(2))
         }
         else {
-            $('#discount-container').addClass('hidden-xs-up');
+            $('#discount-container').addClass('d-none');
         }
         if (result.discounts && result.discounts.length > 0) {
             form.find('#couponCode').attr('disabled', true);
@@ -146,11 +146,11 @@ class BuyScreen {
 
     countryChanged(target) {
         if (target.options[target.selectedIndex].value === 'US') {
-            this.orderForm.find('#usState').parent().removeClass('hidden-xs-up').attr('required', false);
-            this.orderForm.find('#state').parent().addClass('hidden-xs-up');
+            this.orderForm.find('#usState').parent().removeClass('d-none').attr('required', false);
+            this.orderForm.find('#state').parent().addClass('d-none');
         } else {
-            this.orderForm.find('#state').parent().removeClass('hidden-xs-up');
-            this.orderForm.find('#usState').parent().addClass('hidden-xs-up').attr('required', false);
+            this.orderForm.find('#state').parent().removeClass('d-none');
+            this.orderForm.find('#usState').parent().addClass('d-none').attr('required', false);
         }
         this.orderForm.validator('update');
         this.calculateShipping(this.orderForm);
@@ -169,11 +169,11 @@ class BuyScreen {
                     '<td class="product-selector product">' + 
                     ('<input type="radio" value="' + v.id + '" name="variant" ' + (idx === 0 ? 'checked' : '') + '>') + '</td>' + 
                     '<td class="product-info product text-center text-md-left ">' +  
-                        '<span class="font-weight-bold">Trident Underwater Drone</span> <br class="hidden-sm-up">+&nbsp;' + 
+                        '<span class="font-weight-bold">Trident Underwater Drone</span> <br class="d-sm-none">+&nbsp;' + 
                         this.getOptions(v.options.values) + 
-                '<div class="hidden-sm-up price-sm pt-3"><em><small><s class="pr-2">$' + (price + 300).toFixed(2) + '</s></small></em>&nbsp;$' + price.toFixed(2)  +'</div>' +
+                '<div class="d-sm-none price-sm pt-3"><em><small><s class="pr-2">$' + (price + 300).toFixed(2) + '</s></small></em>&nbsp;$' + price.toFixed(2)  +'</div>' +
                     '</td>' + 
-                '<td class="text-right product pricing hidden-sm-down"><em><small><s  class="pr-2">$' + (price + 200).toFixed(2) + '</s></small></em>$' + price.toFixed(2) + '</td>' + '</tr>';
+                '<td class="text-right product pricing d-none d-md-block"><em><small><s  class="pr-2">$' + (price + 200).toFixed(2) + '</s></small></em>$' + price.toFixed(2) + '</td>' + '</tr>';
         }).join('');
 
         orderForm.find('#options').prepend(optionsHtml);
