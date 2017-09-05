@@ -333,3 +333,15 @@
     }
 
 }
+
+
+// Hide the up/down buttons on numeric text fields
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+//Supports Mozilla
+input[type=number] {
+    -moz-appearance:textfield;
+}
