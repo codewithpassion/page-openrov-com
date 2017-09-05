@@ -290,10 +290,20 @@ class BuyScreen {
             var total = order.total / 100;
             var currency = order.currency;
             var line_items = order.line_items.map(function (item) { return item.celery_sku; }).join(',');
-            const path = "?number=" + order.number +
+            let path = "?number=" + order.number +
                          "&amount=" + total + 
                          "&currency=" + currency + 
                          "&line_items=" + line_items;
+
+            const utmSource = this.getQueryStringValue('utm_source');
+            const utmMedium = this.getQueryStringValue('utm_medium');
+            if (utmSource) {
+                path += `&utm_source=${encodeURIComponent(utmSource)}`
+            }
+            if (utmMedium) {
+                path += `&utm_medium=${encodeURIComponent(utmMedium)}`
+            }
+            
             this.clearStorage();
             document.__isSubmitted = true;
             
@@ -311,7 +321,9 @@ class BuyScreen {
                 }))
             }), 2);
 
-            window.location.replace(window.location.href + '../confirmation/' + path);
+            window.location.replace(
+                window.location.href.replace(window.location.search, "")
+                + '../confirmation/' + path);
         }
         catch (err) {
             billingForm.find('.alert .title').text(err.statusText);
@@ -322,6 +334,11 @@ class BuyScreen {
         }
 
     }
+
+    getQueryStringValue(key) {
+        return decodeURIComponent(
+            window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+    }  
 
     async runSetupForm() {
         this.variants = await this.setupForm(this.orderForm);
