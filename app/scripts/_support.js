@@ -120,11 +120,13 @@ $(document).ready(function () {
                 }
                 )
                     .done(function (res) {
-                        alert("Thank you for your support request. You will hear from us shortly.");
-                        $('#modal-contactSupport').modal('hide');
+                        $('#contact-support-success').removeClass('d-none');
                     })
                     .fail(function (err) {
-                        alert('Whoops, something went wrong. Please try again later.')
+                        $('#contact-support-error').removeClass('d-none');
+                        if (window.trackJavaScriptError) {
+                            window.trackJavaScriptError(err, 'Contact support form');
+                        }
                     })
 
             }
