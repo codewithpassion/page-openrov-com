@@ -1,0 +1,18 @@
+---
+hide_body: false
+fields:
+- name: image
+  label: Image
+  type: text
+  hidden: false
+  default: "/images/openrov-trident-underwater-drone.jpg"
+- name: height
+  label: Height
+  type: text
+  hidden: false
+  default: 1200
+- name: width
+  label: Width
+  type: text
+  hidden: false
+  default: 1200
