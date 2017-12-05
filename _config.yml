@@ -1,46 +1,47 @@
----
-title: OpenROV Underwater Drones
-timezone: UTC
-collections:
-  posts:
-    title: Posts
-    output: true
-  uploads:
-    title: Uploads
-    output: true
-defaults:
-- scope:
-    path: ''
-  values:
-    image: "/images/openrov-trident-underwater-drone.jpg"
-    height: 1200
-    width: 1200
-    show_nav: true
-    show_footer: true
 gems:
-- jekyll-redirect-from
-- jekyll-seo-tag
-- jekyll-sitemap
-exclude: 
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+
 array: []
+
+# for SEO
 webmaster_verifications:
   google: 6sqA5KNpZtZaQPB-78QcD8CDqXsbhOiqpZGvm NxYDI4
-description: Trident is the latest high performing underwater drone from OpenROV,
-  makers of powerful tools for marine exploration.
-url: https://www.openrov.com
+title: OpenROV Underwater Drones
+description: Trident is the latest high performing underwater drone from OpenROV, makers of powerful tools for marine exploration.
+url: 'https://www.openrov.com'
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /images/openrov-trident-underwater-drone.jpg
+      height: 1200
+      width: 1200
+      show_nav: true
+      show_footer: true
+      nav_fixed: true
+
 author:
   name: OpenROV
   email: info@openrov.com
   twitter: openrov
   facebook: OpenROV
   instagram: openrov_hq
+
 twitter:
   username: openrov
+
 social:
   name: OpenROV
   links:
-  - https://twitter.com/OpenROV
-  - https://www.facebook.com/OpenROV
-  - https://www.instagram.com/openrov_hq
-  - https://www.youtube.com/user/OpenROV
-logo: "/images/openrov.png"
+    - https://twitter.com/OpenROV
+    - https://www.facebook.com/OpenROV
+    - https://www.instagram.com/openrov_hq
+    - https://www.youtube.com/user/OpenROV
+
+logo: /images/openrov.png
+
